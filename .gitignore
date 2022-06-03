@@ -4,3 +4,5 @@
 /src/ViccStaking/.secret
 /src/ViccStaking/build
 /src/ViccStaking/node_modules
+/src/Contract/.secret
+/src/Contract/apikey
