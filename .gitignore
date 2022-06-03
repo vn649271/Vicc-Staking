@@ -1,0 +1,6 @@
+/src/build
+/src/node_modules
+/src/.secret
+/src/ViccStaking/.secret
+/src/ViccStaking/build
+/src/ViccStaking/node_modules
