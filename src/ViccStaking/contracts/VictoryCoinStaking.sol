@@ -124,7 +124,7 @@ contract Ownable {
   }
 }
 
-contract ValuableCoinStaking is Ownable {
+contract VictoryCoinStaking is Ownable {
     using SafeMath for uint256;
 
     uint256 constant public PERCENTS_DIVIDER = 1000;
@@ -132,7 +132,7 @@ contract ValuableCoinStaking is Ownable {
     uint256 constant public REFERRAL_PERCENTS = 150;
     uint256 constant public TIME_STEP = 1 days;
 	
-	ERC20Interface ValuableCoin;
+	ERC20Interface VictoryCoin;
 
     uint256 public totalUsers;
     uint256 public totalInvested;
@@ -165,12 +165,12 @@ contract ValuableCoinStaking is Ownable {
     event onReinvestment(address indexed user, uint256 reinvestAmount);
     event RefBonus(address indexed referrer, address indexed referral, uint256 amount);
 
-    constructor(address _ValuableCoin) {
-        ValuableCoin = ERC20Interface(_ValuableCoin);
+    constructor(address _VictoryCoin) {
+        VictoryCoin = ERC20Interface(_VictoryCoin);
     }
 
     function invest(address referrer, uint256 amount) public {
-		ValuableCoin.transferFrom(msg.sender, address(this), amount);
+		VictoryCoin.transferFrom(msg.sender, address(this), amount);
 		
         User storage user = users[msg.sender];
 
@@ -180,7 +180,6 @@ contract ValuableCoinStaking is Ownable {
 
         if (user.referrer != address(0)) {
             address upline = user.referrer;
-            
 			if (upline != address(0)) {
 				uint256 _amount = amount.mul(REFERRAL_PERCENTS).div(PERCENTS_DIVIDER);
 				users[upline].bonus = users[upline].bonus.add(_amount);
@@ -237,14 +236,14 @@ contract ValuableCoinStaking is Ownable {
 
         require(totalAmount > 0, "User has no dividends");
 
-        uint256 contractBalance = ValuableCoin.balanceOf(address(this));
+        uint256 contractBalance = VictoryCoin.balanceOf(address(this));
         if (contractBalance < totalAmount) {
             totalAmount = contractBalance;
         }
 
         user.checkpoint = block.timestamp;
 		
-		ValuableCoin.transfer(msg.sender, totalAmount);
+		VictoryCoin.transfer(msg.sender, totalAmount);
 
         totalWithdrawn = totalWithdrawn.add(totalAmount);
 

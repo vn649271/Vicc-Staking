@@ -1,7 +1,7 @@
-const VCStaking = artifacts.require("ValuableCoinStaking");
-// const ViccToken = artifacts.require("ViccToken");
+const VCStaking = artifacts.require("VictoryCoinStaking");
+const ViccToken = artifacts.require("ViccToken");
 
 module.exports = function (deployer) {
-  deployer.deploy(VCStaking);
-  // deployer.deploy(ViccToken, );
+  await deployer.deploy(ViccToken);
+  deployer.deploy(VCStaking, deployedInfo.address);
 };

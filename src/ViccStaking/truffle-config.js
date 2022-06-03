@@ -22,6 +22,7 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 const fs = require('fs');
 const mnemonic = fs.readFileSync(".secret").toString().trim();
+const BSC_API_KEY = fs.readFileSync("apikey").toString().trim();
 
 module.exports = {
   /**
@@ -41,7 +42,7 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    test: {
+    localtest: {
      host: "127.0.0.1",     // Localhost (default: none)
      port: 7545,            // Standard Ethereum port (default: none)
      network_id: "5777",       // Any network (default: none)
@@ -99,7 +100,7 @@ module.exports = {
     'truffle-plugin-verify'
   ],
   api_keys: {
-    bscscan: 'IUSZC25BUYJDF9CA4P8FE5BYT626S5RRP6'
+    bscscan: BSC_API_KEY
   },
 
   // Configure your compilers
