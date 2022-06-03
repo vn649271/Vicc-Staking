@@ -7,3 +7,4 @@
 /src/Contract/.secret
 /src/Contract/apikey
 /src/Contract/node_modules
+/src/Contract/package-lock.json

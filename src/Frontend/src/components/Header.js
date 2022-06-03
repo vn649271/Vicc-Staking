@@ -24,7 +24,6 @@ export default () => {
           <div className="font-Montserrat-ExtraBold text-white text-2xl  text-white text-lg mb-1 mt-4 text-left">
             Victory&nbsp;Cash
           </div>
-
         </Link>
           {/* <Button
             className="w-full md:w-1/5 invisible md:visible text-2xl flex flex-row justify-center "

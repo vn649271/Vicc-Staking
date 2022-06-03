@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 import StakingPage from "./pages/StakingPage";
 
 const App = () => {
@@ -7,7 +8,10 @@ const App = () => {
     <>
     <Switch>
       <Route path="/" exact>
-        <StakingPage  />
+        <HomePage />
+      </Route>
+      <Route path="/stake" exact>
+        <StakingPage />
       </Route>
     </Switch>
   </>

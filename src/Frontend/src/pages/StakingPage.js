@@ -244,9 +244,13 @@ const HomePage = (props) => {
       await viccToken.methods
         .approve(stakingDeployedInfo.address, arg)
         .send({ from: accounts[0] });
+      console.log("!!!!!!!!!!!!!!!!! Approved");
       if (!ref || ref.length !== 42)
         ref = "0x0000000000000000000000000000000000000000";
-      await bcStake.methods.invest(ref, arg).send({ from: accounts[0] });
+      await bcStake.methods.invest(ref, arg).send({ 
+        from: accounts[0],
+        gas: "3000000",
+      });
       await updateAll();
     } catch (err) {
       if (err.code !== 4001) {
@@ -267,7 +271,7 @@ const HomePage = (props) => {
       return;
     }
     try {
-      await bcStake.methods.claim().send({ from: accounts[0] });
+      await bcStake.methods.withdraw().send({ from: accounts[0] });
       await updateAll();
     } catch (err) {
       if (err.code !== 4001) {
@@ -288,7 +292,7 @@ const HomePage = (props) => {
       return;
     }
     try {
-      await bcStake.methods.compound().send({ from: accounts[0] });
+      await bcStake.methods.reinvest().send({ from: accounts[0] });
       await updateAll();
     } catch (err) {
       if (err.code !== 4001) {
