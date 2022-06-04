@@ -12,7 +12,7 @@ export default () => {
               className="logo flex flex-row items-center"
             >
               <img
-                src="/android-chrome-192x192.png"
+                src="/images/android-chrome-192x192.png"
                 width="100"
                 className="cursor-pointer"
                 alt="LEAD"
