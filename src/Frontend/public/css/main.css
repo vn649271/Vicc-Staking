@@ -55,7 +55,7 @@ body {
 	border-bottom: 1px solid #FA02FF;
 }
 
-.header-layout .connect-wallet-layout button.small-button {
+button.small-button {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -76,7 +76,7 @@ body {
 	flex-grow: 0;
 }
 
-.header-layout .connect-wallet-layout button.small-button span {
+button.small-button span {
 	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: 800;
@@ -150,6 +150,24 @@ h2 {
 	font-weight: 600;
 	font-size: 32px;
 	line-height: 43px;
+	/* identical to box height, or 112% */
+
+	letter-spacing: -1px;
+	border-radius: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 12px 24px;
+	gap: 10px;
+}
+
+.main-button-theme.medium-size {
+	font-family: 'Goldplay';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 25px;
 	/* identical to box height, or 112% */
 
 	letter-spacing: -1px;

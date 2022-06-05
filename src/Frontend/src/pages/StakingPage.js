@@ -230,6 +230,10 @@ const HomePage = (props) => {
   }
 
   async function registerAndStake() {
+    if (amount == undefined || amount === 0 || amount === "") {
+      toast.dark("Minimum staking value is 1000 VICC!");      
+      return;
+    }
     setStakeLoading(true);
     await updateAll();
     const actual = amount * 10 ** 18;
@@ -363,7 +367,7 @@ const HomePage = (props) => {
   });
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="top-layout w-full overflow-hidden">
       <ToastContainer />
       {showModal && (
         <Modal title="" onClose={() => setShowModal(false)}>
@@ -381,7 +385,7 @@ const HomePage = (props) => {
           </div>
 
           <div className="flex flex-row justify-center">
-            <Button onClick={() => setShowModal(false)}>Close</Button>
+            <Button className="medium-size" onClick={() => setShowModal(false)}>Close</Button>
           </div>
         </Modal>
       )}
@@ -413,7 +417,7 @@ const HomePage = (props) => {
           {!accounts && (
             <div className="w-full py-6 text-center">
               <Button
-                className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto"
+                className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto medium-size"
                 uppercase={false}
                 onClick={async () => await init()}
               >
@@ -437,7 +441,7 @@ const HomePage = (props) => {
                   <br />
                   <br />
                   <Button
-                    className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto"
+                    className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto medium-size"
                     uppercase={false}
                     onClick={buybc}
                   >
@@ -475,7 +479,7 @@ const HomePage = (props) => {
           {accounts && (
             <div className="grid grid-col-1 md:grid-cols-1 gap-6 mt-10 w-full md:w-3/6 justify-center mx-auto mt-6">
               <Button
-                className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto"
+                className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto medium-size"
                 uppercase={false}
                 onClick={buybc}
               >
@@ -532,14 +536,14 @@ const HomePage = (props) => {
                     />
                     <Button
                       onClick={() => registerAndStake()}
-                      className="flex flex-row items-center w-48 justify-center"
+                      className="flex flex-row items-center w-48 justify-center medium-size"
                     >
                       {stakeLoading ? (
                         <Spinner size={30} />
                       ) : (
                         <>
                           <img src="/images/locked.svg" width="25" alt="" />
-                          <span className="w-16">STAKE</span>{" "}
+                          <span>STAKE</span>{" "}
                         </>
                       )}
                     </Button>
@@ -568,10 +572,10 @@ const HomePage = (props) => {
                     </span>
                     <span className="text-white text-2xl ml-2">VICC</span>
                   </div>
-                  <div className="flex flex-row justify-center">
+                  <div className="flex flex-row justify-evenly">
                     <Button
                       type="submit"
-                      className="flex flex-row items-center justify-center w-48 me-4"
+                      className="flex flex-row items-center justify-center me-4 medium-size"
                       onClick={() => compoundEarnings()}
                     >
                       {compoundingLoading ? (
@@ -579,14 +583,14 @@ const HomePage = (props) => {
                       ) : (
                         <>
                           <img src="/images/locked.svg" width="25" alt="" />
-                          <span className="w-24">COMPOUND</span>{" "}
+                          <span>COMPOUND</span>{" "}
                         </>
                       )}
                     </Button>
 
                     <Button
                       type="submit"
-                      className="flex flex-row items-center justify-center w-32"
+                      className="flex flex-row items-center justify-center medium-size"
                       onClick={() => withdrawEarnings()}
                     >
                       {withdrawLoading ? (
@@ -594,7 +598,7 @@ const HomePage = (props) => {
                       ) : (
                         <>
                           <img src="/images/unlocked.svg" width="25" alt="" />
-                          <span className="w-24">CLAIM</span>{" "}
+                          <span>CLAIM</span>{" "}
                         </>
                       )}
                     </Button>
