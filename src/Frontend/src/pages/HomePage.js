@@ -39,7 +39,7 @@ const HomePage = (props) => {
 						</ul>
 					</div>
 					<div className="connect-wallet-layout flex items-center">
-						<Button className="main-button-theme small-button border-pink" onClick={onClickStake}>
+						<Button className="small-button border-pink" onClick={onClickStake}>
 							<span>Join Presale</span>
 						</Button>
 					</div>
@@ -67,10 +67,10 @@ const HomePage = (props) => {
 								</div>
 							</div>
 							<div className="left-panel-buttons-layout inline-block flex justify-between">
-								<Button className="main-button-theme gradient-button-bg">
+								<Button className="gradient-button-bg">
 									Buy Token
 								</Button>
-								<Button className="main-button-theme border-pink">
+								<Button className="">
 									Whitepaper
 								</Button>
 						
