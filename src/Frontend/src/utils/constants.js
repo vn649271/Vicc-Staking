@@ -3,7 +3,7 @@
 import StakingDeployedInfo from "../abis/VictoryCoinStaking.json";
 import ViccDeployedInfo from "../abis/ViccToken.json";
 
-export const CHAIN_ID = 5777;
+export const CHAIN_ID = 97;
 export const stakingDeployedInfo = {
 	abi: StakingDeployedInfo.abi,
 	address: StakingDeployedInfo.networks[CHAIN_ID].address
