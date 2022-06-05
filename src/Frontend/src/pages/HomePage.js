@@ -44,8 +44,8 @@ const HomePage = (props) => {
 						</Button>
 					</div>
 				</div>
-				<div className="content-layout flex justify-between sm:justify-start">
-					<div className="left-panel-layout w-1/2 text-left flex items-center">
+				<div className="content-layout">
+					<div className="left-panel-layout text-left flex items-center">
 						<div className="block">
 							<div className="greeting-section-layout">
 								<div className="greeting-layout block mb-10">
@@ -77,7 +77,7 @@ const HomePage = (props) => {
 							</div>
 						</div>
 					</div>
-					<div className="right-panel-layout w-1/2 block flex justify-center items-center">
+					<div className="right-panel-layout block flex justify-center items-center">
 						<div className="right-panel-bg-section-layout">
 							<img className="right-panel-bg-layout" src="/images/vcc-token.png" alt="" />
 						</div>
@@ -101,17 +101,17 @@ const HomePage = (props) => {
 													<div className="elapsed-datetime-value-layout">00</div>
 													<div className="elapsed-datetime-label-layout">Days</div>
 												</div>
-												<div>:</div>
+												<div className="elapsed-datetime-value-layout">:</div>
 												<div className="block">
 													<div className="elapsed-datetime-value-layout">00</div>
 													<div className="elapsed-datetime-label-layout">Hours</div>
 												</div>
-												<div>:</div>
+												<div className="elapsed-datetime-value-layout">:</div>
 												<div className="block">
 													<div className="elapsed-datetime-value-layout">00</div>
 													<div className="elapsed-datetime-label-layout">Minutes</div>
 												</div>
-												<div>:</div>
+												<div className="elapsed-datetime-value-layout">:</div>
 												<div className="block">
 													<div className="elapsed-datetime-value-layout">00</div>
 													<div className="elapsed-datetime-label-layout">Secs</div>

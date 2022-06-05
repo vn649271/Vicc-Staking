@@ -99,6 +99,8 @@ button.small-button span {
 
 .content-layout {
 	padding: 3rem;
+	display: flex;
+	justify-content: space-between;
 }
 
 .main-text-color {
@@ -111,7 +113,7 @@ button.small-button span {
 }
 
 h2 {
-	font-size: 4rem !important;
+	font-size: 4rem;
 	font-weight: 600;
 	line-height: 4.5rem;
 	margin-bottom: 1.5rem;
@@ -211,17 +213,17 @@ button.gradient-button-bg:focus {
 
 .right-panel-content-layout {
 	padding-top: 2.5rem;
-	margin-left: -100%;
-	margin-top: -6.5rem;
-	width: 32.5rem;
-	height: 21rem;
+    margin-left: -98%;
+    margin-top: -8.5rem;
+    width: 92%;
+    height: 21rem;
 }
 
 .right-panel-footer-layout {
-	margin-top: 3rem;
-	width: 32.5rem;
-	height: 5rem;
-	padding: 0.9rem 0.2rem;
+    margin-top: 3.5rem;
+    width: 36.91rem;
+    height: 5rem;
+    padding: 0.9rem 0.2rem;
 	color: #000;
 	background: linear-gradient(91.68deg, #FA02FF 0%, #5847FF 105.34%);
 	border-radius: 0px 0px 2.5rem 2.5rem;
@@ -332,10 +334,6 @@ button.gradient-button-bg:focus {
 		font-size: 2rem;
 		line-height: 2rem;
 	}
-	.right-panel-bg-layout {
-		width: 31rem;
-		height: 31rem;
-	}
 	.right-panel-content-layout {
 		margin-top: -5.5rem;
 		width: 31rem;
@@ -370,80 +368,109 @@ button.gradient-button-bg:focus {
 		font-size: 15px;
 	}
 
-	.right-panel-bg-layout {
-		width: 28rem;
-		height: 28rem;
-	}
-
 	.right-panel-content-layout {
-		width: 28rem;
-		height: 19rem;
+		width: 35rem;
+		height: 23rem;
+		margin-left: -100%;
+		margin-top: -4rem;
 		padding-top: 2.5rem;
 	}
 	.right-panel-footer-layout {
-		margin-top: 1.5rem;
-		width: 28rem;
+		margin-top: 1rem;
+		width: 32.2rem;
+	}
+	.presale-amount-section-layout {
+		margin-bottom: 2rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 2rem;
+	}
+	.presale-duration-comment1-layout {
+		letter-spacing: -0.11rem;
+	}
+	.presale-duration-comment2-layout {
+		letter-spacing: -0.05rem;
 	}
 }
 
 @media (max-width: 1282px) {
 	body {
-		font-size: 14px;
+		font-size: 10px;
 	}
 	.right-panel-bg-layout {
-		width: 28rem;
-		height: 28rem;
+		width: 25rem;
+		height: 25rem;
 	}
 	.right-panel-content-layout {
 		margin-top: -5rem;
-		width: 28rem;
-		height: 18rem;
+		margin-left: -23.5rem;
+		width: 22rem;
+		height: 15rem;
+		padding-top: 1rem;
 	}
 	.right-panel-footer-layout {
-		margin-top: -1.25rem;
-		width: 28rem;
+		margin-top: -1.5rem;
+		width: 22rem;
+	}
+	.presale-amount-section-layout {
+		margin-bottom: 1rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 1rem;
+	}
+	.presale-duration-comment1-layout {
+		letter-spacing: -0.11rem;
+	}
+	.presale-duration-comment2-layout {
+		letter-spacing: -0.05rem;
 	}
 }
 
-@media (max-width: 1226px) {
+@media (max-width: 1200px) {
 	body {
-		font-size: 13px;
+		font-size: 10px;
 	}
 	.right-panel-bg-layout {
-		width: 27rem;
-		height: 27rem;
+		width: 25rem;
+		height: 25rem;
 	}
 	.right-panel-content-layout {
 		margin-top: -5rem;
-		width: 27rem;
-		height: 17rem;
+		margin-left: -23.5rem;
+		width: 22rem;
+		height: 14rem;
+		padding-top: 1rem;
 	}
 	.right-panel-footer-layout {
-		margin-top: -1.25rem;
-		width: 27rem;
+		margin-top: -2rem;
+		width: 22rem;
+	}
+	.presale-title-layout {
+		font-size: 2rem;
+	}
+	.presale-amount-layout {		
+		font-size: 1.5rem;
+	}
+	.presale-amount-section-layout {
+		margin-bottom: 0.5rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 0.5rem;
+	}
+	.presale-duration-comment1-layout {
+		font-size: 1rem;
+		letter-spacing: 0rem;
+	}
+	.presale-duration-comment2-layout {
+		letter-spacing: -0.05rem;
+	}
+	.main-button-theme {
+		font-size: 1.5rem;
+		line-height: 1rem;
 	}
 }
 
-@media (max-width: 1180px) {
-	body {
-		font-size: 12px;
-	}
-	.right-panel-bg-layout {
-		width: 26rem;
-		height: 26rem;
-	}
-	.right-panel-content-layout {
-		margin-top: -5rem;
-		width: 26rem;
-		height: 17rem;
-	}
-	.right-panel-footer-layout {
-		margin-top: -1.25rem;
-		width: 26rem;
-	}
-}
-
-@media (max-width: 1150px) {
+@media (max-width: 1120px) {
 	body {
 		font-size: 10px;
 	}
@@ -480,19 +507,35 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 10px;
 	}
+	.content-layout {
+		display: block;
+	}
 	.right-panel-bg-layout {
-		width: 24rem;
-		height: 24rem;
+		width: 25rem;
+		height: 25rem;
 	}
 	.right-panel-content-layout {
-		margin-top: -3rem;
-		margin-left: 2rem;
-		width: 24rem;
-		height: 16rem;
+		margin-top: -5rem;
+		margin-left: -23.5rem;
+		width: 22rem;
+		height: 15rem;
+		padding-top: 1rem;
 	}
 	.right-panel-footer-layout {
-		margin-top: -5rem;
-		width: 24rem;
+		margin-top: -1rem;
+		width: 22rem;
+	}
+	.presale-amount-section-layout {
+		margin-bottom: 1rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 1rem;
+	}
+	.presale-duration-comment1-layout {
+		letter-spacing: -0.11rem;
+	}
+	.presale-duration-comment2-layout {
+		letter-spacing: -0.05rem;
 	}
 }
 
