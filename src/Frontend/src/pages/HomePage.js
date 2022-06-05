@@ -22,7 +22,7 @@ const HomePage = (props) => {
 
 	return(
 		<>
-			<div className="top-layout p-10">
+			<div className="top-layout">
 				<img className="bg-effect-1" src="/images/Ellipse 134.png" alt="" />
 				<img className="bg-effect-2" src="/images/Ellipse 133.png" alt="" />
 				<div className="header-layout flex justify-between align-baseline">
@@ -77,13 +77,13 @@ const HomePage = (props) => {
 							</div>
 						</div>
 					</div>
-					<div className="right-panel-layout w-1/2 block flex justify-center">
-						<div className="right-panel-bg-layout">
-							<img className="" src="/images/vcc-token.png" alt="" />
+					<div className="right-panel-layout w-1/2 block flex justify-center items-center">
+						<div className="right-panel-bg-section-layout">
+							<img className="right-panel-bg-layout" src="/images/vcc-token.png" alt="" />
 						</div>
 						<div className="right-panel-content-layout semi-transparent-bg flex justify-center">
 							<div className="block">
-								<div className="block pt-10 pl-5 pr-5">
+								<div className="block">
 									<div className="flex justify-center">
 										<div className="w-10/12 block">
 											<div className="presale-amount-section-layout flex justify-between">
