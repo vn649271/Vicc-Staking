@@ -22,7 +22,7 @@ export default () => {
           />
 
           <div className="font-Montserrat-ExtraBold text-white text-2xl  text-white text-lg mb-1 mt-4 text-left">
-            Victory&nbsp;Cash
+            &nbsp;Victory&nbsp;Cash
           </div>
         </Link>
           {/* <Button

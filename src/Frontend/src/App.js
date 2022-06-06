@@ -12,6 +12,9 @@ const App = () => {
       <Route path="/" exact>
         <HomePage />
       </Route>
+      <Route path="/home" exact>
+        <HomePage />
+      </Route>
       <Route path="/stake" exact>
         <StakingPage />
       </Route>

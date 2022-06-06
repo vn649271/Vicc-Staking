@@ -11,6 +11,8 @@ import { initWeb3 } from "../utils.js";
 import fromExponential from "from-exponential";
 import { injectStyle } from "react-toastify/dist/inject-style";
 import { ToastContainer, toast } from "react-toastify";
+import NavMenuBar from "../components/common/NavMenuBar";
+
 import {
   stakingDeployedInfo,
   viccDeployedInfo,
@@ -389,7 +391,6 @@ const HomePage = (props) => {
           </div>
         </Modal>
       )}
-
       <div className="relative  w-full top-0">
         <img src="/images/nosiy.png" alt="" className="absolute  top-noisy" />
         <img

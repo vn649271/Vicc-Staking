@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import TokenomicsCard from '../components/TokenomicsCard';
+import Header from "../components/Header";
 
 const TokenomicsPage = props => {
 	return(<>
-		<div className="tokenomics-container-layout flex justify-center">
-			<div className="block">
+		<div className="tokenomics-container">
+       		<Header />
+   			<div className="block">
 				<div className="page-title-label-layout flex justify-center">
 					<h3>Tokenomics</h3>
 				</div>

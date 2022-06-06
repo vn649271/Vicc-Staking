@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import Card from '../components/common/Card';
 import LinkedCircle from '../components/LinkedCircle';
 import RoadmapBlock from '../components/RoadmapBlock';
+import Header from "../components/Header";
 
 const RoadmapPage = props => {
 	return(<>
 		<div className="roadmap-container">
-			<div className="page-title-label-layout flex justify-center">
+   			<Header />
+   			<div className="page-title-label-layout flex justify-center">
 				<h3>Roadmap</h3>
 			</div>
 			<div className="block">
