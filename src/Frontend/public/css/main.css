@@ -923,7 +923,7 @@ button.gradient-button-bg:focus {
 		font-size: 1.2rem;
 	}
 	.toggle-nav-btn-layout {
-		margin-right: 2rem;
+		margin-right: 0.1rem;
 	}
 	.logo-layout img {
 		width: 2rem;
@@ -965,7 +965,7 @@ button.gradient-button-bg:focus {
 		margin-left: 3rem;
 	}
 	.right-panel-bg-layout {
-		margin-left: -3rem;
+		margin-left: -3.2rem;
 		width: 25rem;
 		height: 17rem;
 	}
@@ -1028,7 +1028,7 @@ button.gradient-button-bg:focus {
 		font-size: 1.2rem;
 	}
 	.toggle-nav-btn-layout {
-		margin-right: 2rem;
+		margin-right: 0;
 	}
 	.logo-layout img {
 		width: 2rem;
