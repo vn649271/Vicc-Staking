@@ -12,7 +12,7 @@ h2 {
 }
 
 .page-title-label-layout {
-	margin: 2rem 0;
+	padding: 2rem 0;
 }
 
 .page-title-label-layout h3 {
@@ -94,6 +94,23 @@ h2 {
 	background: rgb(0, 44, 83);
 	margin-left: -0.1rem;
 	margin-top: 0.1rem;
+}
+
+.tokenomics-card {
+	background: #FFF;
+	width: 20rem;
+	min-height: 13rem;
+	max-height: 50rem;
+}
+
+.tokenomics-card-content-layout {
+}
+
+/**************************************/
+/********** Tokenomics CSS **************/
+/**************************************/
+.tokenomics-container-layout {
+	background: rgb(250, 248, 249);
 }
 
 /**************************************/

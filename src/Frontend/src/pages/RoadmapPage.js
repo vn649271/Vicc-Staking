@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from '../components/common/Card';
-import LinkedCircle from '../components/common/LinkedCircle';
-import RoadmapBlock from '../components/common/RoadmapBlock';
+import LinkedCircle from '../components/LinkedCircle';
+import RoadmapBlock from '../components/RoadmapBlock';
 
 const RoadmapPage = props => {
 	return(<>
@@ -13,7 +13,7 @@ const RoadmapPage = props => {
 				<div className="flex justify-center">
 					<div className="w-7/12 ">
 						<div className='block'>
-							<div className="roadmap-block-left flex justify-start">
+							<div className="roadmap-block-left flex justify-center lg:justify-start mb-5">
 								<div className="roadmap-block-row1-layout flex justify-center items-center">
 									<RoadmapBlock
 										title="Development"
@@ -34,12 +34,16 @@ const RoadmapPage = props => {
 											<span>1</span>
 										</div>
 									</div>
-									<LinkedCircle direction="right" />
+									<div className="hidden md:flex lg:flex">
+										<LinkedCircle direction="right" />
+									</div>
 								</div>
 							</div>
-							<div className="roadmap-block-right flex justify-end">
+							<div className="roadmap-block-right flex justify-center lg:justify-end mb-5">
 								<div className="roadmap-block-row1-layout flex justify-center items-center">
-									<LinkedCircle direction="left" />
+									<div className="hidden md:flex lg:flex">
+										<LinkedCircle direction="left" />
+									</div>
 									<RoadmapBlock
 										title="Marketing & Initial Community Building"
 									>
@@ -57,8 +61,8 @@ const RoadmapPage = props => {
 									</div>
 								</div>
 							</div>
-							<div className="roadmap-block-left flex justify-start">
-								<div className="roadmap-block-row1-layout flex justify-center items-center">
+							<div className="roadmap-block-left flex justify-center lg:justify-start mb-5">
+								<div className="roadmap-block-row1-layout flex justify-start items-center">
 									<RoadmapBlock
 										title="Converting The Basics"
 									>
@@ -80,12 +84,16 @@ const RoadmapPage = props => {
 											<span>3</span>
 										</div>
 									</div>
-									<LinkedCircle direction="right" />
+									<div className="hidden md:flex lg:flex">
+										<LinkedCircle direction="right" />
+									</div>
 								</div>
 							</div>
-							<div className="roadmap-block-right flex justify-end">
-								<div className="roadmap-block-row1-layout flex justify-center items-center">
-									<LinkedCircle direction="left" />
+							<div className="roadmap-block-right flex justify-center lg:justify-end mb-5">
+								<div className="roadmap-block-row1-layout flex justify-start items-center">
+									<div className="hidden md:flex lg:flex">
+										<LinkedCircle direction="left" />
+									</div>
 									<RoadmapBlock
 										title="Setting Up Treasury"
 									>
