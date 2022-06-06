@@ -148,7 +148,7 @@ h2 {
 }
 
 .header-layout .logo-layout {
-	margin-left: 110px;
+	margin-left: 7rem;
 }
 
 .header-layout .menu-layout {
@@ -241,6 +241,7 @@ button.small-button span {
 	/* or 114% */
 	letter-spacing: 0.1rem;
 	color: #FFFFFF;
+	overflow: wrap;
 }
 
 .greeting-layout h2.highlighted {
@@ -270,6 +271,8 @@ button.small-button span {
 	align-items: center;
 	padding: 0.75rem 1.5rem;
 	gap: 0.625rem;
+	height: fit-content;
+    line-height: 1.5rem;
 }
 
 .main-button-theme.medium-size {
@@ -288,6 +291,28 @@ button.small-button span {
 	align-items: center;
 	padding: 0.75rem 1.5rem;
 	gap: 0.625rem;
+	height: fit-content;
+    line-height: 1.5rem;
+}
+
+.main-button-theme.small-size {
+	font-family: 'Goldplay';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 2rem;
+	line-height: 1rem;
+	/* identical to box height, or 112% */
+
+	letter-spacing: 0.2rem;
+	border-radius: 2rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0.75rem 1.5rem;
+	gap: 0.625rem;
+	height: fit-content;
+    line-height: 1.5rem;
 }
 
 .gradient-button-bg {
@@ -319,14 +344,14 @@ button.gradient-button-bg:focus {
 .right-panel-content-layout {
 	padding-top: 2.5rem;
     margin-left: -98%;
-    margin-top: -8.5rem;
-    width: 92%;
+    margin-top: -4.5rem;
+    width: 32rem;
     height: 21rem;
 }
 
 .right-panel-footer-layout {
     margin-top: 3.5rem;
-    width: 36.91rem;
+    width: 32rem;
     height: 5rem;
     padding: 0.9rem 0.2rem;
 	color: #000;
@@ -648,7 +673,121 @@ button.gradient-button-bg:focus {
 }
 
 @media (max-width: 767px) {
+	.header-layout .logo-layout {
+		margin-left: 2rem;
+	}
+	.content-layout {
+		display: block;
+		padding: 0.1rem;
+	}
+	.presale-duration-comment2-layout {
+		letter-spacing: -0.05rem;
+	}
+	.greeting-layout {
+		margin-bottom: 1rem;
+	}
+	.greeting-layout h2 {
+		font-weight: 600;
+		font-size: 2.5rem;
+		line-height: 3rem;
+		/* or 114% */
+		letter-spacing: -0.05rem;
+	}
+	.presale-duration-comment1-layout {
+		letter-spacing: 0;
+	}
+	.presale-duration-comment2-layout {
+		letter-spacing: -0.05rem;
+	}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
+	.header-layout .logo-layout {
+		margin-left: 2rem;
+	}
+	.content-layout {
+		display: block;
+		padding: 0.1rem;
+	}
+	.left-panel-buttons-layout {
+		display: block !important;
+	}
+	.left-panel-buttons-layout button {
+		margin-bottom: 1rem;
+	}
+	.presale-duration-comment2-layout {
+		letter-spacing: -0.05rem;
+	}
+	.greeting-layout {
+		margin: 1rem 0;
+	}
+	.greeting-section-layout {
+		margin-bottom:  1rem;
+	}
+	.greeting-layout h2 {
+		font-weight: 600;
+		font-size: 2.5rem;
+		line-height: 3rem;
+		/* or 114% */
+		letter-spacing: -0.05rem;
+	}
+}
+
+@media (max-width: 425px) {
+	body {
+		font-size: 10px;
+	}
+	.header-layout .logo-layout {
+		margin-left: 1rem;
+	}
+	.content-layout {
+		display: block;
+		padding: 0.1rem;
+	}
+	.left-panel-buttons-layout {
+		display: block !important;
+	}
+	.left-panel-buttons-layout button {
+		margin-bottom: 1rem;
+	}
+	.right-panel-bg-layout {
+		width: 25rem;
+		height: 25rem;
+	}
+	.right-panel-content-layout {
+		margin-top: -5rem;
+		margin-left: -23.5rem;
+		width: 22rem;
+		height: 15rem;
+		padding-top: 1rem;
+	}
+	.right-panel-footer-layout {
+		margin-top: -1rem;
+		width: 22rem;
+	}
+	.presale-amount-section-layout {
+		margin-bottom: 1rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 1rem;
+	}
+	.presale-duration-comment1-layout {
+		letter-spacing: -0.11rem;
+	}
+	.presale-duration-comment2-layout {
+		letter-spacing: -0.05rem;
+	}
+	.greeting-layout {
+		margin: 1rem 0;
+	}
+	.greeting-section-layout {
+		margin-bottom:  1rem;
+	}
+	.greeting-layout h2 {
+		font-weight: 600;
+		font-size: 2.5rem;
+		line-height: 3rem;
+		/* or 114% */
+		letter-spacing: -0.05rem;
+	}
 }

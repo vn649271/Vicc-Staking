@@ -45,95 +45,98 @@ const HomePage = (props) => {
 					</div>
 				</div>
 				<div className="content-layout">
-					<div className="left-panel-layout text-left flex items-center">
-						<div className="block">
-							<div className="greeting-section-layout">
-								<div className="greeting-layout block mb-10">
-									<h2 className="font-bold justify-content-">Welcome to the</h2>
-									<h2 className="highlighted flex justify-content-start font-bold">
-										$VictorCashCoin
-									</h2>
+					<div className="grid grid-cols-1 lg:grid-cols-2">
+						<div className="left-panel-layout text-left flex items-center">
+							<div className="w-full block">
+								<div className="greeting-section-layout">
+									<div className="greeting-layout block mb-10">
+										<h2 className="font-bold justify-content-">Welcome to the</h2>
+										<h2 className="highlighted flex justify-content-start font-bold">
+											$VictoryCash Coin
+										</h2>
+									</div>
+									<div>
+										<div>
+										With a presale price of 0.008 USDC.
+										</div>
+										<div>
+											Our minimum limit will be $100 USDC and a max of
+										</div>
+										<div>
+											$4,000 USDC. See our Whitepaper for further details.
+										</div>
+									</div>
 								</div>
-								<div>
-									<div>
-									With a presale price of 0.008 USDC.
-									</div>
-									<div>
-										Our minimum limit will be $100 USDC and a max of
-									</div>
-									<div>
-										$4,000 USDC. See our Whitepaper for further details.
+								<div className="flex justify-center">
+									<div className="w-full left-panel-buttons-layout flex justify-between">
+										<Button className="gradient-button-bg">
+											Buy Token
+										</Button>
+										<Button className="">
+											Whitepaper
+										</Button>
 									</div>
 								</div>
 							</div>
-							<div className="left-panel-buttons-layout inline-block flex justify-between">
-								<Button className="gradient-button-bg">
-									Buy Token
-								</Button>
-								<Button className="">
-									Whitepaper
-								</Button>
-						
+						</div>
+						<div className="right-panel-layout block flex justify-center items-center">
+							<div className="right-panel-bg-section-layout">
+								<img className="right-panel-bg-layout" src="/images/vcc-token.png" alt="" />
 							</div>
-						</div>
-					</div>
-					<div className="right-panel-layout block flex justify-center items-center">
-						<div className="right-panel-bg-section-layout">
-							<img className="right-panel-bg-layout" src="/images/vcc-token.png" alt="" />
-						</div>
-						<div className="right-panel-content-layout semi-transparent-bg flex justify-center">
-							<div className="block">
+							<div className="right-panel-content-layout semi-transparent-bg flex justify-center">
 								<div className="block">
-									<div className="flex justify-center">
-										<div className="w-10/12 block">
-											<div className="presale-amount-section-layout flex justify-between">
-												<div className="presale-title-layout flex items-center">Presale </div>
-												<div className="presale-amount-layout flex items-center">|</div>
-												<div className="flex items-center flex items-center">
-													<div className="block">
-														<div className="presale-amount-layout">00000000</div>
-														<div className="token-sold-label-layout">Token Sold</div>										
+									<div className="block">
+										<div className="flex justify-center">
+											<div className="w-10/12 block">
+												<div className="presale-amount-section-layout flex justify-between">
+													<div className="presale-title-layout flex items-center">Presale </div>
+													<div className="presale-amount-layout flex items-center">|</div>
+													<div className="flex items-center flex items-center">
+														<div className="block">
+															<div className="presale-amount-layout">00000000</div>
+															<div className="token-sold-label-layout">Token Sold</div>										
+														</div>
 													</div>
 												</div>
+												<div className="elapsed-time-layout flex justify-between">
+													<div className="block">
+														<div className="elapsed-datetime-value-layout">00</div>
+														<div className="elapsed-datetime-label-layout">Days</div>
+													</div>
+													<div className="elapsed-datetime-value-layout">:</div>
+													<div className="block">
+														<div className="elapsed-datetime-value-layout">00</div>
+														<div className="elapsed-datetime-label-layout">Hours</div>
+													</div>
+													<div className="elapsed-datetime-value-layout">:</div>
+													<div className="block">
+														<div className="elapsed-datetime-value-layout">00</div>
+														<div className="elapsed-datetime-label-layout">Minutes</div>
+													</div>
+													<div className="elapsed-datetime-value-layout">:</div>
+													<div className="block">
+														<div className="elapsed-datetime-value-layout">00</div>
+														<div className="elapsed-datetime-label-layout">Secs</div>
+													</div>
+												</div>										
 											</div>
-											<div className="elapsed-time-layout flex justify-between">
-												<div className="block">
-													<div className="elapsed-datetime-value-layout">00</div>
-													<div className="elapsed-datetime-label-layout">Days</div>
-												</div>
-												<div className="elapsed-datetime-value-layout">:</div>
-												<div className="block">
-													<div className="elapsed-datetime-value-layout">00</div>
-													<div className="elapsed-datetime-label-layout">Hours</div>
-												</div>
-												<div className="elapsed-datetime-value-layout">:</div>
-												<div className="block">
-													<div className="elapsed-datetime-value-layout">00</div>
-													<div className="elapsed-datetime-label-layout">Minutes</div>
-												</div>
-												<div className="elapsed-datetime-value-layout">:</div>
-												<div className="block">
-													<div className="elapsed-datetime-value-layout">00</div>
-													<div className="elapsed-datetime-label-layout">Secs</div>
-												</div>
-											</div>										
+										</div>
+										<div className="w-100 flex justify-center mb-10">
+											<div>
+												<Button className="main-button-theme gradient-button-bg">
+													Buy Now
+												</Button>									
+											</div>
 										</div>
 									</div>
-									<div className="w-100 flex justify-center mb-10">
-										<div>
-											<Button className="main-button-theme gradient-button-bg">
-												Buy Now
-											</Button>									
-										</div>
-									</div>
-								</div>
-								<div className="right-panel-footer-layout">
-									<div className="block">
-										<div className="presale-duration-comment1-layout">
-											Presale Duration - <b>June 7th - June 14th 12:00 UTC</b>
-										</div>
-										<div className="presale-duration-comment2-layout">
-											( 5 Days or until we reach our goal of 1.6 Million USDC )
+									<div className="right-panel-footer-layout">
+										<div className="block">
+											<div className="presale-duration-comment1-layout">
+												Presale Duration - <b>June 7th - June 14th 12:00 UTC</b>
+											</div>
+											<div className="presale-duration-comment2-layout">
+												( 5 Days or until we reach our goal of 1.6 Million USDC )
+											</div>
 										</div>
 									</div>
 								</div>
