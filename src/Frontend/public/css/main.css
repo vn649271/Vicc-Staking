@@ -4,6 +4,101 @@ body {
 	font-size: 16px;
 }
 
+h2 {
+	font-size: 4rem;
+	font-weight: 600;
+	line-height: 4.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.page-title-label-layout {
+	margin: 2rem 0;
+}
+
+.page-title-label-layout h3 {
+	font-size: 2rem;
+	font-weight: 600;
+	line-height: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+/**************************************/
+/******** Roadmap page CSS ************/
+/**************************************/
+.roadmap-container {
+	font-size: 11px;
+}
+
+.roadmap-block-layout {
+	background: rgb(254, 215, 174);
+	padding: 0 0.5rem;
+	width: 20rem;
+	height: 11rem;
+}
+
+.roadmap-block-title {
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.roadmap-block-row1-layout {
+	margin-left: 0rem;
+}
+
+.roadmap-block-row2-layout {
+	margin-right: 0rem;
+}
+
+.roadmap-block-list-layout {
+	list-style: disc;
+}
+
+.roadmap-block-list-layout li {
+	margin-left: 0.8rem;
+}
+
+.roadmap-block-number-layout {
+/*	margin-right: -2rem;
+	margin-bottom: -2rem;
+*/
+	height: 100%;
+}
+
+.roadmap-block-number-label-layout {
+	color: #F5F5F5;
+	background: rgb(231, 117, 5);	
+	font-size: 2rem;
+	font-weight: 600;
+	line-height: 1rem;
+	padding-top: 1rem;
+	margin-bottom: -0.5rem;
+	margin-left: -2.5rem;
+}
+
+.linked-line-right-layout {
+	margin-left: -0.5rem;
+}
+
+.link-line-leftside-layout, .link-line-rightside-layout {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: rgb(0, 44, 83);
+	letter-spacing: 0rem;
+	margin-left: -0.1rem;
+}
+
+.linked-circle-leftside-layout, .linked-circle-rightside-layout {
+	color: rgb(0, 44, 83);
+	background: rgb(0, 44, 83);
+	margin-left: -0.1rem;
+	margin-top: 0.1rem;
+}
+
+/**************************************/
+/********** Homepage CSS **************/
+/**************************************/
 .top-layout {
 	width: 100%;
 	height: auto;	
@@ -110,13 +205,6 @@ button.small-button span {
 .left-panel-layout {
 	text-align: center;
 	color: #F5F5F5;
-}
-
-h2 {
-	font-size: 4rem;
-	font-weight: 600;
-	line-height: 4.5rem;
-	margin-bottom: 1.5rem;
 }
 
 .greeting-section-layout {

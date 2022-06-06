@@ -17,7 +17,7 @@ const HomePage = (props) => {
 	const onSelectMenuItem = (ev) => {
 		let selectedItem = ev.target.id.replace('menu-item-', '');
 		setSelectedMenuItem(selectedItem);
-		alert(selectedItem);
+		history.push("/" + selectedItem);
 	}
 
 	return(
