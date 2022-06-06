@@ -404,10 +404,12 @@ const HomePage = (props) => {
         <div className="absolute w-full home-gradient"></div>
       </div>
 
-      <div className="relative w-full ">
+      <div className="relative w-full staking-main-layout">
         <Header />
-
         <div className="container mx-auto pb-18 px-4 force-height">
+          <div className="page-title-label-layout flex justify-center">
+            <h3 className="text-white">Staking</h3>
+          </div>
           <div className="text-center text-white text-2xl">
             {timerComponents.length ? timerComponents : <span></span>}
           </div>
@@ -478,7 +480,7 @@ const HomePage = (props) => {
             </div>
           )}
           {accounts && (
-            <div className="grid grid-col-1 md:grid-cols-1 gap-6 mt-10 w-full md:w-3/6 justify-center mx-auto mt-6">
+            <div className="grid grid-col-1 md:grid-cols-1 gap-6 mt-10 w-full md:w-4/6 justify-center mx-auto mt-6">
               <Button
                 className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto medium-size"
                 uppercase={false}
@@ -486,7 +488,7 @@ const HomePage = (props) => {
               >
                 Buy VICC
               </Button>
-              <Card title="Your Total Deposit">
+              <Card title="Your Total Deposit" noLine={true}>
                 <div className="flex flex-col pt-8 pb-4 text-white">
                   <div className="text-center">
                     <span className="text-white text-5xl">
@@ -507,7 +509,7 @@ const HomePage = (props) => {
                 </div>
               </Card>
 
-              <Card title="Staking">
+              <Card title="Staking" noLine={true}>
                 <div className="flex flex-col pt-8 px-2">
                   <div className="text-center pb-4">
                     <span className="text-lg text-gray-400">
@@ -563,7 +565,7 @@ const HomePage = (props) => {
                 </div>
               </Card>
 
-              <Card title="Your Earnings">
+              <Card title="Your Earnings" noLine={true}>
                 <div className="flex flex-col pt-8 px-2">
                   <div className="text-center pb-8">
                     <span className="text-white text-5xl">
@@ -576,7 +578,7 @@ const HomePage = (props) => {
                   <div className="flex flex-row justify-evenly">
                     <Button
                       type="submit"
-                      className="flex flex-row items-center justify-center me-4 medium-size"
+                      className="flex flex-row items-center justify-center me-4 medium-size "
                       onClick={() => compoundEarnings()}
                     >
                       {compoundingLoading ? (
@@ -643,7 +645,7 @@ const HomePage = (props) => {
                 </div>
               </Card>
 
-              <Card title="Referral Link">
+              <Card title="Referral Link" noLine={true}>
                 <div className="flex flex-col pt-8 px-2">
                   <div className="text-center pb-4">
                     <span className="text-lg text-gray-400">

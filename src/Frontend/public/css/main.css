@@ -23,6 +23,10 @@ h2 {
 	margin-bottom: 1.5rem;
 }
 
+.page-title-label-layout h3.text-white {
+	color:  #f5f5f5;
+}
+
 /**************************************/
 /******** Roadmap page CSS ************/
 /**************************************/
@@ -274,7 +278,7 @@ button.small-button span {
 	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 600;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	line-height: 1rem;
 	/* identical to box height, or 112% */
 
@@ -452,6 +456,10 @@ button.gradient-button-bg:focus {
 	text-align: center;
 	letter-spacing: 0;
 	color: #100344;	
+}
+
+.staking-main-layout {
+	background: #0C0241;
 }
 
 @media (max-width: 1400px) {

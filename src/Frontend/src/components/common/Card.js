@@ -4,7 +4,7 @@ export default ({ title, className, noLine, children }) => {
   return (
     <div
       className={
-        "w-full rounded-lg card-bg pb-4 " + (className ? className : "")
+        "w-full rounded-lg border-2 border-slate-200 pb-4 " + (className ? className : "")
       }
       // style={{ maxWidth: '600px' }}
     >
