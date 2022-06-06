@@ -686,6 +686,10 @@ button.gradient-button-bg:focus {
 	.tokenomics-card {
 		width: 22rem;
 	}
+	.left-panel-buttons-layout button {
+		justify-content: center; /*space-between*/
+		margin-bottom: 1rem;
+	}
 }
 
 @media (max-width: 767px) {
@@ -708,6 +712,10 @@ button.gradient-button-bg:focus {
 		line-height: 3rem;
 		/* or 114% */
 		letter-spacing: -0.05rem;
+	}
+	.left-panel-buttons-layout button {
+		justify-content: center; /*space-between*/
+		margin-bottom: 1rem;
 	}
 	.presale-duration-comment1-layout {
 		letter-spacing: 0;
@@ -773,22 +781,22 @@ button.gradient-button-bg:focus {
 		margin-bottom: 1rem;
 	}
 	.right-panel-bg-section-layout {
-		margin-left: -7rem;
+		margin-left: -4rem;
 	}
 	.right-panel-bg-layout {
-		width: 25rem;
-		height: 25rem;
+		width: 23rem;
+		height: 23rem;
 	}
 	.right-panel-content-layout {
-		margin-top: -5rem;
-		margin-left: -23.5rem;
-		width: 22rem;
-		height: 15rem;
-		padding-top: 1rem;
-	}
+	    margin-top: -3rem;
+	    margin-left: -21.5rem;
+	    width: 20rem;
+	    height: 14rem;
+	    padding-top: 1rem;
+   	}
 	.right-panel-footer-layout {
-		margin-top: -1rem;
-		width: 22rem;
+		margin-top: -1.5rem;
+	    width: 20rem
 	}
 	.presale-amount-section-layout {
 		margin-bottom: 1rem;
@@ -796,11 +804,21 @@ button.gradient-button-bg:focus {
 	.elapsed-time-layout {
 		margin-bottom: 1rem;
 	}
-	.presale-duration-comment1-layout {
-		letter-spacing: 0;
+	.elapsed-datetime-value-layout {
+		font-size: 1.6rem;
+		line-height: 1rem;
+		letter-spacing: -0.1rem;
 	}
+	.elapsed-datetime-label-layout {
+		font-size: 1.2rem;
+		line-height: 1rem;
+	}
+	.presale-duration-comment1-layout {
+		font-size: 1rem;
+   		letter-spacing: -0.05rem;
+   	}
 	.presale-duration-comment2-layout {
-		letter-spacing: -0.05rem;
+		letter-spacing: -0.07rem;
 	}
 	.greeting-layout {
 		margin: 1rem 0;
@@ -835,35 +853,52 @@ button.gradient-button-bg:focus {
 	.left-panel-buttons-layout button {
 		margin-bottom: 1rem;
 	}
+	.right-panel-layout {
+		padding: 5px;
+	}
 	.right-panel-bg-section-layout {
-		margin-left: -2rem;
+		margin-left: 3rem;
 	}
 	.right-panel-bg-layout {
+		margin-left: -3rem;
 		width: 25rem;
 		height: 17rem;
 	}
 	.right-panel-content-layout {
-		margin-top: -5rem;
-		margin-left: -23.5rem;
-		width: 22rem;
-		height: 15rem;
+		margin-top: -1rem;
+		margin-left: -20.5rem;
+		width: 17rem;
+		height: 12rem;
 		padding-top: 1rem;
 	}
 	.right-panel-footer-layout {
-		margin-top: -1rem;
-		width: 22rem;
+		margin-top: -2.1rem;
+		width: 17rem;
 	}
 	.presale-amount-section-layout {
-		margin-bottom: 1rem;
+		margin-bottom: 0;
 	}
 	.elapsed-time-layout {
-		margin-bottom: 1rem;
+		margin-bottom: 0;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 1.2rem;
+		line-height: 1rem;
+		/* identical to box height, or 51% */
+		letter-spacing: 0.1rem;
+		margin-bottom: 0;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 1rem;
+		line-height: 1.2rem;
 	}
 	.presale-duration-comment1-layout {
-		letter-spacing: 0;
+		font-size: 0.8rem;
+    	letter-spacing: -0.02rem;
 	}
 	.presale-duration-comment2-layout {
-		letter-spacing: -0.05rem;
+		font-size: 0.7rem;
+		letter-spacing: -0.01rem;
 	}
 	.greeting-layout {
 		margin: 1rem 0;
@@ -877,6 +912,31 @@ button.gradient-button-bg:focus {
 		line-height: 3rem;
 		/* or 114% */
 		letter-spacing: -0.05rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1rem;
+	}
+	.presale-title-layout {
+		font-size: 1.7rem;
+	}
+	.presale-amount-layout {
+		font-size: 1.2rem;
+	}
+	.toggle-nav-btn-layout {
+		margin-right: 2rem;
+	}
+	.logo-layout img {
+		width: 2rem;
+	}
+	header div a img {
+		width: 2rem;
+	}
+	.page-title-label-layout {
+		margin-top: -4.5rem;
+	}
+	.roadmap-block-layout {
+		width: 18rem;
+		margin-left: 0.5rem;
 	}
 }
 
@@ -969,5 +1029,18 @@ button.gradient-button-bg:focus {
 	}
 	.toggle-nav-btn-layout {
 		margin-right: 2rem;
+	}
+	.logo-layout img {
+		width: 2rem;
+	}
+	header div a img {
+		width: 2rem;
+	}
+	.page-title-label-layout {
+		margin-top: -4.5rem;
+	}
+	.roadmap-block-layout {
+		width: 18rem;
+		margin-left: 0.5rem;
 	}
 }

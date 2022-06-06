@@ -81,3 +81,37 @@ nav {
         height: 2rem;
     }
 }
+
+@media (max-width: 768px) {
+    nav {
+        width: 89%;
+    }
+}
+
+@media (max-width: 425px) {
+    nav {
+        width: 89%;
+    }
+}
+
+@media screen and (max-width: 375px){
+
+    .btn {
+        border-radius: 0.8rem;
+    }
+    .btn .collapsed-menu-btn-img-layout {
+        width: 1.5rem;
+        height: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 320px){
+
+    .btn {
+        border-radius: 0.8rem;
+    }
+    .btn .collapsed-menu-btn-img-layout {
+        width: 1.3rem;
+        height: 1rem;
+    }
+}
