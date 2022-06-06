@@ -247,6 +247,7 @@ button.small-button span {
 }
 
 .left-panel-buttons-layout {
+	justify-content: space-between;
 	margin-top: 2rem;
 }
 
@@ -679,12 +680,18 @@ button.gradient-button-bg:focus {
 }
 
 @media (max-width: 991px) {
+	.header-layout {
+		height: 1rem;
+	}
 	.tokenomics-card {
 		width: 22rem;
 	}
 }
 
 @media (max-width: 767px) {
+	.header-layout {
+		height: 3.5rem;
+	}
 	.content-layout {
 		display: block;
 		padding: 0.1rem;
@@ -714,14 +721,19 @@ button.gradient-button-bg:focus {
 }
 
 @media (max-width: 640px) {
+	.header-layout {
+		height: 2.5rem;
+	}
 	.content-layout {
 		display: block;
 		padding: 0.1rem;
 	}
 	.left-panel-buttons-layout {
+		justify-content: center; /*space-between*/
 		display: block !important;
 	}
 	.left-panel-buttons-layout button {
+		justify-content: center; /*space-between*/
 		margin-bottom: 1rem;
 	}
 	.presale-duration-comment2-layout {
@@ -746,15 +758,22 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 10px;
 	}
+	.header-layout {
+		height: 2.5rem;
+	}
 	.content-layout {
 		display: block;
 		padding: 0.1rem;
 	}
 	.left-panel-buttons-layout {
+		justify-content: center; /*space-between*/
 		display: block !important;
 	}
 	.left-panel-buttons-layout button {
 		margin-bottom: 1rem;
+	}
+	.right-panel-bg-section-layout {
+		margin-left: -7rem;
 	}
 	.right-panel-bg-layout {
 		width: 25rem;
@@ -778,7 +797,7 @@ button.gradient-button-bg:focus {
 		margin-bottom: 1rem;
 	}
 	.presale-duration-comment1-layout {
-		letter-spacing: -0.11rem;
+		letter-spacing: 0;
 	}
 	.presale-duration-comment2-layout {
 		letter-spacing: -0.05rem;
@@ -795,5 +814,160 @@ button.gradient-button-bg:focus {
 		line-height: 3rem;
 		/* or 114% */
 		letter-spacing: -0.05rem;
+	}
+}
+
+@media (max-width: 375px) {
+	body {
+		font-size: 10px;
+	}
+	.header-layout {
+		height: 2.5rem;
+	}
+	.content-layout {
+		display: block;
+		padding: 0.1rem;
+	}
+	.left-panel-buttons-layout {
+		justify-content: center; /*space-between*/
+		display: block !important;
+	}
+	.left-panel-buttons-layout button {
+		margin-bottom: 1rem;
+	}
+	.right-panel-bg-section-layout {
+		margin-left: -2rem;
+	}
+	.right-panel-bg-layout {
+		width: 25rem;
+		height: 17rem;
+	}
+	.right-panel-content-layout {
+		margin-top: -5rem;
+		margin-left: -23.5rem;
+		width: 22rem;
+		height: 15rem;
+		padding-top: 1rem;
+	}
+	.right-panel-footer-layout {
+		margin-top: -1rem;
+		width: 22rem;
+	}
+	.presale-amount-section-layout {
+		margin-bottom: 1rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 1rem;
+	}
+	.presale-duration-comment1-layout {
+		letter-spacing: 0;
+	}
+	.presale-duration-comment2-layout {
+		letter-spacing: -0.05rem;
+	}
+	.greeting-layout {
+		margin: 1rem 0;
+	}
+	.greeting-section-layout {
+		margin-bottom:  1rem;
+	}
+	.greeting-layout h2 {
+		font-weight: 600;
+		font-size: 2.5rem;
+		line-height: 3rem;
+		/* or 114% */
+		letter-spacing: -0.05rem;
+	}
+}
+
+@media (max-width: 320px) {
+	body {
+		font-size: 10px;
+	}
+	.header-layout {
+		height: 2.5rem;
+	}
+	.content-layout {
+		display: block;
+		padding: 0.1rem;
+	}
+	.left-panel-buttons-layout {
+		justify-content: center; /*space-between*/
+		display: block !important;
+	}
+	.left-panel-buttons-layout button {
+		margin-bottom: 1rem;
+	}
+	.right-panel-layout {
+		padding: 5px;
+	}
+	.right-panel-bg-section-layout {
+		margin-left: 3rem;
+	}
+	.right-panel-bg-layout {
+		margin-left: -3rem;
+		width: 25rem;
+		height: 17rem;
+	}
+	.right-panel-content-layout {
+		margin-top: -1rem;
+		margin-left: -20.5rem;
+		width: 17rem;
+		height: 12rem;
+		padding-top: 1rem;
+	}
+	.right-panel-footer-layout {
+		margin-top: -2.1rem;
+		width: 17rem;
+	}
+	.presale-amount-section-layout {
+		margin-bottom: 0;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 0;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 1.2rem;
+		line-height: 1rem;
+		/* identical to box height, or 51% */
+		letter-spacing: 0.1rem;
+		margin-bottom: 0;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 1rem;
+		line-height: 1.2rem;
+	}
+	.presale-duration-comment1-layout {
+		font-size: 0.8rem;
+    	letter-spacing: -0.02rem;
+	}
+	.presale-duration-comment2-layout {
+		font-size: 0.7rem;
+		letter-spacing: -0.01rem;
+	}
+	.greeting-layout {
+		margin: 1rem 0;
+	}
+	.greeting-section-layout {
+		margin-bottom:  1rem;
+	}
+	.greeting-layout h2 {
+		font-weight: 600;
+		font-size: 2.5rem;
+		line-height: 3rem;
+		/* or 114% */
+		letter-spacing: -0.05rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1rem;
+	}
+	.presale-title-layout {
+		font-size: 1.7rem;
+	}
+	.presale-amount-layout {
+		font-size: 1.2rem;
+	}
+	.toggle-nav-btn-layout {
+		margin-right: 2rem;
 	}
 }

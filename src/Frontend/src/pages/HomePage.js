@@ -61,7 +61,7 @@ const HomePage = (props) => {
 										</div>
 									</div>
 									<div className="flex justify-center">
-										<div className="w-full left-panel-buttons-layout flex justify-between">
+										<div className="w-full left-panel-buttons-layout">
 											<Button className="gradient-button-bg">
 												Buy Token
 											</Button>
