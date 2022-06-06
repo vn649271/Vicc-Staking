@@ -3,21 +3,15 @@ import { useHistory } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Button from "../components/common/Button";
+import NavMenuBar from "../components/common/NavMenuBar";
 
 const HomePage = (props) => {
-
-	const [selectedMenuItem, setSelectedMenuItem] = useState('home');
 
 	let history = useHistory();
 
 	const onClickStake = (ev) => {
 		console.log("onClickStake()");
 		history.push("/stake");
-	}
-	const onSelectMenuItem = (ev) => {
-		let selectedItem = ev.target.id.replace('menu-item-', '');
-		setSelectedMenuItem(selectedItem);
-		history.push("/" + selectedItem);
 	}
 
 	return(
@@ -29,7 +23,8 @@ const HomePage = (props) => {
 					<div className="logo-layout">
 						<img src="/images/vicc189x189-1.png" alt="" />
 					</div>
-					<div className="menu-layout flex justify-start">
+					<NavMenuBar />
+{/*					<div className="menu-layout flex justify-start">
 						<ul className="flex justify-start">
 							<li id="menu-item-home" className={selectedMenuItem == 'home'? "active": ""} onClick={onSelectMenuItem}>Home</li>
 							<li id="menu-item-about" className={selectedMenuItem == 'about'? "active": ""} onClick={onSelectMenuItem}>About</li>
@@ -43,7 +38,7 @@ const HomePage = (props) => {
 							<span>Join Presale</span>
 						</Button>
 					</div>
-				</div>
+*/}				</div>
 				<div className="content-layout">
 					<div className="grid grid-cols-1 lg:grid-cols-2">
 						<div className="left-panel-layout text-left flex items-center">

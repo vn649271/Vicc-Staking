@@ -98,6 +98,7 @@ h2 {
 
 .tokenomics-card {
 	background: #FFF;
+	/*width: 18rem lg: 20rem md: 20rem;*/
 	width: 20rem;
 	min-height: 13rem;
 	max-height: 50rem;
@@ -521,6 +522,9 @@ button.gradient-button-bg:focus {
 	.presale-duration-comment2-layout {
 		letter-spacing: -0.05rem;
 	}
+	.tokenomics-card {
+		width: 18rem;
+	}
 }
 
 @media (max-width: 1282px) {
@@ -553,6 +557,9 @@ button.gradient-button-bg:focus {
 	}
 	.presale-duration-comment2-layout {
 		letter-spacing: -0.05rem;
+	}
+	.tokenomics-card {
+		width: 17rem;
 	}
 }
 
@@ -598,6 +605,9 @@ button.gradient-button-bg:focus {
 		font-size: 1.5rem;
 		line-height: 1rem;
 	}
+	.tokenomics-card {
+		width: 15rem;
+	}
 }
 
 @media (max-width: 1120px) {
@@ -630,6 +640,9 @@ button.gradient-button-bg:focus {
 	}
 	.presale-duration-comment2-layout {
 		letter-spacing: -0.05rem;
+	}
+	.tokenomics-card {
+		width: 14rem;
 	}
 }
 
@@ -667,9 +680,15 @@ button.gradient-button-bg:focus {
 	.presale-duration-comment2-layout {
 		letter-spacing: -0.05rem;
 	}
+	.tokenomics-card {
+		width: 14rem;
+	}
 }
 
 @media (max-width: 991px) {
+	.tokenomics-card {
+		width: 22rem;
+	}
 }
 
 @media (max-width: 767px) {
@@ -698,6 +717,9 @@ button.gradient-button-bg:focus {
 	}
 	.presale-duration-comment2-layout {
 		letter-spacing: -0.05rem;
+	}
+	.tokenomics-card {
+		width: 18rem;
 	}
 }
 
