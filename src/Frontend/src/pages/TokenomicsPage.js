@@ -14,7 +14,7 @@ const TokenomicsPage = props => {
 					With a total of 100,000 VICC tokens, the following amounts have been allotted for different purpose.
 				</div>
 				<div className="mt-5 m-0 lg:m-10 md:m-5 flex justify-center">
-					<div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5">
+					<div className="grid lg:grid-cols-4 pb-5 md:grid-cols-2 gap-5">
 						<TokenomicsCard 
 							title="2% Staking Fee"
 						>
@@ -46,7 +46,7 @@ const TokenomicsPage = props => {
 						</TokenomicsCard>
 					</div>
 				</div>
-				<div className="m-0 lg:m-10 md:m-5 flex justify-center">
+				<div className="m-0 lg:m-10 md:m-5 pb-5 flex justify-center">
 					<div className="grid lg:grid-cols-4 md:grid-cols-2 gap-5">
 						<TokenomicsCard 
 							title="5% For Future Rewards"
