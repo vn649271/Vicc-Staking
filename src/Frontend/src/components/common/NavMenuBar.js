@@ -31,7 +31,7 @@ export default function NavMenuBar() {
 
 	return (
 	    <nav>
-	    	<div className="flex justify-between">
+	    	<div className="flex justify-between items-center">
 				<div className="logo-layout">
 					<img src="/images/logo-small.png" alt="" />
 				</div>

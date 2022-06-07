@@ -34,6 +34,11 @@ h2 {
 	font-size: 11px;
 }
 
+.roadmap-content-layout {
+	max-width: 840px;
+	width: 100%;
+}
+
 .roadmap-block-layout {
 	background: rgb(254, 215, 174);
 	padding: 0 0.5rem;
@@ -124,10 +129,11 @@ h2 {
 /**************************************/
 .top-layout {
 	width: 100%;
-	height: auto;	
+	margin: auto;
 	background-color: #0C0241;
 	position: absolute;
-	padding: 1em;
+	padding: 0;
+	height: 100vh;
 }
 
 .bg-effect-layout {
@@ -208,10 +214,18 @@ button.small-button span {
 	height: 100vh;
 }
 
+.top-container {
+	height: 100%;
+	max-width: 1920px;
+	margin: auto;
+	padding: 15% 5% 5% 5%;
+}
+
 .content-layout {
-	padding: 3rem;
+	padding: 0 2rem;
 	display: flex;
-	justify-content: space-between;
+	height: 100%;
+	/* justify-content: space-between; */
 }
 
 .main-text-color {
@@ -224,11 +238,9 @@ button.small-button span {
 }
 
 .greeting-section-layout {
-	margin-bottom: 5rem;
 }
 
 .greeting-layout {
-	margin-bottom: 2rem;
 }
 
 .greeting-layout h2 {
@@ -247,20 +259,17 @@ button.small-button span {
 	color: #FA02FF;
 }
 
-.title-highlighted-layout {
-}
-
 .left-panel-buttons-layout {
+	padding-top: 5%;
 	justify-content: space-between;
-	margin-top: 2rem;
 }
 
 .main-button-theme {
 	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 600;
-	font-size: 2rem;
-	line-height: 2rem;
+	font-size: 4rem;
+	line-height: 4.5rem;
 	/* identical to box height, or 112% */
 
 	letter-spacing: 0.1rem;
@@ -334,24 +343,34 @@ button.gradient-button-bg:focus {
 .right-panel-layout {
 	text-align: center;
 	color: #F5F5F5;
-	padding: 3em;
 }
 
 .right-panel-bg-layout {
+	background-image: url("/images/vcc-token.png");
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .right-panel-content-layout {
-	padding-top: 2.5rem;
-    margin-left: -98%;
-    margin-top: -4.5rem;
-    width: 32rem;
-    height: 21rem;
+	/* padding-top: 10%;
+	margin-top: -15%;
+    width: 91.5%;
+    height: 50%; */
+	padding-top: 5%;
+    margin-top: -3%;
+    width: 91.5%;
+    height: 63%;
 }
 
 .right-panel-footer-layout {
-    margin-top: 3.5rem;
-    width: 32rem;
-    height: 5rem;
+	margin-top: -1%;
+    width: 100%;
+    height: 25%;
     padding: 0.9rem 0.2rem;
 	color: #000;
 	background: linear-gradient(91.68deg, #FA02FF 0%, #5847FF 105.34%);
@@ -362,8 +381,9 @@ button.gradient-button-bg:focus {
 	background: radial-gradient(100% 177.18% at 0% 5.41%, rgba(255, 255, 255, 0.49) 0%, rgba(255, 255, 255, 0.07) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
 	backdrop-filter: blur(2rem);
 	/* Note: backdrop-filter has minimal browser support */
-	border-top-left-radius: 2.5rem;
-	border-top-right-radius: 2.5rem;
+	/* border-top-left-radius: 2.5rem;
+	border-top-right-radius: 2.5rem; */
+	border-radius: 2.5rem;
 }
 
 .presale-amount-section-layout {
@@ -374,7 +394,7 @@ button.gradient-button-bg:focus {
 	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 3rem;
+	font-size: 5rem;
 	line-height: 1rem;
 	/* identical to box height, or 60% */
 	letter-spacing: 0.1rem;
@@ -385,8 +405,8 @@ button.gradient-button-bg:focus {
 	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 500;
-	font-size: 2rem;
-	line-height: 2rem;
+	font-size: 3rem;
+	line-height: 3.5rem;
 	/* or 92% */
 	text-align: center;
 	letter-spacing: 0.1rem;
@@ -397,8 +417,8 @@ button.gradient-button-bg:focus {
 	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 1.25rem;
-	line-height: 1rem;
+	font-size: 2rem;
+	line-height: 2.2rem;
 	/* or 192% */
 
 	text-align: center;
@@ -415,8 +435,8 @@ button.gradient-button-bg:focus {
 	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 500;
-	font-size: 2.5rem;
-	line-height: 2rem;
+	font-size: 4rem;
+	line-height: 4.5rem;
 	/* identical to box height, or 51% */
 	letter-spacing: 0.1rem;
 	color: #FFFFFF;	
@@ -427,8 +447,8 @@ button.gradient-button-bg:focus {
 	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 500;
-	font-size: 1.5rem;
-	line-height: 2rem;
+	font-size: 2.5rem;
+	line-height: 3rem;
 	/* identical to box height, or 144% */
 	letter-spacing: 0.1rem;
 	color: #E0E0E0;
@@ -438,11 +458,11 @@ button.gradient-button-bg:focus {
 	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 500;
-	font-size: 1.25rem;
-	line-height: 1.5rem;
+	font-size: 2.25rem;
+	line-height: 2.5rem;
 	/* identical to box height, or 157% */
 	text-align: center;
-	letter-spacing: -0.02rem;
+	letter-spacing: -0.06rem;
 	color: #100344;	
 }
 
@@ -450,11 +470,11 @@ button.gradient-button-bg:focus {
 	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 500;
-	font-size: 1rem;
-	line-height: 1.5rem;
+	font-size: 2rem;
+	line-height: 2rem;
 	/* identical to box height, or 157% */
 	text-align: center;
-	letter-spacing: 0;
+	letter-spacing: -0.06rem;
 	color: #100344;	
 }
 
@@ -462,37 +482,187 @@ button.gradient-button-bg:focus {
 	background: #0C0241;
 }
 
-@media (max-width: 1400px) {
-	.main-button-theme {
-		font-size: 2rem;
-		line-height: 2rem;
-	}
+@media (max-width: 1920px) {
 	.right-panel-content-layout {
-		margin-top: -5.5rem;
-		width: 31rem;
-		height: 20rem;
+		margin-top: -15%;
+		width: 91.5%;
+		height: 45%;
 	}
 	.right-panel-footer-layout {
-		margin-top: 3rem;
-		width: 31rem;
-		height: 5rem;
-		padding: 0.9rem 0.2rem;
+		margin-top: -1%;
+	}
+}
+
+@media (max-width: 1800px) {
+	.right-panel-content-layout {
+		padding-top: 5%;
+		width: 91.5%;
+		height: 42%;
+	}
+	.right-panel-footer-layout {
+		margin-top: 0%;
+	}
+}
+
+@media (max-width: 1600px) {
+	.main-button-theme {
+		font-size: 3rem;
+	}
+	.right-panel-bg-layout {
+		padding-top: 5%;
+	}
+	.right-panel-content-layout {
+		padding-top: 5%;
+		width: 91.5%;
+		height: 35%;
+	}
+	.right-panel-footer-layout {
+		margin-top: -2%;
+	}
+	.presale-title-layout {
+		font-size: 4rem;
+		line-height: 4rem;
 	}
 	.presale-amount-section-layout {
 		margin-bottom: 1rem;
+	}	
+	.presale-amount-layout {
+		font-size: 2.5rem;
+		line-height: 2.75rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1.5rem;
+		line-height: 1.75rem;
 	}
 	.elapsed-time-layout {
 		margin-bottom: 1rem;
 	}
 	.elapsed-datetime-value-layout {
-		font-size: 2.5rem;
-		line-height: 2rem;
+		font-size: 3rem;
+		line-height: 3.5rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 2rem;
+		line-height: 2.5rem;
 	}
 	.presale-duration-comment1-layout {
-		letter-spacing: -0.11rem;
+		font-size: 1.75rem;
+		line-height: 2rem;
+	}
+	
+	.presale-duration-comment2-layout {
+		font-size: 1.5rem;
+		line-height: 1.5rem;
+	}
+}
+
+
+@media (max-width: 1500px) {
+	.main-button-theme {
+		font-size: 1.75rem;
+		line-height: 2rem;
+	}
+	.right-panel-bg-layout {
+		padding-top: 8%;
+	}
+	.right-panel-content-layout {
+		padding-top: 5%;
+		height: 70%;
+		width: 66%;
+	}
+	.right-panel-footer-layout {
+		margin-top: -7%;
+		padding-top: 2%;
+	}
+	.presale-title-layout {
+		font-size: 2.5rem;
+		line-height: 2.75rem;
+	}
+	.presale-amount-section-layout {
+		margin-bottom: 0.75rem;
+	}	
+	.presale-amount-layout {
+		font-size: 2rem;
+		line-height: 2.25rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1.25rem;
+		line-height: 1rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 0.75rem;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 2rem;
+		line-height: 2.25rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 1.25rem;
+		line-height: 1.5rem;
+	}
+	.presale-duration-comment1-layout {
+		font-size: 1.25rem;
+		line-height: 1.25rem;
+		letter-spacing: -0.05rem;
 	}
 	.presale-duration-comment2-layout {
-		letter-spacing: -0.05rem;
+		font-size: 1rem;
+		line-height: 1rem;
+	}
+}
+
+@media (max-width: 1440px) {
+	.main-button-theme {
+		font-size: 1.75rem;
+		line-height: 2rem;
+	}
+	.right-panel-bg-layout {
+		padding-top: 10%;
+	}
+	.right-panel-content-layout {
+		padding-top: 5%;
+		height: 72%;
+		width: 72%;
+	}
+	.right-panel-footer-layout {
+		margin-top: -3%;
+		padding-top: 2%;
+	}
+	.presale-title-layout {
+		font-size: 2.5rem;
+		line-height: 2.75rem;
+	}
+	.presale-amount-section-layout {
+		margin-bottom: 0.75rem;
+	}	
+	.presale-amount-layout {
+		font-size: 2rem;
+		line-height: 2.25rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1.25rem;
+		line-height: 1rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 0.75rem;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 2rem;
+		line-height: 2.25rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 1.25rem;
+		line-height: 1.5rem;
+	}
+	.presale-duration-comment1-layout {
+		font-size: 1.25rem;
+		line-height: 1.5rem;
+		letter-spacing: 0rem;
+	}
+	.presale-duration-comment2-layout {
+		font-size: 1rem;
+		line-height: 1.25rem;
+		letter-spacing: 0rem;
 	}
 }
 
@@ -500,32 +670,56 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 15px;
 	}
-
+	.main-button-theme {
+		font-size: 2.5rem;
+		line-height: 2.5rem;
+	}
+	.right-panel-bg-layout {
+		padding-top: 5%;
+	}
 	.right-panel-content-layout {
-		width: 35rem;
-		height: 23rem;
-		margin-left: -100%;
-		margin-top: -4rem;
-		padding-top: 2.5rem;
+		padding-top: 5%;
+		height: 30%;
 	}
 	.right-panel-footer-layout {
-		margin-top: 1rem;
-		width: 32.2rem;
+		margin-top: -5%;
+	}
+	.presale-title-layout {
+		font-size: 3rem;
+		line-height: 3rem;
 	}
 	.presale-amount-section-layout {
-		margin-bottom: 2rem;
+		margin-bottom: 0.5rem;
+	}	
+	.presale-amount-layout {
+		font-size: 2.5rem;
+		line-height: 2.75rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1.5rem;
+		line-height: 1.75rem;
 	}
 	.elapsed-time-layout {
-		margin-bottom: 2rem;
+		margin-bottom: 0.5rem;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 3rem;
+		line-height: 3.5rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 2rem;
+		line-height: 2.5rem;
 	}
 	.presale-duration-comment1-layout {
-		letter-spacing: -0.11rem;
+		font-size: 1.75rem;
+		line-height: 2rem;
+		letter-spacing: -0.1rem;
 	}
+	
 	.presale-duration-comment2-layout {
+		font-size: 1.5rem;
+		line-height: 1.5rem;
 		letter-spacing: -0.05rem;
-	}
-	.tokenomics-card {
-		width: 18rem;
 	}
 }
 
@@ -533,31 +727,55 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 10px;
 	}
+	.main-button-theme {
+		font-size: 2.5rem;
+		line-height: 2.5rem;
+	}
 	.right-panel-bg-layout {
-		width: 25rem;
-		height: 25rem;
+		padding-top: 5%;
 	}
 	.right-panel-content-layout {
-		margin-top: -5rem;
-		margin-left: -23.5rem;
-		width: 22rem;
-		height: 15rem;
-		padding-top: 1rem;
+		padding-top: 5%;
+		height: 30%;
 	}
 	.right-panel-footer-layout {
-		margin-top: -1.5rem;
-		width: 22rem;
+		margin-top: -5%;
+	}
+	.presale-title-layout {
+		font-size: 3rem;
+		line-height: 3rem;
 	}
 	.presale-amount-section-layout {
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
+	}	
+	.presale-amount-layout {
+		font-size: 2.5rem;
+		line-height: 2.75rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1.5rem;
+		line-height: 1.75rem;
 	}
 	.elapsed-time-layout {
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 3rem;
+		line-height: 3.5rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 2rem;
+		line-height: 2.5rem;
 	}
 	.presale-duration-comment1-layout {
-		letter-spacing: -0.11rem;
+		font-size: 1.75rem;
+		line-height: 2rem;
+		letter-spacing: -0.1rem;
 	}
+	
 	.presale-duration-comment2-layout {
+		font-size: 1.5rem;
+		line-height: 1.5rem;
 		letter-spacing: -0.05rem;
 	}
 	.tokenomics-card {
@@ -569,43 +787,56 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 10px;
 	}
+	.main-button-theme {
+		font-size: 2.5rem;
+		line-height: 2.5rem;
+	}
 	.right-panel-bg-layout {
-		width: 25rem;
-		height: 25rem;
+		padding-top: 5%;
 	}
 	.right-panel-content-layout {
-		margin-top: -5rem;
-		margin-left: -23.5rem;
-		width: 22rem;
-		height: 14rem;
-		padding-top: 1rem;
+		padding-top: 5%;
+		height: 30%;
 	}
 	.right-panel-footer-layout {
-		margin-top: -2rem;
-		width: 22rem;
+		margin-top: -5%;
 	}
 	.presale-title-layout {
-		font-size: 2rem;
-	}
-	.presale-amount-layout {		
-		font-size: 1.5rem;
+		font-size: 3rem;
+		line-height: 3rem;
 	}
 	.presale-amount-section-layout {
 		margin-bottom: 0.5rem;
+	}	
+	.presale-amount-layout {
+		font-size: 2.5rem;
+		line-height: 2.75rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1.5rem;
+		line-height: 1.75rem;
 	}
 	.elapsed-time-layout {
 		margin-bottom: 0.5rem;
 	}
+	.elapsed-datetime-value-layout {
+		font-size: 3rem;
+		line-height: 3.5rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 2rem;
+		line-height: 2.5rem;
+	}
 	.presale-duration-comment1-layout {
-		font-size: 1rem;
-		letter-spacing: 0rem;
+		font-size: 1.75rem;
+		line-height: 2rem;
+		letter-spacing: -0.1rem;
 	}
+	
 	.presale-duration-comment2-layout {
-		letter-spacing: -0.05rem;
-	}
-	.main-button-theme {
 		font-size: 1.5rem;
-		line-height: 1rem;
+		line-height: 1.5rem;
+		letter-spacing: -0.05rem;
 	}
 	.tokenomics-card {
 		width: 15rem;
@@ -616,31 +847,55 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 10px;
 	}
+	.main-button-theme {
+		font-size: 2.5rem;
+		line-height: 2.5rem;
+	}
 	.right-panel-bg-layout {
-		width: 25rem;
-		height: 25rem;
+		padding-top: 5%;
 	}
 	.right-panel-content-layout {
-		margin-top: -5rem;
-		margin-left: -23.5rem;
-		width: 22rem;
-		height: 15rem;
-		padding-top: 1rem;
+		padding-top: 5%;
+		height: 30%;
 	}
 	.right-panel-footer-layout {
-		margin-top: -1rem;
-		width: 22rem;
+		margin-top: -5%;
+	}
+	.presale-title-layout {
+		font-size: 3rem;
+		line-height: 3rem;
 	}
 	.presale-amount-section-layout {
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
+	}	
+	.presale-amount-layout {
+		font-size: 2.5rem;
+		line-height: 2.75rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1.5rem;
+		line-height: 1.75rem;
 	}
 	.elapsed-time-layout {
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 3rem;
+		line-height: 3.5rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 2rem;
+		line-height: 2.5rem;
 	}
 	.presale-duration-comment1-layout {
-		letter-spacing: -0.11rem;
+		font-size: 1.75rem;
+		line-height: 2rem;
+		letter-spacing: -0.1rem;
 	}
+	
 	.presale-duration-comment2-layout {
+		font-size: 1.5rem;
+		line-height: 1.5rem;
 		letter-spacing: -0.05rem;
 	}
 	.tokenomics-card {
@@ -652,35 +907,61 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 10px;
 	}
-	.content-layout {
-		display: block;
+	.main-button-theme {
+		font-size: 1.5rem;
+		line-height: 2rem;
+	}
+	.greeting-layout h2 {
+		font-size: 3rem;
+		line-height: 3.5rem;
+	}
+	.greeting-description-layout div div {
+		font-size: 1rem;
 	}
 	.right-panel-bg-layout {
-		width: 25rem;
-		height: 25rem;
+		padding-top: 5%;
 	}
 	.right-panel-content-layout {
-		margin-top: -5rem;
-		margin-left: -23.5rem;
-		width: 22rem;
-		height: 15rem;
-		padding-top: 1rem;
+		padding-top: 5%;
+		height: 55%;
+		width: 91.5%;
 	}
 	.right-panel-footer-layout {
-		margin-top: -1rem;
-		width: 22rem;
+		margin-top: -8%;
+	}
+	.presale-title-layout {
+		font-size: 2.25rem;
+		line-height: 2.75rem;
 	}
 	.presale-amount-section-layout {
-		margin-bottom: 1rem;
+		margin-bottom: 0.75rem;
+	}	
+	.presale-amount-layout {
+		font-size: 2rem;
+		line-height: 2rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1rem;
+		line-height: 1rem;
 	}
 	.elapsed-time-layout {
-		margin-bottom: 1rem;
+		margin-bottom: 0.75rem;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 2rem;
+		line-height: 2rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 1.25rem;
+		line-height: 1.25rem;
 	}
 	.presale-duration-comment1-layout {
-		letter-spacing: -0.11rem;
+		font-size: 1.25rem;
+		line-height: 1.5rem;
 	}
 	.presale-duration-comment2-layout {
-		letter-spacing: -0.05rem;
+		font-size: 1rem;
+		line-height: 1.25rem;
 	}
 	.tokenomics-card {
 		width: 14rem;
@@ -694,19 +975,41 @@ button.gradient-button-bg:focus {
 	.tokenomics-card {
 		width: 22rem;
 	}
+	.top-layout {
+		height: auto;
+	}
 	.left-panel-buttons-layout button {
 		justify-content: center; /*space-between*/
 		margin-bottom: 1rem;
 	}
+	.right-panel-bg-layout {
+		height: 500px;
+		padding-top: 10%;
+	}
+	.right-panel-content-layout {
+		padding-top: 5%;
+		height: auto;
+		width: 70%;
+	}
+	.right-panel-footer-layout {
+		margin-top: -20px;
+	}
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+	.top-layout {
+		height: auto;
+	}
 	.header-layout {
 		height: 3.5rem;
 	}
+	.top-container {
+		padding-top: 10%;
+		height: auto;
+	}
 	.content-layout {
-		display: block;
-		padding: 0.1rem;
+		padding: 7% 5%;
+		height: auto;
 	}
 	.presale-duration-comment2-layout {
 		letter-spacing: -0.05rem;
@@ -721,9 +1024,19 @@ button.gradient-button-bg:focus {
 		/* or 114% */
 		letter-spacing: -0.05rem;
 	}
+	.left-panel-buttons-layout {
+		justify-content: space-around !important;
+	}
 	.left-panel-buttons-layout button {
 		justify-content: center; /*space-between*/
 		margin-bottom: 1rem;
+	}
+	.right-panel-bg-layout {
+		padding-top: 5%;
+	}
+	.right-panel-content-layout {
+		margin-top: -10%;
+		width: 72%;
 	}
 	.presale-duration-comment1-layout {
 		letter-spacing: 0;
@@ -740,9 +1053,20 @@ button.gradient-button-bg:focus {
 	.header-layout {
 		height: 2.5rem;
 	}
+	.top-container {
+		padding-top: 10%;
+		height: auto;
+	}
 	.content-layout {
-		display: block;
-		padding: 0.1rem;
+		padding: 7% 5%;
+		height: auto;
+	}
+	.right-panel-bg-layout {
+		padding-top: 10%;
+	}
+	.right-panel-content-layout {
+		margin-top: -10%;
+		width: 80%;
 	}
 	.left-panel-buttons-layout {
 		justify-content: center; /*space-between*/
@@ -774,12 +1098,20 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 10px;
 	}
+	.main-button-theme {
+		font-size: 1.25rem;
+		line-height: 1.5rem;
+	}
 	.header-layout {
 		height: 2.5rem;
 	}
+	.top-container {
+		padding-top: 10%;
+		height: auto;
+	}
 	.content-layout {
-		display: block;
-		padding: 0.1rem;
+		padding: 7% 5%;
+		height: auto;
 	}
 	.left-panel-buttons-layout {
 		justify-content: center; /*space-between*/
@@ -788,26 +1120,30 @@ button.gradient-button-bg:focus {
 	.left-panel-buttons-layout button {
 		margin-bottom: 1rem;
 	}
-	.right-panel-bg-section-layout {
+	/* .right-panel-bg-section-layout {
 		margin-left: -4rem;
-	}
+	} */
 	.right-panel-bg-layout {
-		width: 23rem;
-		height: 23rem;
+		padding-top: 5%;
 	}
 	.right-panel-content-layout {
-	    margin-top: -3rem;
-	    margin-left: -21.5rem;
-	    width: 20rem;
-	    height: 14rem;
-	    padding-top: 1rem;
-   	}
+		margin-top: -10%;
+		width: 90%;
+		height: 50%;
+	}
 	.right-panel-footer-layout {
-		margin-top: -1.5rem;
-	    width: 20rem
+		padding-top: 1%;
+		margin-top: -10%;
 	}
 	.presale-amount-section-layout {
 		margin-bottom: 1rem;
+	}
+	.presale-title-layout {
+		font-size: 2rem;
+	}
+	.presale-amount-layout {
+		font-size: 1.5rem;
+		line-height: 1.75rem;
 	}
 	.elapsed-time-layout {
 		margin-bottom: 1rem;
@@ -847,6 +1183,14 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 10px;
 	}
+	.main-button-theme {
+		font-size: 1rem;
+		line-height: 1rem;
+	}
+	.top-container {
+		padding-top: 15%;
+		height: auto;
+	}
 	.header-layout {
 		height: 2.5rem;
 	}
@@ -861,53 +1205,6 @@ button.gradient-button-bg:focus {
 	.left-panel-buttons-layout button {
 		margin-bottom: 1rem;
 	}
-	.right-panel-layout {
-		padding: 5px;
-	}
-	.right-panel-bg-section-layout {
-		margin-left: 3rem;
-	}
-	.right-panel-bg-layout {
-		margin-left: -3rem;
-		width: 25rem;
-		height: 17rem;
-	}
-	.right-panel-content-layout {
-		margin-top: -1rem;
-		margin-left: -20.5rem;
-		width: 17rem;
-		height: 12rem;
-		padding-top: 1rem;
-	}
-	.right-panel-footer-layout {
-		margin-top: -2.1rem;
-		width: 17rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 0;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 1.2rem;
-		line-height: 1rem;
-		/* identical to box height, or 51% */
-		letter-spacing: 0.1rem;
-		margin-bottom: 0;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 1rem;
-		line-height: 1.2rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 0.8rem;
-    	letter-spacing: -0.02rem;
-	}
-	.presale-duration-comment2-layout {
-		font-size: 0.7rem;
-		letter-spacing: -0.01rem;
-	}
 	.greeting-layout {
 		margin: 1rem 0;
 	}
@@ -921,17 +1218,57 @@ button.gradient-button-bg:focus {
 		/* or 114% */
 		letter-spacing: -0.05rem;
 	}
-	.token-sold-label-layout {
-		font-size: 1rem;
+	.right-panel-bg-layout {
+		padding-top: 2%;
+	}
+	.right-panel-content-layout {
+		padding-top: 5%;
+		height: 50%;
+		width: 91.5%;
+	}
+	.right-panel-footer-layout {
+		padding-top: 3%;
+		margin-top: -10%;
 	}
 	.presale-title-layout {
-		font-size: 1.7rem;
+		font-size: 2rem;
+		line-height: 2.25rem;
 	}
+	.presale-amount-section-layout {
+		margin-bottom: 0.5rem;
+	}	
 	.presale-amount-layout {
-		font-size: 1.2rem;
+		font-size: 1.5rem;
+		line-height: 1.75rem;
+	}
+	.token-sold-label-layout {
+		font-size: 1.25rem;
+		line-height: 1.5rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 0.75rem;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 1.5rem;
+		line-height: 1.75rem;
+		letter-spacing: 0.5rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 1.25rem;
+		line-height: 1.5rem;
+	}
+	.presale-duration-comment1-layout {
+		font-size: 1rem;
+		line-height: 1.25rem;
+		letter-spacing: -0.06rem;
+	}
+	.presale-duration-comment2-layout {
+		font-size: .9rem;
+		line-height: 1rem;
+		letter-spacing: -0.05rem;
 	}
 	.toggle-nav-btn-layout {
-		margin-right: 0.1rem;
+		margin-right: 0;
 	}
 	.logo-layout img {
 		width: 2rem;
@@ -952,6 +1289,14 @@ button.gradient-button-bg:focus {
 	body {
 		font-size: 10px;
 	}
+	.main-button-theme {
+		font-size: 1rem;
+		line-height: 1rem;
+	}
+	.top-container {
+		padding-top: 15%;
+		height: auto;
+	}
 	.header-layout {
 		height: 2.5rem;
 	}
@@ -966,53 +1311,6 @@ button.gradient-button-bg:focus {
 	.left-panel-buttons-layout button {
 		margin-bottom: 1rem;
 	}
-	.right-panel-layout {
-		padding: 5px;
-	}
-	.right-panel-bg-section-layout {
-		margin-left: 3rem;
-	}
-	.right-panel-bg-layout {
-		margin-left: -3.2rem;
-		width: 25rem;
-		height: 17rem;
-	}
-	.right-panel-content-layout {
-		margin-top: -1rem;
-		margin-left: -20.5rem;
-		width: 17rem;
-		height: 12rem;
-		padding-top: 1rem;
-	}
-	.right-panel-footer-layout {
-		margin-top: -2.1rem;
-		width: 17rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 0;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 1.2rem;
-		line-height: 1rem;
-		/* identical to box height, or 51% */
-		letter-spacing: 0.1rem;
-		margin-bottom: 0;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 1rem;
-		line-height: 1.2rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 0.8rem;
-    	letter-spacing: -0.02rem;
-	}
-	.presale-duration-comment2-layout {
-		font-size: 0.7rem;
-		letter-spacing: -0.01rem;
-	}
 	.greeting-layout {
 		margin: 1rem 0;
 	}
@@ -1026,14 +1324,54 @@ button.gradient-button-bg:focus {
 		/* or 114% */
 		letter-spacing: -0.05rem;
 	}
-	.token-sold-label-layout {
-		font-size: 1rem;
+	.right-panel-bg-layout {
+		padding-top: 2%;
+		max-height: 70%;
+	}
+	.right-panel-content-layout {
+		padding-top: 5%;
+		height: 55%;
+		width: 91.5%;
+	}
+	.right-panel-footer-layout {
+		padding-top: 1%;
+		margin-top: -12%;
 	}
 	.presale-title-layout {
-		font-size: 1.7rem;
+		font-size: 1.5rem;
+		line-height: 1.75rem;
 	}
+	.presale-amount-section-layout {
+		margin-bottom: 0.25rem;
+	}	
 	.presale-amount-layout {
-		font-size: 1.2rem;
+		font-size: 1rem;
+		line-height: 1.25rem;
+	}
+	.token-sold-label-layout {
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+	.elapsed-time-layout {
+		margin-bottom: 0.25rem;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 1rem;
+		line-height: 1.25rem;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+	.presale-duration-comment1-layout {
+		font-size: 0.9rem;
+		line-height: 1rem;
+		letter-spacing: -0.06rem;
+	}
+	.presale-duration-comment2-layout {
+		font-size: 0.8rem;
+		line-height: .75rem;
+		letter-spacing: -0.06rem;
 	}
 	.toggle-nav-btn-layout {
 		margin-right: 0;

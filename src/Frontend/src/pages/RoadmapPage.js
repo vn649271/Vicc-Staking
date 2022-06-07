@@ -13,7 +13,7 @@ const RoadmapPage = props => {
 			</div>
 			<div className="block">
 				<div className="flex justify-center">
-					<div className="w-7/12 ">
+					<div className="roadmap-content-layout">
 						<div className='block'>
 							<div className="roadmap-block-left flex justify-center lg:justify-start mb-5">
 								<div className="roadmap-block-row1-layout flex justify-center items-center">
