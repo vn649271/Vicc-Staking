@@ -354,6 +354,7 @@ button.gradient-button-bg:focus {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	padding: 14% 10%;
 }
 
 .right-panel-content-layout {
@@ -384,6 +385,36 @@ button.gradient-button-bg:focus {
 	/* border-top-left-radius: 2.5rem;
 	border-top-right-radius: 2.5rem; */
 	border-radius: 2.5rem;
+}
+
+.presale-card-container {
+	width: 100%;
+}
+
+.presale-card-body {
+	border-top-left-radius: 40px;
+	border-top-right-radius: 40px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	margin: auto;
+	padding: 7% 0 4% 0;;
+}
+
+.presale-card-footer {
+	margin-top: -2px;
+	padding: 4% 10px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	color: #000;
+	background: linear-gradient(91.68deg, #FA02FF 0%, #5847FF 105.34%);
+	border-radius: 0px 0px 2.5rem 2.5rem;
+	font-family: 'Goldplay';
+	font-style: normal;
+	font-weight: 500;
+	text-align: center;
+	letter-spacing: -0.06rem;
+	color: #100344;	
+	letter-spacing: 0;
 }
 
 .presale-amount-section-layout {
@@ -455,27 +486,14 @@ button.gradient-button-bg:focus {
 }
 
 .presale-duration-comment1-layout {
-	font-family: 'Goldplay';
-	font-style: normal;
-	font-weight: 500;
 	font-size: 2.25rem;
 	line-height: 2.5rem;
-	/* identical to box height, or 157% */
-	text-align: center;
 	letter-spacing: -0.06rem;
-	color: #100344;	
 }
 
 .presale-duration-comment2-layout {
-	font-family: 'Goldplay';
-	font-style: normal;
-	font-weight: 500;
 	font-size: 2rem;
 	line-height: 2rem;
-	/* identical to box height, or 157% */
-	text-align: center;
-	letter-spacing: -0.06rem;
-	color: #100344;	
 }
 
 .staking-main-layout {
@@ -486,17 +504,6 @@ button.gradient-button-bg:focus {
 	.main-button-theme {
 		font-size: 2rem;
 		line-height: 2.25rem;
-	}
-	.right-panel-bg-layout {
-		padding-top: 0;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		width: 67%;
-		height: 66%;
-   	}
-	.right-panel-footer-layout {
-		margin-top: -2%;
 	}
 	.presale-title-layout {
 		font-size: 4rem;
@@ -536,31 +543,12 @@ button.gradient-button-bg:focus {
 }
 
 @media (max-width: 1800px) {
-	.right-panel-content-layout {
-		padding-top: 5%;
-		width: 91.5%;
-		height: 42%;
-	}
-	.right-panel-footer-layout {
-		margin-top: 0%;
-	}
 }
 
 @media (max-width: 1600px) {
 	.main-button-theme {
 		font-size: 32px;
 		line-height: 26px;
-	}
-	.right-panel-bg-layout {
-		padding-top: 0;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		width: 65%;
-		height: 65%;
-	}
-	.right-panel-footer-layout {
-		margin-top: -5%;
 	}
 	.presale-title-layout {
 		font-size: 3rem;
@@ -605,18 +593,6 @@ button.gradient-button-bg:focus {
 		font-size: 1.75rem;
 		line-height: 2rem;
 	}
-	.right-panel-bg-layout {
-		padding-top: 1;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		height: 72%;
-		width: 66%;
-	}
-	.right-panel-footer-layout {
-		margin-top: -3%;
-		padding-top: 2%;
-	}
 	.presale-title-layout {
 		font-size: 2.5rem;
 		line-height: 2.75rem;
@@ -659,19 +635,6 @@ button.gradient-button-bg:focus {
 	.main-button-theme {
 		font-size: 20px;
 		line-height: 24px;
-	}
-	.right-panel-bg-layout {
-		padding-top: 0;
-	}
-	.right-panel-content-layout {
-		margin-top: -50px;
-		padding-top: 5%;
-		height: 63%;
-		width: 74%;
-	}
-	.right-panel-footer-layout {
-		margin-top: -20px;
-		padding-top: 2px;
 	}
 	.presale-title-layout {
 		font-size: 2rem;
@@ -726,17 +689,6 @@ button.gradient-button-bg:focus {
 	.greeting-description-layout div div {
 		font-size: 1rem;
 	}
-	.right-panel-bg-layout {
-		padding-top: 0;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		height: 60%;
-		width: 91.5%;
-	}
-	.right-panel-footer-layout {
-		margin-top: -5%;
-	}
 	.presale-title-layout {
 		font-size: 2.25rem;
 		line-height: 2.75rem;
@@ -766,10 +718,12 @@ button.gradient-button-bg:focus {
 	.presale-duration-comment1-layout {
 		font-size: 1.25rem;
 		line-height: 1.5rem;
+		letter-spacing: -1px;
 	}
 	.presale-duration-comment2-layout {
 		font-size: 1rem;
 		line-height: 1.25rem;
+		letter-spacing: -1px;
 	}
 	.tokenomics-card {
 		width: 14rem;
@@ -789,18 +743,6 @@ button.gradient-button-bg:focus {
 	.left-panel-buttons-layout button {
 		justify-content: center; /*space-between*/
 		margin-bottom: 1rem;
-	}
-	.right-panel-bg-layout {
-		height: 500px;
-		padding-top: 10%;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		height: auto;
-		width: 70%;
-	}
-	.right-panel-footer-layout {
-		margin-top: -20px;
 	}
 }
 
@@ -839,13 +781,6 @@ button.gradient-button-bg:focus {
 		justify-content: center; /*space-between*/
 		margin-bottom: 1rem;
 	}
-	.right-panel-bg-layout {
-		padding-top: 5%;
-	}
-	.right-panel-content-layout {
-		margin-top: -10%;
-		width: 72%;
-	}
 	.presale-duration-comment1-layout {
 		letter-spacing: 0;
 	}
@@ -868,13 +803,6 @@ button.gradient-button-bg:focus {
 	.content-layout {
 		padding: 7% 5%;
 		height: auto;
-	}
-	.right-panel-bg-layout {
-		padding-top: 10%;
-	}
-	.right-panel-content-layout {
-		margin-top: -10%;
-		width: 80%;
 	}
 	.left-panel-buttons-layout {
 		justify-content: center; /*space-between*/
@@ -931,18 +859,6 @@ button.gradient-button-bg:focus {
 	/* .right-panel-bg-section-layout {
 		margin-left: -4rem;
 	} */
-	.right-panel-bg-layout {
-		padding-top: 5%;
-	}
-	.right-panel-content-layout {
-		margin-top: -10%;
-		width: 90%;
-		height: 50%;
-	}
-	.right-panel-footer-layout {
-		padding-top: 1%;
-		margin-top: -10%;
-	}
 	.presale-amount-section-layout {
 		margin-bottom: 1rem;
 	}
@@ -966,11 +882,12 @@ button.gradient-button-bg:focus {
 		line-height: 1rem;
 	}
 	.presale-duration-comment1-layout {
-		font-size: 1rem;
-   		letter-spacing: -0.05rem;
+		font-size: 0.75rem;
+   		letter-spacing: 0rem;
    	}
 	.presale-duration-comment2-layout {
-		letter-spacing: -0.07rem;
+		font-size: 0.5rem;
+		letter-spacing: 0;
 	}
 	.greeting-layout {
 		margin: 1rem 0;
@@ -1026,21 +943,12 @@ button.gradient-button-bg:focus {
 		/* or 114% */
 		letter-spacing: -0.05rem;
 	}
-	.right-panel-bg-layout {
-		padding-top: 2%;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		height: 50%;
-		width: 91.5%;
-	}
-	.right-panel-footer-layout {
-		padding-top: 3%;
-		margin-top: -10%;
-	}
 	.presale-title-layout {
 		font-size: 2rem;
 		line-height: 2.25rem;
+	}
+	.right-panel-bg-layout {
+		padding: 6% 6%;
 	}
 	.presale-amount-section-layout {
 		margin-bottom: 0.5rem;
@@ -1057,13 +965,13 @@ button.gradient-button-bg:focus {
 		margin-bottom: 0.75rem;
 	}
 	.elapsed-datetime-value-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
+		font-size: 1.25rem;
+		line-height: 1.5rem;
 		letter-spacing: 0.5rem;
 	}
 	.elapsed-datetime-label-layout {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
+		font-size: 1rem;
+		line-height: 1.25rem;
 	}
 	.presale-duration-comment1-layout {
 		font-size: 1rem;
@@ -1133,17 +1041,7 @@ button.gradient-button-bg:focus {
 		letter-spacing: -0.05rem;
 	}
 	.right-panel-bg-layout {
-		padding-top: 2%;
-		max-height: 70%;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		height: 55%;
-		width: 91.5%;
-	}
-	.right-panel-footer-layout {
-		padding-top: 1%;
-		margin-top: -12%;
+		padding: 6% 6%;
 	}
 	.presale-title-layout {
 		font-size: 1.5rem;
@@ -1172,14 +1070,14 @@ button.gradient-button-bg:focus {
 		line-height: 1rem;
 	}
 	.presale-duration-comment1-layout {
-		font-size: 0.9rem;
+		font-size: 11px;
 		line-height: 1rem;
-		letter-spacing: -0.06rem;
+		letter-spacing: -1px;
 	}
 	.presale-duration-comment2-layout {
-		font-size: 0.8rem;
+		font-size: 10px;
 		line-height: .75rem;
-		letter-spacing: -0.06rem;
+		letter-spacing: -1px;
 	}
 	.toggle-nav-btn-layout {
 		margin-right: 0;
