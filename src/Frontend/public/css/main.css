@@ -364,7 +364,7 @@ button.gradient-button-bg:focus {
 	padding-top: 5%;
     margin-top: -3%;
     width: 91.5%;
-    height: 63%;
+    height: 60%;
 }
 
 .right-panel-footer-layout {
@@ -483,39 +483,18 @@ button.gradient-button-bg:focus {
 }
 
 @media (max-width: 1920px) {
-	.right-panel-content-layout {
-		margin-top: -15%;
-		width: 91.5%;
-		height: 45%;
-	}
-	.right-panel-footer-layout {
-		margin-top: -1%;
-	}
-}
-
-@media (max-width: 1800px) {
-	.right-panel-content-layout {
-		padding-top: 5%;
-		width: 91.5%;
-		height: 42%;
-	}
-	.right-panel-footer-layout {
-		margin-top: 0%;
-	}
-}
-
-@media (max-width: 1600px) {
 	.main-button-theme {
-		font-size: 3rem;
+		font-size: 2rem;
+		line-height: 2.25rem;
 	}
 	.right-panel-bg-layout {
-		padding-top: 5%;
+		padding-top: 0;
 	}
 	.right-panel-content-layout {
 		padding-top: 5%;
-		width: 91.5%;
-		height: 35%;
-	}
+		width: 67%;
+		height: 66%;
+   	}
 	.right-panel-footer-layout {
 		margin-top: -2%;
 	}
@@ -556,58 +535,68 @@ button.gradient-button-bg:focus {
 	}
 }
 
+@media (max-width: 1800px) {
+	.right-panel-content-layout {
+		padding-top: 5%;
+		width: 91.5%;
+		height: 42%;
+	}
+	.right-panel-footer-layout {
+		margin-top: 0%;
+	}
+}
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
 	.main-button-theme {
-		font-size: 1.75rem;
-		line-height: 2rem;
+		font-size: 32px;
+		line-height: 26px;
 	}
 	.right-panel-bg-layout {
-		padding-top: 8%;
+		padding-top: 0;
 	}
 	.right-panel-content-layout {
 		padding-top: 5%;
-		height: 70%;
-		width: 66%;
+		width: 65%;
+		height: 65%;
 	}
 	.right-panel-footer-layout {
-		margin-top: -7%;
-		padding-top: 2%;
+		margin-top: -5%;
 	}
 	.presale-title-layout {
-		font-size: 2.5rem;
-		line-height: 2.75rem;
+		font-size: 3rem;
+		line-height: 3.2rem;
 	}
 	.presale-amount-section-layout {
-		margin-bottom: 0.75rem;
+		margin-bottom: 0.5rem;
 	}	
 	.presale-amount-layout {
 		font-size: 2rem;
 		line-height: 2.25rem;
 	}
 	.token-sold-label-layout {
-		font-size: 1.25rem;
-		line-height: 1rem;
+		font-size: 1.5rem;
+		line-height: 1.75rem;
 	}
 	.elapsed-time-layout {
-		margin-bottom: 0.75rem;
+		margin-bottom: 0.5rem;
 	}
 	.elapsed-datetime-value-layout {
 		font-size: 2rem;
-		line-height: 2.25rem;
+		line-height: 2.5rem;
 	}
 	.elapsed-datetime-label-layout {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
+		font-size: 1.5rem;
+		line-height: 1.75rem;
 	}
 	.presale-duration-comment1-layout {
-		font-size: 1.25rem;
-		line-height: 1.25rem;
-		letter-spacing: -0.05rem;
-	}
+	    font-size: 24px;
+	    line-height: 16px;
+	    letter-spacing: -2px;
+   	}
+	
 	.presale-duration-comment2-layout {
-		font-size: 1rem;
-		line-height: 1rem;
+		font-size: 1.25rem;
+		line-height: 1.5rem;
 	}
 }
 
@@ -617,12 +606,12 @@ button.gradient-button-bg:focus {
 		line-height: 2rem;
 	}
 	.right-panel-bg-layout {
-		padding-top: 10%;
+		padding-top: 1;
 	}
 	.right-panel-content-layout {
 		padding-top: 5%;
 		height: 72%;
-		width: 72%;
+		width: 66%;
 	}
 	.right-panel-footer-layout {
 		margin-top: -3%;
@@ -657,7 +646,7 @@ button.gradient-button-bg:focus {
 	.presale-duration-comment1-layout {
 		font-size: 1.25rem;
 		line-height: 1.5rem;
-		letter-spacing: 0rem;
+		letter-spacing: -1px;
 	}
 	.presale-duration-comment2-layout {
 		font-size: 1rem;
@@ -666,240 +655,59 @@ button.gradient-button-bg:focus {
 	}
 }
 
-@media (max-width: 1360px) {
-	body {
-		font-size: 15px;
-	}
+@media (max-width: 1280px) {
 	.main-button-theme {
-		font-size: 2.5rem;
-		line-height: 2.5rem;
+		font-size: 20px;
+		line-height: 24px;
 	}
 	.right-panel-bg-layout {
-		padding-top: 5%;
+		padding-top: 0;
 	}
 	.right-panel-content-layout {
+		margin-top: -50px;
 		padding-top: 5%;
-		height: 30%;
+		height: 63%;
+		width: 74%;
 	}
 	.right-panel-footer-layout {
-		margin-top: -5%;
+		margin-top: -20px;
+		padding-top: 2px;
 	}
 	.presale-title-layout {
-		font-size: 3rem;
-		line-height: 3rem;
+		font-size: 2rem;
+		line-height: 2.25rem;
 	}
 	.presale-amount-section-layout {
-		margin-bottom: 0.5rem;
+		margin-bottom: 1rem;
 	}	
 	.presale-amount-layout {
-		font-size: 2.5rem;
-		line-height: 2.75rem;
-	}
-	.token-sold-label-layout {
 		font-size: 1.5rem;
 		line-height: 1.75rem;
 	}
+	.token-sold-label-layout {
+		font-size: 1.25rem;
+		line-height: 1rem;
+	}
 	.elapsed-time-layout {
-		margin-bottom: 0.5rem;
+		margin-bottom: 1rem;
 	}
 	.elapsed-datetime-value-layout {
-		font-size: 3rem;
-		line-height: 3.5rem;
+		font-size: 2rem;
+		line-height: 2.25rem;
 	}
 	.elapsed-datetime-label-layout {
-		font-size: 2rem;
-		line-height: 2.5rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 1.75rem;
-		line-height: 2rem;
-		letter-spacing: -0.1rem;
-	}
-	
-	.presale-duration-comment2-layout {
-		font-size: 1.5rem;
-		line-height: 1.5rem;
-		letter-spacing: -0.05rem;
-	}
-}
-
-@media (max-width: 1282px) {
-	body {
-		font-size: 10px;
-	}
-	.main-button-theme {
-		font-size: 2.5rem;
-		line-height: 2.5rem;
-	}
-	.right-panel-bg-layout {
-		padding-top: 5%;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		height: 30%;
-	}
-	.right-panel-footer-layout {
-		margin-top: -5%;
-	}
-	.presale-title-layout {
-		font-size: 3rem;
-		line-height: 3rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0.5rem;
-	}	
-	.presale-amount-layout {
-		font-size: 2.5rem;
-		line-height: 2.75rem;
-	}
-	.token-sold-label-layout {
 		font-size: 1.5rem;
 		line-height: 1.75rem;
 	}
-	.elapsed-time-layout {
-		margin-bottom: 0.5rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 3rem;
-		line-height: 3.5rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 2rem;
-		line-height: 2.5rem;
-	}
 	.presale-duration-comment1-layout {
-		font-size: 1.75rem;
-		line-height: 2rem;
-		letter-spacing: -0.1rem;
-	}
-	
-	.presale-duration-comment2-layout {
-		font-size: 1.5rem;
+		font-size: 1.25rem;
 		line-height: 1.5rem;
-		letter-spacing: -0.05rem;
+		letter-spacing: -1px;
 	}
-	.tokenomics-card {
-		width: 17rem;
-	}
-}
-
-@media (max-width: 1200px) {
-	body {
-		font-size: 10px;
-	}
-	.main-button-theme {
-		font-size: 2.5rem;
-		line-height: 2.5rem;
-	}
-	.right-panel-bg-layout {
-		padding-top: 5%;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		height: 30%;
-	}
-	.right-panel-footer-layout {
-		margin-top: -5%;
-	}
-	.presale-title-layout {
-		font-size: 3rem;
-		line-height: 3rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0.5rem;
-	}	
-	.presale-amount-layout {
-		font-size: 2.5rem;
-		line-height: 2.75rem;
-	}
-	.token-sold-label-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 0.5rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 3rem;
-		line-height: 3.5rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 2rem;
-		line-height: 2.5rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 1.75rem;
-		line-height: 2rem;
-		letter-spacing: -0.1rem;
-	}
-	
 	.presale-duration-comment2-layout {
-		font-size: 1.5rem;
-		line-height: 1.5rem;
-		letter-spacing: -0.05rem;
-	}
-	.tokenomics-card {
-		width: 15rem;
-	}
-}
-
-@media (max-width: 1120px) {
-	body {
-		font-size: 10px;
-	}
-	.main-button-theme {
-		font-size: 2.5rem;
-		line-height: 2.5rem;
-	}
-	.right-panel-bg-layout {
-		padding-top: 5%;
-	}
-	.right-panel-content-layout {
-		padding-top: 5%;
-		height: 30%;
-	}
-	.right-panel-footer-layout {
-		margin-top: -5%;
-	}
-	.presale-title-layout {
-		font-size: 3rem;
-		line-height: 3rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0.5rem;
-	}	
-	.presale-amount-layout {
-		font-size: 2.5rem;
-		line-height: 2.75rem;
-	}
-	.token-sold-label-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 0.5rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 3rem;
-		line-height: 3.5rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 2rem;
-		line-height: 2.5rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 1.75rem;
-		line-height: 2rem;
-		letter-spacing: -0.1rem;
-	}
-	
-	.presale-duration-comment2-layout {
-		font-size: 1.5rem;
-		line-height: 1.5rem;
-		letter-spacing: -0.05rem;
-	}
-	.tokenomics-card {
-		width: 14rem;
+		font-size: 1rem;
+		line-height: 1.25rem;
+		letter-spacing: 0px;
 	}
 }
 
@@ -919,15 +727,15 @@ button.gradient-button-bg:focus {
 		font-size: 1rem;
 	}
 	.right-panel-bg-layout {
-		padding-top: 5%;
+		padding-top: 0;
 	}
 	.right-panel-content-layout {
 		padding-top: 5%;
-		height: 55%;
+		height: 60%;
 		width: 91.5%;
 	}
 	.right-panel-footer-layout {
-		margin-top: -8%;
+		margin-top: -5%;
 	}
 	.presale-title-layout {
 		font-size: 2.25rem;
