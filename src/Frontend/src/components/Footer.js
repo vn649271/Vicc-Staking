@@ -3,21 +3,21 @@ import React from "react";
 
 export default () => {
   return (
-    <div className="py-8 footer-bg mt-32">
+    <div className="py-5 footer-bg">
       <footer className="container mx-auto px-4 ">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
           <div>
             <a
               href="https://Victorycash.tech/"
-              className="logo flex flex-row items-center"
+              className="logo footer-logo-box flex flex-row items-center"
             >
               <img
                 src="/images/android-chrome-192x192.png"
-                width="100"
+                width="70px"
                 className="cursor-pointer"
                 alt="LEAD"
               />
-              <div className="font-Montserrat-ExtraBold text-white text-2xl  text-white text-lg mb-1 mt-4 text-left">
+              <div className="font-Montserrat-ExtraBold footer-title-text text-white text-2xl  text-white text-lg ml-4 text-left">
                 Victory Cash
               </div>
             </a>
@@ -49,7 +49,7 @@ export default () => {
             </a>
 
           </div>
-          <div className="footer-copyright text-center py-3 text-white">
+          <div className="footer-copyright text-center py-3 text-white flex justify-center items-center">
             <div fluid="true">
               &copy; {new Date().getFullYear()} Copyright: <a href="#"> Victory Cash Staking Service </a>
             </div>

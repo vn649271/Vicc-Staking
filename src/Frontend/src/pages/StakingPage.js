@@ -233,7 +233,7 @@ const HomePage = (props) => {
 
   async function registerAndStake() {
     if (amount == undefined || amount === 0 || amount === "") {
-      toast.dark("Minimum staking value is 1000 VICC!");      
+      toast.dark("Minimum staking value is 1000 VICC!");
       return;
     }
     setStakeLoading(true);
@@ -253,7 +253,7 @@ const HomePage = (props) => {
       console.log("!!!!!!!!!!!!!!!!! Approved");
       if (!ref || ref.length !== 42)
         ref = "0x0000000000000000000000000000000000000000";
-      await bcStake.methods.invest(ref, arg).send({ 
+      await bcStake.methods.invest(ref, arg).send({
         from: accounts[0],
         gas: "3000000",
       });
@@ -406,54 +406,55 @@ const HomePage = (props) => {
 
       <div className="relative w-full staking-main-layout">
         <Header />
-        <div className="container mx-auto pb-18 px-4 force-height">
+        <div className="container m-auto pb-18 px-4 force-height responive-margin">
           <div className="page-title-label-layout flex justify-center">
             <h3 className="text-white">Staking</h3>
           </div>
-          <div className="text-center text-white text-2xl">
-            {timerComponents.length ? timerComponents : <span></span>}
-          </div>
-          <div className="text-center text-white text-2xl">
-            Slippage Tolerance: Each Buy/Sell will automatically burn 10% and 4% goes for Radical Marketing
-          </div>
+          <div className="staking-main-content pt-5 xl:pt-8">
+            <div className="text-center text-white text-2xl">
+              {timerComponents.length ? timerComponents : <span></span>}
+            </div>
+            <div className="text-center text-white text-2xl">
+              Slippage Tolerance: Each Buy/Sell will automatically burn 10% and 4% goes for Radical Marketing
+            </div>
 
-          {!accounts && (
-            <div className="w-full py-6 text-center">
-              <Button
-                className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto medium-size"
-                uppercase={false}
-                onClick={async () => await init()}
-              >
-                {loading && <Spinner color="white" size={40} />}
-                {!loading && (error !== "" ? error : "CONNECT WALLET")}
-              </Button>
+            {!accounts && (
+              <div className="w-full py-6 text-center">
+                <Button
+                  className="w-full md:w-2/5 text-2xl flex flex-row buy-vicc-button justify-center mx-auto medium-size"
+                  uppercase={false}
+                  onClick={async () => await init()}
+                >
+                  {loading && <Spinner color="white" size={40} />}
+                  {!loading && (error !== "" ? error : "CONNECT WALLET")}
+                </Button>
 
-              <div className="text-white text-center mt-6 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold">
-                <h1>Stake Your VICC Token</h1>
-              </div>
-              <div className="w-full md:w-3/6 justify-center mx-auto mt-6">
-                <Card title="Rules">
-                  <div className="flex flex-col pt-8 pb-4 text-white text-center">
-                    Victory Cash staking contract is designed to payout
-                    investors 2% a day with a 354% ROI. The more VICC
-                    appreciates in value the higher your payout is in USD.
-                    Please read our document page for full staking details.
-                  </div>
-                </Card>
-                <div className="flex flex-col pt-8 px-2">
-                  <br />
-                  <br />
-                  <Button
-                    className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto medium-size"
-                    uppercase={false}
-                    onClick={buybc}
-                  >
-                    BUY VICC
-                  </Button>
-                  <br />
-                  <br />
+                <div className="text-white text-center mt-6 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold">
+                  <h1>Stake Your VICC Token</h1>
                 </div>
-                {/* <Card noLine>
+                <div className="w-full md:w-3/6 justify-center mx-auto mt-6">
+                  <Card title="Rules">
+                    <div className="flex flex-col pt-8 pb-4 text-white text-center">
+                      Victory Cash staking contract is designed to payout
+                      investors 2% a day with a 354% ROI. The more VICC
+                      appreciates in value the higher your payout is in USD.
+                      Please read our document page for full staking details.
+                    </div>
+                  </Card>
+                  <div className="flex flex-col pt-8 px-2">
+                    <br />
+                    <br />
+                    <Button
+                      className="w-full md:w-2/5 text-2xl flex flex-row buy-vicc-button justify-center mx-auto medium-size"
+                      uppercase={false}
+                      onClick={buybc}
+                    >
+                      BUY VICC
+                    </Button>
+                    <br />
+                    <br />
+                  </div>
+                  {/* <Card noLine>
                   <div className="flex flex-col px-2">
                     <div className="text-center pb-4">
                       <div className="text-white text-xs">
@@ -476,199 +477,200 @@ const HomePage = (props) => {
                     </div>
                   </div>
                 </Card> */}
+                </div>
               </div>
-            </div>
-          )}
-          {accounts && (
-            <div className="grid grid-col-1 md:grid-cols-1 gap-6 mt-10 w-full md:w-4/6 justify-center mx-auto mt-6">
-              <Button
-                className="w-full md:w-2/5 text-2xl flex flex-row justify-center mx-auto medium-size"
-                uppercase={false}
-                onClick={buybc}
-              >
-                Buy VICC
-              </Button>
-              <Card title="Your Total Deposit" noLine={true}>
-                <div className="flex flex-col pt-8 pb-4 text-white">
-                  <div className="text-center">
-                    <span className="text-white text-5xl">
+            )}
+            {accounts && (
+              <div className="grid grid-col-1 md:grid-cols-1 gap-6 mt-10 w-full md:w-4/6 justify-center mx-auto mt-6">
+                <Button
+                  className="w-full md:w-2/5 text-2xl flex flex-row  buy-vicc-button justify-center mx-auto medium-size"
+                  uppercase={false}
+                  onClick={buybc}
+                >
+                  Buy VICC
+                </Button>
+                <Card title="Your Total Deposit" noLine={true}>
+                  <div className="flex flex-col pt-8 pb-4 text-white">
+                    <div className="text-center">
+                      <span className="text-white text-5xl">
+                        {(
+                          parseFloat(totalStaked).toFixed(2) / 1000000000000000000
+                        ).toFixed(2)}
+                      </span>
+                      <span className="text-white text-2xl ml-2">VICC</span>
+                    </div>
+                    <div className="text-center">
                       {(
-                        parseFloat(totalStaked).toFixed(2) / 1000000000000000000
-                      ).toFixed(2)}
-                    </span>
-                    <span className="text-white text-2xl ml-2">VICC</span>
-                  </div>
-                  <div className="text-center">
-                    {(
-                      (parseFloat(totalStaked) * 100.0) /
-                      parseFloat(totalSupply)
-                    ).toFixed(5)}
-                    %
-                  </div>
-                  <div className="text-center">of total supply</div>
-                </div>
-              </Card>
-
-              <Card title="Staking" noLine={true}>
-                <div className="flex flex-col pt-8 px-2">
-                  <div className="text-center pb-4">
-                    <span className="text-lg text-gray-400">
-                      Minimum amount needed:{" "}
-                    </span>
-                    <span className="text-white text-3xl">{minRegister}</span>
-                    <span className="text-white text-2xl ml-2">VICC</span>
-                  </div>
-                  <div className="text-center pb-4">
-                    <span className="text-lg text-gray-400">
-                      Available amount:{" "}
-                    </span>
-                    <span className="text-white text-3xl">
-                      {parseFloat(
-                        parseFloat(balance) / 1000000000000000000
-                      ).toFixed(2)}
-                    </span>
-                    <span className="text-white text-2xl ml-2">VICC</span>
-                  </div>
-                  <div className="rounded-md border-2 border-primary p-2 flex justify-between items-center">
-                    <input
-                      type="number"
-                      placeholder="VICC To Stake"
-                      value={amount}
-                      onChange={(e) => setAmount(e.target.value)}
-                      className="text-white font-extrabold flex-shrink text-2xl w-full bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
-                    />
-                    <Button
-                      onClick={() => registerAndStake()}
-                      className="flex flex-row items-center w-48 justify-center medium-size"
-                    >
-                      {stakeLoading ? (
-                        <Spinner size={30} />
-                      ) : (
-                        <>
-                          <img src="/images/locked.svg" width="25" alt="" />
-                          <span>STAKE</span>{" "}
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                  <div className="text-white text-center mt-4">
-                    Has referrer's address?
-                  </div>
-                  <div className="rounded-md border-2 border-primary p-2 flex justify-between items-center">
-                    <input
-                      placeholder="Referrer Address"
-                      value={referrer}
-                      onChange={(e) => setReferrer(e.target.value)}
-                      className="text-white font-extrabold flex-shrink text-2xl w-full bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
-                    />
-                  </div>
-                </div>
-              </Card>
-
-              <Card title="Your Earnings" noLine={true}>
-                <div className="flex flex-col pt-8 px-2">
-                  <div className="text-center pb-8">
-                    <span className="text-white text-5xl">
-                      {(parseFloat(totalRewards) / 1000000000000000000).toFixed(
-                        2
-                      )}
-                    </span>
-                    <span className="text-white text-2xl ml-2">VICC</span>
-                  </div>
-                  <div className="flex flex-row justify-evenly">
-                    <Button
-                      type="submit"
-                      className="flex flex-row items-center justify-center me-4 medium-size "
-                      onClick={() => compoundEarnings()}
-                    >
-                      {compoundingLoading ? (
-                        <Spinner size={30} />
-                      ) : (
-                        <>
-                          <img src="/images/locked.svg" width="25" alt="" />
-                          <span>COMPOUND</span>{" "}
-                        </>
-                      )}
-                    </Button>
-
-                    <Button
-                      type="submit"
-                      className="flex flex-row items-center justify-center medium-size"
-                      onClick={() => withdrawEarnings()}
-                    >
-                      {withdrawLoading ? (
-                        <Spinner size={30} />
-                      ) : (
-                        <>
-                          <img src="/images/unlocked.svg" width="25" alt="" />
-                          <span>CLAIM</span>{" "}
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                  <div className="text-center text-white text-2xl mt-8 mx-2">
-                    <div>
-                      <div>
-                        <span className="text-gray-400 text-lg">
-                          Staking Reward:{" "}
-                        </span>
-                        {(
-                          parseFloat(stakingRewards) / 1000000000000000000
-                        ).toFixed(2)}{" "}
-                        VICC
-                      </div>
-                      <div>
-                        <span className="text-gray-400 text-lg">
-                          Daily Return:{" "}
-                        </span>
-                        {parseFloat(dailyROI) / 10} %
-                      </div>
+                        (parseFloat(totalStaked) * 100.0) /
+                        parseFloat(totalSupply)
+                      ).toFixed(5)}
+                      %
                     </div>
-                    <div>
+                    <div className="text-center">of total supply</div>
+                  </div>
+                </Card>
+
+                <Card title="Staking" noLine={true}>
+                  <div className="flex flex-col pt-8 px-2">
+                    <div className="text-center pb-4">
+                      <span className="text-lg text-gray-400">
+                        Minimum amount needed:{" "}
+                      </span>
+                      <span className="text-white text-3xl">{minRegister}</span>
+                      <span className="text-white text-2xl ml-2">VICC</span>
+                    </div>
+                    <div className="text-center pb-4">
+                      <span className="text-lg text-gray-400">
+                        Available amount:{" "}
+                      </span>
+                      <span className="text-white text-3xl">
+                        {parseFloat(
+                          parseFloat(balance) / 1000000000000000000
+                        ).toFixed(2)}
+                      </span>
+                      <span className="text-white text-2xl ml-2">VICC</span>
+                    </div>
+                    <div className="rounded-md border-2 border-primary p-2 flex justify-between items-center">
+                      <input
+                        type="number"
+                        placeholder="VICC To Stake"
+                        value={amount}
+                        onChange={(e) => setAmount(e.target.value)}
+                        className="text-white font-extrabold flex-shrink text-2xl w-full bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
+                      />
+                      <Button
+                        onClick={() => registerAndStake()}
+                        className="flex flex-row items-center w-48 justify-center medium-size"
+                      >
+                        {stakeLoading ? (
+                          <Spinner size={30} />
+                        ) : (
+                          <>
+                            <img src="/images/locked.svg" width="25" alt="" />
+                            <span>STAKE</span>{" "}
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                    <div className="text-white text-center mt-4">
+                      Has referrer's address?
+                    </div>
+                    <div className="rounded-md border-2 border-primary p-2 flex justify-between items-center">
+                      <input
+                        placeholder="Referrer Address"
+                        value={referrer}
+                        onChange={(e) => setReferrer(e.target.value)}
+                        className="text-white font-extrabold flex-shrink text-2xl w-full bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
+                      />
+                    </div>
+                  </div>
+                </Card>
+
+                <Card title="Your Earnings" noLine={true}>
+                  <div className="flex flex-col pt-8 px-2">
+                    <div className="text-center pb-8">
+                      <span className="text-white text-5xl">
+                        {(parseFloat(totalRewards) / 1000000000000000000).toFixed(
+                          2
+                        )}
+                      </span>
+                      <span className="text-white text-2xl ml-2">VICC</span>
+                    </div>
+                    <div className="flex flex-row justify-evenly">
+                      <Button
+                        type="submit"
+                        className="flex flex-row items-center justify-center me-4 medium-size "
+                        onClick={() => compoundEarnings()}
+                      >
+                        {compoundingLoading ? (
+                          <Spinner size={30} />
+                        ) : (
+                          <>
+                            <img src="/images/locked.svg" width="25" alt="" />
+                            <span>COMPOUND</span>{" "}
+                          </>
+                        )}
+                      </Button>
+
+                      <Button
+                        type="submit"
+                        className="flex flex-row items-center justify-center medium-size"
+                        onClick={() => withdrawEarnings()}
+                      >
+                        {withdrawLoading ? (
+                          <Spinner size={30} />
+                        ) : (
+                          <>
+                            <img src="/images/unlocked.svg" width="25" alt="" />
+                            <span>CLAIM</span>{" "}
+                          </>
+                        )}
+                      </Button>
+                    </div>
+                    <div className="text-center text-white text-2xl mt-8 mx-2">
                       <div>
-                        <span className="text-gray-400 text-lg">
-                          Referral Reward:
-                        </span>{" "}
-                        {(
-                          parseFloat(referralRewards) / 1000000000000000000
-                        ).toFixed(2)}{" "}
-                        VICC
+                        <div>
+                          <span className="text-gray-400 text-lg">
+                            Staking Reward:{" "}
+                          </span>
+                          {(
+                            parseFloat(stakingRewards) / 1000000000000000000
+                          ).toFixed(2)}{" "}
+                          VICC
+                        </div>
+                        <div>
+                          <span className="text-gray-400 text-lg">
+                            Daily Return:{" "}
+                          </span>
+                          {parseFloat(dailyROI) / 10} %
+                        </div>
                       </div>
                       <div>
-                        <span className="text-gray-400 text-lg">
-                          Referral Count:
-                        </span>{" "}
-                        {referralCount}
+                        <div>
+                          <span className="text-gray-400 text-lg">
+                            Referral Reward:
+                          </span>{" "}
+                          {(
+                            parseFloat(referralRewards) / 1000000000000000000
+                          ).toFixed(2)}{" "}
+                          VICC
+                        </div>
+                        <div>
+                          <span className="text-gray-400 text-lg">
+                            Referral Count:
+                          </span>{" "}
+                          {referralCount}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
 
-              <Card title="Referral Link" noLine={true}>
-                <div className="flex flex-col pt-8 px-2">
-                  <div className="text-center pb-4">
-                    <span className="text-lg text-gray-400">
-                      Earn 12% of the VICC used to stake VICC from anyone who uses
-                      your referral link
-                    </span>
+                <Card title="Referral Link" noLine={true}>
+                  <div className="flex flex-col pt-8 px-2">
+                    <div className="text-center pb-4">
+                      <span className="text-lg text-gray-400">
+                        Earn 12% of the VICC used to stake VICC from anyone who uses
+                        your referral link
+                      </span>
+                    </div>
+                    <div className="rounded-md border-2 border-primary p-2 flex justify-between items-center">
+                      <input
+                        type="text"
+                        placeholder="Your referral link"
+                        defaultValue={unstakeAmount + accounts}
+                        className="text-white  flex-shrink text-1xl w-full bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
+                      />
+                    </div>
                   </div>
-                  <div className="rounded-md border-2 border-primary p-2 flex justify-between items-center">
-                    <input
-                      type="text"
-                      placeholder="Your referral link"
-                      defaultValue={unstakeAmount + accounts}
-                      className="text-white  flex-shrink text-1xl w-full bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
-                    />
-                  </div>
-                </div>
-              </Card>
-            </div>
-          )}
+                </Card>
+              </div>
+            )}
+          </div>
         </div>
 
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

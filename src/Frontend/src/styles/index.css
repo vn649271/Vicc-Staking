@@ -2,20 +2,17 @@
 
 @font-face {
   font-family: "Montserrat";
-  src: local("Montserrat"),
-    url(/fonts/Montserrat/Montserrat-Regular.ttf) format("truetype");
+  src: local("Montserrat"), url(/fonts/Montserrat/Montserrat-Regular.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Montserrat-Black";
-  src: local("Montserrat-Black"),
-    url(/fonts/Montserrat/Montserrat-Black.ttf) format("truetype");
+  src: local("Montserrat-Black"), url(/fonts/Montserrat/Montserrat-Black.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Montserrat-ExtraBold";
-  src: local("Montserrat-ExtraBold"),
-    url(/fonts/Montserrat/Montserrat-ExtraBold.ttf) format("truetype");
+  src: local("Montserrat-ExtraBold"), url(/fonts/Montserrat/Montserrat-ExtraBold.ttf) format("truetype");
 }
 
 @tailwind components;
@@ -59,15 +56,13 @@ body {
 }
 
 .home-gradient {
-  background: transparent linear-gradient(180deg, #45495a 0%, #ead6f5 100%) 0%
-    0% no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #45495a 0%, #ead6f5 100%) 0% 0% no-repeat padding-box;
   opacity: 1;
   height: 8000px;
 }
 
 .contactus-gradient {
-  background: transparent linear-gradient(180deg, #0d0ba1 0%, #cc1962 100%) 0%
-    0% no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #0d0ba1 0%, #cc1962 100%) 0% 0% no-repeat padding-box;
   opacity: 1;
   height: 3000px;
 }
@@ -77,8 +72,7 @@ body {
 }
 
 .token-gradient {
-  background: transparent linear-gradient(180deg, #12072b 0%, #cc1962 100%) 0%
-    0% no-repeat padding-box;
+  background: transparent linear-gradient(180deg, #12072b 0%, #cc1962 100%) 0% 0% no-repeat padding-box;
   opacity: 1;
   height: 6000px;
 }
@@ -93,6 +87,10 @@ body {
 
 .footer-bg {
   background-color: rgba(41, 15, 58, 0.7);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .top-noisy {
@@ -150,8 +148,7 @@ body {
   fill: none;
   stroke: #fff;
   stroke-width: 6;
-  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .line1 {
   stroke-dasharray: 60 207;
@@ -182,7 +179,7 @@ body {
 }
 
 #toggler {
-  color: #D01961;
+  color: #d01961;
   font-size: 24px;
   background-color: white;
   margin: 12px;
@@ -193,13 +190,13 @@ body {
 #toggler :active {
   color: white;
   font-size: 24px;
-  background-color: #D01961;
+  background-color: #d01961;
   margin: 12px;
   padding: 4px 32px;
   border-radius: 5px;
 }
 
 #controls {
-  margin: 32px
+  margin: 32px;
 }
 @tailwind utilities;

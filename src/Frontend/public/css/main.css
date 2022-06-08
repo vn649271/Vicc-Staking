@@ -1,14 +1,37 @@
-body {
-	padding: 0;
-	margin: 0;
-	font-size: 16px;
+@font-face {
+	font-family: "Poppins";
+	src: url(../fonts/Poppins/Poppins-Light.ttf);
 }
 
-h2 {
-	font-size: 4rem;
-	font-weight: 600;
-	line-height: 4.5rem;
-	margin-bottom: 1.5rem;
+@font-face {
+	font-family: "Goldplay-normal";
+	src: url(../fonts/Goldplay/LatinotypeGoldplayLight.otf);
+}
+
+@font-face {
+	font-family: "Goldplay-bold";
+	src: url(../fonts/Goldplay/GoldplayAltMedium.woff);
+}
+
+body,
+html,
+div,
+p,
+span {
+	padding: 0;
+	margin: 0;
+}
+
+.font-pop {
+	font-family: "Poppins";
+}
+
+.font-gold-normal {
+	font-family: "Goldplay-normal";
+}
+
+.font-gold-bold {
+	font-family: "Goldplay-bold";
 }
 
 .page-title-label-layout {
@@ -23,13 +46,7 @@ h2 {
 	margin-bottom: 1.5rem;
 }
 
-.page-title-label-layout h3.text-white {
-	color:  #f5f5f5;
-}
-
-/**************************************/
 /******** Roadmap page CSS ************/
-/**************************************/
 .roadmap-container {
 	font-size: 11px;
 }
@@ -70,15 +87,11 @@ h2 {
 }
 
 .roadmap-block-number-layout {
-/*	margin-right: -2rem;
-	margin-bottom: -2rem;
-*/
 	height: 100%;
 }
 
 .roadmap-block-number-label-layout {
-	color: #F5F5F5;
-	background: rgb(231, 117, 5);	
+	background: rgb(231, 117, 5);
 	font-size: 2rem;
 	font-weight: 600;
 	line-height: 1rem;
@@ -91,7 +104,8 @@ h2 {
 	margin-left: -0.5rem;
 }
 
-.link-line-leftside-layout, .link-line-rightside-layout {
+.link-line-leftside-layout,
+.link-line-rightside-layout {
 	font-size: 1.5rem;
 	font-weight: 600;
 	color: rgb(0, 44, 83);
@@ -99,7 +113,8 @@ h2 {
 	margin-left: -0.1rem;
 }
 
-.linked-circle-leftside-layout, .linked-circle-rightside-layout {
+.linked-circle-leftside-layout,
+.linked-circle-rightside-layout {
 	color: rgb(0, 44, 83);
 	background: rgb(0, 44, 83);
 	margin-left: -0.1rem;
@@ -107,45 +122,36 @@ h2 {
 }
 
 .tokenomics-card {
-	background: #FFF;
-	/*width: 18rem lg: 20rem md: 20rem;*/
+	background: #fff;
 	width: 20rem;
 	min-height: 13rem;
 	max-height: 50rem;
 }
 
-.tokenomics-card-content-layout {
-}
-
-/**************************************/
 /********** Tokenomics CSS **************/
-/**************************************/
 .tokenomics-container-layout {
 	background: rgb(250, 248, 249);
 }
 
-/**************************************/
 /********** Homepage CSS **************/
-/**************************************/
 .top-layout {
-	width: 100%;
 	margin: auto;
-	background-color: #0C0241;
-	position: absolute;
-	padding: 0;
+	background-color: #0c0241;
 	height: 100vh;
+	overflow: hidden;
+	position: relative;
 }
 
-.bg-effect-layout {
-	opacity: 0;
-	height: 100vh;
+.main-container-box {
+	margin: 0 auto;
+	max-width: 1440px;
+	width: 100%;
 }
 
 .bg-effect-1 {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-
 }
 
 .bg-effect-2 {
@@ -154,195 +160,58 @@ h2 {
 	right: 0px;
 }
 
-/**************** HEADER LAYOUT **************/
-.header-layout {
-	color: #FFF;
-}
-
-.header-layout .menu-layout ul {
-	padding-top: 10px;
-}
-
-.header-layout .menu-layout ul li {
-	cursor: pointer;
-	margin: 0 1rem;
-}
-
-.header-layout .menu-layout ul li.active {
-	cursor: pointer;
-	margin: 0 1rem;
-	border-bottom: 1px solid #FA02FF;
-}
-
-button.small-button {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-center;
-	padding-left: 0.625rem;
-	padding-right: 0.625rem;
-	gap: 0.625rem;
-
-	width: auto;
-	height: auto;
-
-	background: #1A1F54;
-	border: 0.125rem solid #FA02FF;
-	border-radius: 12.5rem;
-
-	/* Inside auto layout */
-
-	flex: none;
-	order: 0;
-	flex-grow: 0;
-}
-
-button.small-button span {
-	font-family: 'Montserrat';
-	font-style: normal;
-	font-weight: 800;
-	font-size: 1rem;
-	line-height: 1rem;
-	color: #FFFFFF;
-	/* Inside auto layout */
-	flex: none;
-	order: 0;
-	flex-grow: 0;
-	margin-top: -2px;
-}
-/******* MAIN CONTAINER LAYOUT *************/
-.body-layout {
-	height: 100vh;
-}
-
 .top-container {
-	height: 100%;
-	max-width: 1920px;
-	margin: auto;
-	padding: 15% 5% 5% 5%;
-}
-
-.content-layout {
-	padding: 0 2rem;
-	display: flex;
-	height: 100%;
-	/* justify-content: space-between; */
-}
-
-.main-text-color {
-	color: #F5F5F5;
-}
-
-.left-panel-layout {
-	text-align: center;
-	color: #F5F5F5;
-}
-
-.greeting-section-layout {
-}
-
-.greeting-layout {
+	height: calc(100vh - 100px);
+	margin-top: 50px;
+	padding: 30px 40px;
 }
 
 .greeting-layout h2 {
-	font-family: 'Poppins';
+	font-family: "Poppins";
 	font-style: normal;
 	font-weight: 600;
-	font-size: 4.5rem;
-	line-height: 5rem;
-	/* or 114% */
-	letter-spacing: 0.1rem;
-	color: #FFFFFF;
-	overflow: wrap;
+	font-size: 72px;
+	line-height: 82px;
+	letter-spacing: -2px;
+	color: #ffffff;
 }
 
 .greeting-layout h2.highlighted {
-	color: #FA02FF;
+	color: #fa02ff;
 }
 
-.left-panel-buttons-layout {
-	padding-top: 5%;
-	justify-content: space-between;
+.greeting-description-layout {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 24px;
+	line-height: 36px;
+	letter-spacing: 0.5px;
 }
 
 .main-button-theme {
-	font-family: 'Goldplay';
+	border-radius: 50px;
+	padding: 10px 25px;
 	font-style: normal;
 	font-weight: 600;
-	font-size: 4rem;
-	line-height: 4.5rem;
-	/* identical to box height, or 112% */
-
-	letter-spacing: 0.1rem;
-	border-radius: 1.67rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	padding: 0.75rem 1.5rem;
-	gap: 0.625rem;
-	height: fit-content;
-}
-
-.main-button-theme.medium-size {
-	font-family: 'Goldplay';
-	font-style: normal;
-	font-weight: 600;
-	font-size: 1.5rem;
-	line-height: 1rem;
-	/* identical to box height, or 112% */
-
-	letter-spacing: 0.2rem;
-	border-radius: 2rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	padding: 0.75rem 1.5rem;
-	gap: 0.625rem;
-	height: fit-content;
-    line-height: 1.5rem;
-}
-
-.main-button-theme.small-size {
-	font-family: 'Goldplay';
-	font-style: normal;
-	font-weight: 600;
-	font-size: 2rem;
-	line-height: 1rem;
-	/* identical to box height, or 112% */
-
-	letter-spacing: 0.2rem;
-	border-radius: 2rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	padding: 0.75rem 1.5rem;
-	gap: 0.625rem;
-	height: fit-content;
-    line-height: 1.5rem;
+	font-size: 32px;
+	line-height: 43px;
 }
 
 .gradient-button-bg {
-	background: linear-gradient(93.49deg, #FA02FF 1.54%, rgba(88, 71, 255, 0) 112.54%);
+	background: linear-gradient(93.49deg, #fa02ff 1.54%, rgba(88, 71, 255, 0) 112.54%);
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .border-pink {
-	border: 2px solid #FA02FF;
+	border: 2px solid #fa02ff;
 }
 
 button.border-pink:focus {
-	outline: 1px solid #FA02FF;
+	outline: 1px solid #fa02ff;
 }
 
 button.gradient-button-bg:focus {
-	outline: 1px solid #FA02FF;	
-}
-
-.right-panel-layout {
-	text-align: center;
-	color: #F5F5F5;
+	outline: 1px solid #fa02ff;
 }
 
 .right-panel-bg-layout {
@@ -350,749 +219,271 @@ button.gradient-button-bg:focus {
 	background-position: center;
 	background-size: contain;
 	background-repeat: no-repeat;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 14% 10%;
-}
-
-.right-panel-content-layout {
-	/* padding-top: 10%;
-	margin-top: -15%;
-    width: 91.5%;
-    height: 50%; */
-	padding-top: 5%;
-    margin-top: -3%;
-    width: 91.5%;
-    height: 60%;
-}
-
-.right-panel-footer-layout {
-	margin-top: -1%;
-    width: 100%;
-    height: 25%;
-    padding: 0.9rem 0.2rem;
-	color: #000;
-	background: linear-gradient(91.68deg, #FA02FF 0%, #5847FF 105.34%);
-	border-radius: 0px 0px 2.5rem 2.5rem;
 }
 
 .semi-transparent-bg {
-	background: radial-gradient(100% 177.18% at 0% 5.41%, rgba(255, 255, 255, 0.49) 0%, rgba(255, 255, 255, 0.07) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+	background: radial-gradient(100% 177.18% at 0% 5.41%, rgba(255, 255, 255, 0.49) 0%, rgba(255, 255, 255, 0.07) 100%);
 	backdrop-filter: blur(2rem);
-	/* Note: backdrop-filter has minimal browser support */
-	/* border-top-left-radius: 2.5rem;
-	border-top-right-radius: 2.5rem; */
 	border-radius: 2.5rem;
 }
 
-.presale-card-container {
-	width: 100%;
-}
-
 .presale-card-body {
-	border-top-left-radius: 40px;
-	border-top-right-radius: 40px;
-	border-bottom-right-radius: 0px;
-	border-bottom-left-radius: 0px;
-	margin: auto;
-	padding: 7% 0 4% 0;;
+	border-radius: 40px;
+	overflow: hidden;
 }
 
 .presale-card-footer {
-	margin-top: -2px;
-	padding: 4% 10px;
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	color: #000;
-	background: linear-gradient(91.68deg, #FA02FF 0%, #5847FF 105.34%);
-	border-radius: 0px 0px 2.5rem 2.5rem;
-	font-family: 'Goldplay';
-	font-style: normal;
-	font-weight: 500;
+	padding: 20px 10px;
+	color: #100344;
+	background: linear-gradient(91.68deg, #fa02ff 0%, #5847ff 105.34%);
 	text-align: center;
-	letter-spacing: -0.06rem;
-	color: #100344;	
-	letter-spacing: 0;
-}
-
-.presale-amount-section-layout {
-	margin-bottom: 2rem;
 }
 
 .presale-title-layout {
-	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 700;
-	font-size: 5rem;
-	line-height: 1rem;
-	/* identical to box height, or 60% */
-	letter-spacing: 0.1rem;
-	color: #FFFFFF;
+	font-size: 60px;
+	line-height: 36px;
+	letter-spacing: 0.5px;
+	color: #ffffff;
 }
 
 .presale-amount-layout {
-	font-family: 'Goldplay';
 	font-style: normal;
 	font-weight: 500;
-	font-size: 3rem;
-	line-height: 3.5rem;
-	/* or 92% */
-	text-align: center;
-	letter-spacing: 0.1rem;
-	color: #E0E0E0;
+	font-size: 42px;
+	line-height: 38px;
+	color: #e0e0e0;
+	letter-spacing: 0.5px;
 }
 
 .token-sold-label-layout {
-	font-family: 'Goldplay';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 2rem;
-	line-height: 2.2rem;
-	/* or 192% */
-
+	font-size: 20px;
+	line-height: 38px;
 	text-align: center;
-	letter-spacing: 0.1rem;
-
-	color: #E0E0E0;
-}
-
-.elapsed-time-layout {
-	margin-bottom: 2rem;
+	letter-spacing: 0.5px;
+	color: #e0e0e0;
 }
 
 .elapsed-datetime-value-layout {
-	font-family: 'Goldplay';
-	font-style: normal;
 	font-weight: 500;
-	font-size: 4rem;
-	line-height: 4.5rem;
-	/* identical to box height, or 51% */
-	letter-spacing: 0.1rem;
-	color: #FFFFFF;	
-	margin-bottom: 0.5rem;
+	font-size: 70px;
+	line-height: 36px;
+	letter-spacing: 0.5px;
 }
 
 .elapsed-datetime-label-layout {
-	font-family: 'Goldplay';
-	font-style: normal;
 	font-weight: 500;
-	font-size: 2.5rem;
-	line-height: 3rem;
-	/* identical to box height, or 144% */
-	letter-spacing: 0.1rem;
-	color: #E0E0E0;
+	font-size: 25px;
+	line-height: 36px;
+	letter-spacing: 0.5px;
+	color: #e0e0e0;
 }
 
 .presale-duration-comment1-layout {
-	font-size: 2.25rem;
-	line-height: 2.5rem;
-	letter-spacing: -0.06rem;
+	font-size: 23px;
+	line-height: 36px;
+	text-align: center;
+	letter-spacing: 0.5px;
 }
 
 .presale-duration-comment2-layout {
-	font-size: 2rem;
-	line-height: 2rem;
+	font-size: 20px;
+	line-height: 36px;
+	text-align: center;
+	letter-spacing: 0.5px;
 }
 
 .staking-main-layout {
-	background: #0C0241;
-}
-
-@media (max-width: 1920px) {
-	.main-button-theme {
-		font-size: 2rem;
-		line-height: 2.25rem;
-	}
-	.presale-title-layout {
-		font-size: 4rem;
-		line-height: 4rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 1rem;
-	}	
-	.presale-amount-layout {
-		font-size: 2.5rem;
-		line-height: 2.75rem;
-	}
-	.token-sold-label-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 1rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 3rem;
-		line-height: 3.5rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 2rem;
-		line-height: 2.5rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 1.75rem;
-		line-height: 2rem;
-	}
-	
-	.presale-duration-comment2-layout {
-		font-size: 1.5rem;
-		line-height: 1.5rem;
-	}
-}
-
-@media (max-width: 1800px) {
-}
-
-@media (max-width: 1600px) {
-	.main-button-theme {
-		font-size: 32px;
-		line-height: 26px;
-	}
-	.presale-title-layout {
-		font-size: 3rem;
-		line-height: 3.2rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0.5rem;
-	}	
-	.presale-amount-layout {
-		font-size: 2rem;
-		line-height: 2.25rem;
-	}
-	.token-sold-label-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 0.5rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 2rem;
-		line-height: 2.5rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-	.presale-duration-comment1-layout {
-	    font-size: 24px;
-	    line-height: 16px;
-	    letter-spacing: -2px;
-   	}
-	
-	.presale-duration-comment2-layout {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
-	}
-}
-
-@media (max-width: 1440px) {
-	.main-button-theme {
-		font-size: 1.75rem;
-		line-height: 2rem;
-	}
-	.presale-title-layout {
-		font-size: 2.5rem;
-		line-height: 2.75rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0.75rem;
-	}	
-	.presale-amount-layout {
-		font-size: 2rem;
-		line-height: 2.25rem;
-	}
-	.token-sold-label-layout {
-		font-size: 1.25rem;
-		line-height: 1rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 0.75rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 2rem;
-		line-height: 2.25rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
-		letter-spacing: -1px;
-	}
-	.presale-duration-comment2-layout {
-		font-size: 1rem;
-		line-height: 1.25rem;
-		letter-spacing: 0rem;
-	}
+	background: #0c0241;
+	height: 100vh;
+	overflow: hidden;
 }
 
 @media (max-width: 1280px) {
-	.main-button-theme {
+	.greeting-layout h2 {
+		font-size: 60px;
+	}
+	.greeting-description-layout {
 		font-size: 20px;
-		line-height: 24px;
 	}
-	.presale-title-layout {
-		font-size: 2rem;
-		line-height: 2.25rem;
+	.main-button-theme {
+		font-size: 25px;
+		line-height: 25px;
 	}
-	.presale-amount-section-layout {
-		margin-bottom: 1rem;
-	}	
-	.presale-amount-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-	.token-sold-label-layout {
-		font-size: 1.25rem;
-		line-height: 1rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 1rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 2rem;
-		line-height: 2.25rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
+	.right-panel-bg-layout {
+		margin-top: 50px;
+		padding: 70px;
 	}
 	.presale-duration-comment1-layout {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
-		letter-spacing: -1px;
+		font-size: 16px;
 	}
 	.presale-duration-comment2-layout {
-		font-size: 1rem;
-		line-height: 1.25rem;
-		letter-spacing: 0px;
+		font-size: 14px;
 	}
+	.presale-title-layout {
+		font-size: 48px;
+	}
+	/* .tokenomics-card {
+		width: 14rem;
+	} */
 }
 
 @media (max-width: 1024px) {
-	body {
-		font-size: 10px;
-	}
-	.main-button-theme {
-		font-size: 1.5rem;
-		line-height: 2rem;
-	}
-	.greeting-layout h2 {
-		font-size: 3rem;
-		line-height: 3.5rem;
-	}
-	.greeting-description-layout div div {
-		font-size: 1rem;
-	}
-	.presale-title-layout {
-		font-size: 2.25rem;
-		line-height: 2.75rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0.75rem;
-	}	
-	.presale-amount-layout {
-		font-size: 2rem;
-		line-height: 2rem;
-	}
-	.token-sold-label-layout {
-		font-size: 1rem;
-		line-height: 1rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 0.75rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 2rem;
-		line-height: 2rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 1.25rem;
-		line-height: 1.25rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
-		letter-spacing: -1px;
-	}
-	.presale-duration-comment2-layout {
-		font-size: 1rem;
-		line-height: 1.25rem;
-		letter-spacing: -1px;
-	}
-	.tokenomics-card {
-		width: 14rem;
-	}
-}
-
-@media (max-width: 991px) {
-	.header-layout {
-		height: 1rem;
-	}
-	.tokenomics-card {
-		width: 22rem;
+	.right-panel-bg-layout {
+		padding: 100px;
 	}
 	.top-layout {
-		height: auto;
+		height: 100%;
 	}
-	.left-panel-buttons-layout button {
-		justify-content: center; /*space-between*/
-		margin-bottom: 1rem;
+	.top-container {
+		height: 100%;
 	}
+	.greeting-layout h2 {
+		font-size: 70px;
+	}
+	.greeting-description-layout {
+		font-size: 26px;
+	}
+	.main-button-theme {
+		font-size: 25px;
+		line-height: 25px;
+	}
+	.right-panel-bg-layout {
+		margin-top: 50px;
+		padding: 70px;
+	}
+	.presale-duration-comment1-layout {
+		font-size: 16px;
+	}
+	.presale-duration-comment2-layout {
+		font-size: 14px;
+	}
+	.presale-title-layout {
+		font-size: 48px;
+	}
+	/* .tokenomics-card {
+		width: 14rem;
+	} */
 }
 
 @media (max-width: 768px) {
-	.top-layout {
-		height: auto;
-	}
-	.header-layout {
-		height: 3.5rem;
-	}
-	.top-container {
-		padding-top: 10%;
-		height: auto;
-	}
-	.content-layout {
-		padding: 7% 5%;
-		height: auto;
-	}
-	.presale-duration-comment2-layout {
-		letter-spacing: -0.05rem;
-	}
-	.greeting-layout {
-		margin-bottom: 1rem;
-	}
 	.greeting-layout h2 {
-		font-weight: 600;
-		font-size: 2.5rem;
-		line-height: 3rem;
-		/* or 114% */
-		letter-spacing: -0.05rem;
+		font-size: 60px;
 	}
-	.left-panel-buttons-layout {
-		justify-content: space-around !important;
-	}
-	.left-panel-buttons-layout button {
-		justify-content: center; /*space-between*/
-		margin-bottom: 1rem;
+	.greeting-description-layout {
+		font-size: 20px;
 	}
 	.presale-duration-comment1-layout {
-		letter-spacing: 0;
+		font-size: 20px;
 	}
 	.presale-duration-comment2-layout {
-		letter-spacing: -0.05rem;
+		font-size: 16px;
 	}
-	.tokenomics-card {
+	.footer-title-text {
+		font-size: 20px !important;
+	}
+	.buy-vicc-button {
+		font-size: 16px !important;
+	}
+	/* .tokenomics-card {
 		width: 18rem;
+	} */
+	.roadmap-block-left {
+		justify-content: start !important;
 	}
-}
+	.roadmap-block-right {
+		justify-content: end !important;
+	}
 
-@media (max-width: 640px) {
-	.header-layout {
-		height: 2.5rem;
-	}
-	.top-container {
-		padding-top: 10%;
-		height: auto;
-	}
-	.content-layout {
-		padding: 7% 5%;
-		height: auto;
-	}
-	.left-panel-buttons-layout {
-		justify-content: center; /*space-between*/
-		display: block !important;
-	}
-	.left-panel-buttons-layout button {
-		justify-content: center; /*space-between*/
-		margin-bottom: 1rem;
-	}
-	.presale-duration-comment2-layout {
-		letter-spacing: -0.05rem;
-	}
-	.greeting-layout {
-		margin: 1rem 0;
-	}
-	.greeting-section-layout {
-		margin-bottom:  1rem;
-	}
-	.greeting-layout h2 {
-		font-weight: 600;
-		font-size: 2.5rem;
-		line-height: 3rem;
-		/* or 114% */
-		letter-spacing: -0.05rem;
+	.roadmap-content-layout {
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 }
 
 @media (max-width: 425px) {
-	body {
-		font-size: 10px;
+	.roadmap-block-left {
+		justify-content: center !important;
 	}
-	.main-button-theme {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
+	.roadmap-block-right {
+		justify-content: center !important;
 	}
-	.header-layout {
-		height: 2.5rem;
+	.footer-logo-box {
+		justify-content: center;
+	}
+	.responive-margin {
+		margin-bottom: 200px !important;
+	}
+	.staking-main-layout {
+		height: 100%;
+	}
+	.top-content {
+		flex-direction: column;
 	}
 	.top-container {
-		padding-top: 10%;
-		height: auto;
-	}
-	.content-layout {
-		padding: 7% 5%;
-		height: auto;
-	}
-	.left-panel-buttons-layout {
-		justify-content: center; /*space-between*/
-		display: block !important;
-	}
-	.left-panel-buttons-layout button {
-		margin-bottom: 1rem;
-	}
-	/* .right-panel-bg-section-layout {
-		margin-left: -4rem;
-	} */
-	.presale-amount-section-layout {
-		margin-bottom: 1rem;
-	}
-	.presale-title-layout {
-		font-size: 2rem;
-	}
-	.presale-amount-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 1rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 1.6rem;
-		line-height: 1rem;
-		letter-spacing: -0.1rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 1.2rem;
-		line-height: 1rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 0.75rem;
-   		letter-spacing: 0rem;
-   	}
-	.presale-duration-comment2-layout {
-		font-size: 0.5rem;
-		letter-spacing: 0;
-	}
-	.greeting-layout {
-		margin: 1rem 0;
-	}
-	.greeting-section-layout {
-		margin-bottom:  1rem;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 	.greeting-layout h2 {
-		font-weight: 600;
-		font-size: 2.5rem;
-		line-height: 3rem;
-		/* or 114% */
-		letter-spacing: -0.05rem;
+		font-size: 40px;
+		line-height: 55px;
+	}
+	.greeting-description-layout {
+		font-size: 14px;
+		line-height: 25px;
+	}
+	.main-button-theme {
+		font-size: 15px;
+		line-height: 15px;
+	}
+	.right-panel-bg-layout {
+		margin-top: 10px;
+		padding: 35px;
+	}
+	.presale-title-layout,
+	.presale-amount-layout {
+		font-size: 25px;
+	}
+	.token-sold-label-layout {
+		font-size: 16px;
+		line-height: 20px;
+	}
+	.elapsed-datetime-value-layout {
+		font-size: 30px;
+		line-height: 20px;
+	}
+	.elapsed-datetime-label-layout {
+		font-size: 14px;
+		line-height: 14px;
+	}
+	.presale-duration-comment2-layout {
+		font-size: 10px;
+		line-height: 15px;
+	}
+	.presale-duration-comment1-layout {
+		font-size: 12px;
+		line-height: 15px;
+	}
+	.presale-card-top {
+		padding: 15px 25px 8px !important;
 	}
 }
 
 @media (max-width: 375px) {
-	body {
-		font-size: 10px;
-	}
-	.main-button-theme {
-		font-size: 1rem;
-		line-height: 1rem;
-	}
-	.top-container {
-		padding-top: 15%;
-		height: auto;
-	}
-	.header-layout {
-		height: 2.5rem;
-	}
-	.content-layout {
-		display: block;
-		padding: 0.1rem;
-	}
-	.left-panel-buttons-layout {
-		justify-content: center; /*space-between*/
-		display: block !important;
-	}
-	.left-panel-buttons-layout button {
-		margin-bottom: 1rem;
-	}
-	.greeting-layout {
-		margin: 1rem 0;
-	}
-	.greeting-section-layout {
-		margin-bottom:  1rem;
-	}
-	.greeting-layout h2 {
-		font-weight: 600;
-		font-size: 2.5rem;
-		line-height: 3rem;
-		/* or 114% */
-		letter-spacing: -0.05rem;
-	}
-	.presale-title-layout {
-		font-size: 2rem;
-		line-height: 2.25rem;
-	}
 	.right-panel-bg-layout {
-		padding: 6% 6%;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0.5rem;
-	}	
-	.presale-amount-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-	.token-sold-label-layout {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 0.75rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 1.25rem;
-		line-height: 1.5rem;
-		letter-spacing: 0.5rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 1rem;
-		line-height: 1.25rem;
+		margin-top: 0px;
+		padding: 40px;
 	}
 	.presale-duration-comment1-layout {
-		font-size: 1rem;
-		line-height: 1.25rem;
-		letter-spacing: -0.06rem;
+		font-size: 10px;
+		line-height: 15px;
 	}
 	.presale-duration-comment2-layout {
-		font-size: .9rem;
-		line-height: 1rem;
-		letter-spacing: -0.05rem;
+		font-size: 8px;
+		line-height: 15px;
 	}
-	.toggle-nav-btn-layout {
-		margin-right: 0;
-	}
-	.logo-layout img {
-		width: 2rem;
-	}
-	header div a img {
-		width: 2rem;
-	}
-	.page-title-label-layout {
-		margin-top: -4.5rem;
-	}
-	.roadmap-block-layout {
-		width: 18rem;
-		margin-left: 0.5rem;
-	}
-}
-
-@media (max-width: 320px) {
-	body {
-		font-size: 10px;
-	}
-	.main-button-theme {
-		font-size: 1rem;
-		line-height: 1rem;
-	}
-	.top-container {
-		padding-top: 15%;
-		height: auto;
-	}
-	.header-layout {
-		height: 2.5rem;
-	}
-	.content-layout {
-		display: block;
-		padding: 0.1rem;
-	}
-	.left-panel-buttons-layout {
-		justify-content: center; /*space-between*/
-		display: block !important;
-	}
-	.left-panel-buttons-layout button {
-		margin-bottom: 1rem;
-	}
-	.greeting-layout {
-		margin: 1rem 0;
-	}
-	.greeting-section-layout {
-		margin-bottom:  1rem;
-	}
-	.greeting-layout h2 {
-		font-weight: 600;
-		font-size: 2.5rem;
-		line-height: 3rem;
-		/* or 114% */
-		letter-spacing: -0.05rem;
-	}
-	.right-panel-bg-layout {
-		padding: 6% 6%;
-	}
-	.presale-title-layout {
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-	.presale-amount-section-layout {
-		margin-bottom: 0.25rem;
-	}	
 	.presale-amount-layout {
-		font-size: 1rem;
-		line-height: 1.25rem;
-	}
-	.token-sold-label-layout {
-		font-size: 0.75rem;
-		line-height: 1rem;
-	}
-	.elapsed-time-layout {
-		margin-bottom: 0.25rem;
-	}
-	.elapsed-datetime-value-layout {
-		font-size: 1rem;
-		line-height: 1.25rem;
-	}
-	.elapsed-datetime-label-layout {
-		font-size: 0.75rem;
-		line-height: 1rem;
-	}
-	.presale-duration-comment1-layout {
-		font-size: 11px;
-		line-height: 1rem;
-		letter-spacing: -1px;
-	}
-	.presale-duration-comment2-layout {
-		font-size: 10px;
-		line-height: .75rem;
-		letter-spacing: -1px;
-	}
-	.toggle-nav-btn-layout {
-		margin-right: 0;
-	}
-	.logo-layout img {
-		width: 2rem;
-	}
-	header div a img {
-		width: 2rem;
-	}
-	.page-title-label-layout {
-		margin-top: -4.5rem;
-	}
-	.roadmap-block-layout {
-		width: 18rem;
-		margin-left: 0.5rem;
+		line-height: 25px;
 	}
 }

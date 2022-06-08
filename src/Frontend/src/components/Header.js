@@ -21,7 +21,7 @@ export default () => {
             alt="Vicc"
           />
         </Link>
-          {/* <Button
+        {/* <Button
             className="w-full md:w-1/5 invisible md:visible text-2xl flex flex-row justify-center "
             uppercase={false}
             onClick={StakingDetail}
