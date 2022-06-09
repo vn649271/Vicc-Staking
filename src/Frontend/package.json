@@ -34,8 +34,8 @@
   },
   "scripts": {
     "start": "run-s build:clean build:style react:start",
-    "react:start": "react-scripts --max_old_space_size=1024 start",
-    "react:build": "react-scripts --max_old_space_size=1024 build",
+    "react:start": "react-scripts --max_old_space_size=2048 start",
+    "react:build": "react-scripts --max_old_space_size=2048 build",
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "build:clean": "rimraf ./build",
     "build": "run-s build:clean build:style react:build"
