@@ -9,8 +9,8 @@ import Card from "../components/common/Card";
 import Spinner from "../components/common/Spinner";
 import { initWeb3 } from "../utils.js";
 import fromExponential from "from-exponential";
-import { injectStyle } from "react-toastify/dist/inject-style";
-import { ToastContainer, toast } from "react-toastify";
+// import { injectStyle } from "react-toastify/dist/inject-style";
+// import { ToastContainer, toast } from "react-toastify";
 import NavMenuBar from "../components/common/NavMenuBar";
 
 import {
@@ -20,7 +20,7 @@ import {
 } from "../utils/constants";
 
 if (typeof window !== "undefined") {
-  injectStyle();
+  // injectStyle();
 }
 
 const HomePage = (props) => {
@@ -233,14 +233,14 @@ const HomePage = (props) => {
 
   async function registerAndStake() {
     if (amount == undefined || amount === 0 || amount === "") {
-      toast.dark("Minimum staking value is 1000 VICC!");
+      // toast.dark("Minimum staking value is 1000 VICC!");
       return;
     }
     setStakeLoading(true);
     await updateAll();
     const actual = amount * 10 ** 18;
     if (actual < parseFloat(minStake)) {
-      toast.dark("Minimum staking value is VICC!");
+      // toast.dark("Minimum staking value is VICC!");
       setStakeLoading(false);
       return;
     }
@@ -272,7 +272,7 @@ const HomePage = (props) => {
     await updateAll();
     if (parseFloat(totalAvailabelReward) === 0) {
       console.error("No earnings yet!");
-      toast.dark("No earnings yet!");
+      // toast.dark("No earnings yet!");
       setWithdrawLoading(false);
       return;
     }
@@ -293,7 +293,7 @@ const HomePage = (props) => {
     await updateAll();
     if (parseFloat(stakingRewards) === 0) {
       console.error("No earnings yet!");
-      toast.dark("No staking reward yet!");
+      // toast.dark("No staking reward yet!");
       setCompoundLoading(false);
       return;
     }
@@ -370,7 +370,7 @@ const HomePage = (props) => {
 
   return (
     <div className="top-layout w-full overflow-hidden">
-      <ToastContainer />
+      {/*<ToastContainer />*/}
       {showModal && (
         <Modal title="" onClose={() => setShowModal(false)}>
           <div className="text-2xl mb-2">
