@@ -31,7 +31,7 @@ const HomePage = (props) => {
   const [error, setError] = useState("");
   const [web3, setWeb3] = useState();
   const [accounts, setAccounts] = useState();
-  const [bcStake, setbcStake] = useState();
+  const [viccStaking, setViccStaking] = useState();
   const [viccToken, setViccToken] = useState();
   const [totalSupply, setTotalSupply] = useState();
   const [balance, setBalance] = useState();
@@ -75,26 +75,26 @@ const HomePage = (props) => {
     const totalSupply = await viccToken.methods.totalSupply().call();
     const balance = await viccToken.methods.balanceOf(accounts[0]).call();
 
-    const bcStake = new web3.eth.Contract(stakingDeployedInfo.abi, stakingDeployedInfo.address); //mainnet adddress for staking dapp
-    const totalStaked = await bcStake.methods
+    const viccStaking = new web3.eth.Contract(stakingDeployedInfo.abi, stakingDeployedInfo.address); //mainnet adddress for staking dapp
+    const totalStaked = await viccStaking.methods
       .getUserTotalDeposits(accounts[0])
       .call();
-    const minStake = await bcStake.methods.minimumStakeValue().call();
-    const referralRewards = await bcStake.methods
+    const minStake = await viccStaking.methods.minimumStakeValue().call();
+    const referralRewards = await viccStaking.methods
       .getUserReferralBonus(accounts[0])
       .call();
-    const referralCount = await bcStake.methods
+    const referralCount = await viccStaking.methods
       .getUserReferralCount(accounts[0])
       .call();
-    const dailyROI = await bcStake.methods.DAILY_ROI().call();
+    const dailyROI = await viccStaking.methods.DAILY_ROI().call();
 
-    const totalAvailable = await bcStake.methods
+    const totalAvailable = await viccStaking.methods
       .getUserAvailable(accounts[0])
       .call();
 
     setWeb3(web3);
     setAccounts(accounts);
-    setbcStake(bcStake);
+    setViccStaking(viccStaking);
     setViccToken(viccToken);
     setTotalSupply(totalSupply);
     setBalance(balance);
@@ -120,7 +120,7 @@ const HomePage = (props) => {
   };
 
   const isReady = () => {
-    return !!bcStake && !!web3 && !!accounts;
+    return !!viccStaking && !!web3 && !!accounts;
   };
 
   useEffect(() => {
@@ -150,14 +150,14 @@ const HomePage = (props) => {
     if (isReady()) {
       updateAll();
     }
-  }, [bcStake, viccToken, web3, accounts]);
+  }, [viccStaking, viccToken, web3, accounts]);
 
   async function updateReferrals() {
     if (viccToken) {
-      const referralRewards = await bcStake.methods
+      const referralRewards = await viccStaking.methods
         .getUserReferralBonus(accounts[0])
         .call();
-      const referralCount = await bcStake.methods
+      const referralCount = await viccStaking.methods
         .getUserReferralCount(accounts[0])
         .call();
       setReferralRewards(referralRewards);
@@ -182,8 +182,8 @@ const HomePage = (props) => {
   }
 
   async function updateTotalStaked() {
-    if (bcStake) {
-      const totalStaked = await bcStake.methods
+    if (viccStaking) {
+      const totalStaked = await viccStaking.methods
         .getUserTotalDeposits(accounts[0])
         .call();
       await setTotalStaked(totalStaked);
@@ -192,9 +192,9 @@ const HomePage = (props) => {
   }
 
   async function updateTotalAvailable() {
-    if (bcStake) {
+    if (viccStaking) {
       const value = parseFloat(
-        await bcStake.methods.getUserAvailable(accounts[0]).call()
+        await viccStaking.methods.getUserAvailable(accounts[0]).call()
       );
       await setTotalAvalilableReward(value);
       return value;
@@ -202,9 +202,9 @@ const HomePage = (props) => {
   }
 
   async function minRegisteration() {
-    if (bcStake) {
+    if (viccStaking) {
       const value = parseFloat(
-        await bcStake.methods.minimumStakeValue().call()
+        await viccStaking.methods.minimumStakeValue().call()
       );
       const sum = parseFloat(value / 1000000000000000000);
       await setMinRegister(sum);
@@ -213,9 +213,9 @@ const HomePage = (props) => {
   }
 
   async function stakeRewards() {
-    if (bcStake) {
+    if (viccStaking) {
       const rewards = parseFloat(
-        await bcStake.methods.getUserDividends(accounts[0]).call()
+        await viccStaking.methods.getUserDividends(accounts[0]).call()
       );
       await setStakeRewards(rewards);
       return rewards;
@@ -224,7 +224,7 @@ const HomePage = (props) => {
 
   async function totalReward() {
     const sum = parseFloat(
-      await bcStake.methods.getUserTotalWithdrawn(accounts[0]).call()
+      await viccStaking.methods.getUserTotalWithdrawn(accounts[0]).call()
     );
 
     await setTotalRewards(sum);
@@ -253,7 +253,7 @@ const HomePage = (props) => {
       console.log("!!!!!!!!!!!!!!!!! Approved");
       if (!ref || ref.length !== 42)
         ref = "0x0000000000000000000000000000000000000000";
-      await bcStake.methods.invest(ref, arg).send({
+      await viccStaking.methods.invest(ref, arg).send({
         from: accounts[0],
         gas: "3000000",
       });
@@ -270,14 +270,14 @@ const HomePage = (props) => {
   async function withdrawEarnings() {
     setWithdrawLoading(true);
     await updateAll();
-    if (parseFloat(totalAvailabelReward) === 0) {
+    if (parseFloat(totalAvailabelReward) / (10 ** 18) < 0.1) {
       console.error("No earnings yet!");
       // toast.dark("No earnings yet!");
       setWithdrawLoading(false);
       return;
     }
     try {
-      await bcStake.methods.withdraw().send({ from: accounts[0] });
+      await viccStaking.methods.withdraw().send({ from: accounts[0] });
       await updateAll();
     } catch (err) {
       if (err.code !== 4001) {
@@ -298,7 +298,7 @@ const HomePage = (props) => {
       return;
     }
     try {
-      await bcStake.methods.reinvest().send({ from: accounts[0] });
+      await viccStaking.methods.reinvest().send({ from: accounts[0] });
       await updateAll();
     } catch (err) {
       if (err.code !== 4001) {
@@ -309,7 +309,7 @@ const HomePage = (props) => {
     setCompoundLoading(false);
   }
 
-  const buybc = () => {
+  const buyVicc = () => {
     window
       .open(
         "https://pancakeswap.finance/swap?outputCurrency=0x09CD2D1351DeBe79E6da00Fd5d078b4FCe89721C",
@@ -447,7 +447,7 @@ const HomePage = (props) => {
                     <Button
                       className="w-full md:w-2/5 text-2xl flex flex-row buy-vicc-button justify-center mx-auto medium-size"
                       uppercase={false}
-                      onClick={buybc}
+                      onClick={buyVicc}
                     >
                       BUY VICC
                     </Button>
@@ -485,7 +485,7 @@ const HomePage = (props) => {
                 <Button
                   className="w-full md:w-2/5 text-2xl flex flex-row  buy-vicc-button justify-center mx-auto medium-size"
                   uppercase={false}
-                  onClick={buybc}
+                  onClick={buyVicc}
                 >
                   Buy VICC
                 </Button>
@@ -613,9 +613,9 @@ const HomePage = (props) => {
                           <span className="text-gray-400 text-lg">
                             Staking Reward:{" "}
                           </span>
-                          {(
-                            parseFloat(stakingRewards) / 1000000000000000000
-                          ).toFixed(2)}{" "}
+                          {
+                          (parseFloat(stakingRewards) / (10**18)).toFixed(2)
+                          }{" "}
                           VICC
                         </div>
                         <div>

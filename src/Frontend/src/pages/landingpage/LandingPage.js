@@ -181,7 +181,7 @@ const LandingPage = () => {
 										</p>
 									</div>
 								</div>
-								<img src='/images/landingpage/5.png' className='roadmap-img' />
+								<img src='/images/landingpage/5.png' className='transform-img' />
 								<img src='/images/landingpage/9.png' className='roadmap-hiddenimg' />
 							</div>
 							<div className='roadmap-content-items covering-development'>
@@ -217,7 +217,7 @@ const LandingPage = () => {
 										</p>
 									</div>
 								</div>
-								<img src='/images/landingpage/7.png' className='roadmap-img' />
+								<img src='/images/landingpage/7.png' className='transform-img' />
 								<img src='/images/landingpage/11.png' className='roadmap-hiddenimg' />
 							</div>
 						</div>

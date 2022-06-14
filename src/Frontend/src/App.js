@@ -25,6 +25,9 @@ const App = () => {
         <Route path="/tokenomics" exact>
           <TokenomicsPage />
         </Route>
+        <Route path="/token_contract" exact>
+          <a href="https://testnet.bscscan.com/token/0x2b3d6dfd444695e9aa37c0e4e8fc47f26c9cc594" />
+        </Route>
       </Switch>
     </>
   );

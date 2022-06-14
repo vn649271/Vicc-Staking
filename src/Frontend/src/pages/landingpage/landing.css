@@ -348,7 +348,8 @@
     .roadmap-hiddenimg {
         display: inline-block;
     }
-    .roadmap-img {
+    .roadmap-img,
+    .transform-img {
         display: none;
     }
     .tokenomics-content-items,

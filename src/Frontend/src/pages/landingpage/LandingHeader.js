@@ -28,7 +28,9 @@ export default function LandingHeader() {
 		setSelectedMenuItem(selectedItem);
 		history.push("/" + selectedItem);
 	}
-
+    const onClickBeginStaking = ev => {
+            history.push("/stake");
+    }
 	return (
 		<div className='landingheader-nav'>
 			<div className='haeder-container'>
@@ -53,8 +55,10 @@ export default function LandingHeader() {
 									Roadmap
 								</Link>
 							</li>
-							<li id="menu-item-contract" className={`hader-items ${selectedMenuItem} == 'contract'? 'active': ''`} onClick={onSelectMenuItem}>
-								Token Contract
+							<li id="menu-item-contract" className={`hader-items ${selectedMenuItem} == 'token_contract'? 'active': ''`} onClick={onSelectMenuItem}>
+								<Link activeClass="active" smooth spy to="token_contract">
+									Token Contract
+								</Link>
 							</li>
 							<li id="menu-item-charts" className={`hader-items ${selectedMenuItem} == 'charts'? 'active': ''`} onClick={onSelectMenuItem}>
 								Charts
@@ -68,7 +72,7 @@ export default function LandingHeader() {
 						</ul>
 					)}
 					<div className='flex items-center'>
-						<span className='header-btn text-white'>
+						<span className='header-btn text-white' onClick={onClickBeginStaking}>
 							Begin Staking
 						</span>
 						<span className='header-btn text-white'>

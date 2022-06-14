@@ -297,7 +297,7 @@ button.gradient-button-bg:focus {
 .staking-main-layout {
 	background: #0c0241;
 	height: 100vh;
-	overflow: hidden;
+	overflow: auto;
 }
 
 @media (max-width: 1280px) {
