@@ -1,0 +1,416 @@
+/* header */
+
+.landingheader-nav {
+    background-image: url("/images/landingpage/header.png");
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+.haeder-container {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+}
+.hader-items {
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 0 10px;
+    cursor: pointer;
+}
+.header-btn {
+    border-radius: 10px;
+    background-color: rgb(255, 196, 0);
+    padding: 8px 20px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* body */
+
+.landing-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* introduction-body */
+
+.intro-title {
+    font-size: 60px;
+    font-weight: 700;
+}
+.intro-text {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: justify;
+}
+.arrow-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgb(229, 118, 6);
+    background: linear-gradient(90deg, rgba(229, 118, 6, 1) 35%, rgba(242, 182, 12, 1) 100%);
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.69);
+    margin-left: 10px;
+    color: white;
+    font-weight: 700;
+}
+.introbutton {
+    cursor: pointer;
+    padding: 15px 25px;
+    border-radius: 20px;
+    margin-right: 15%;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 700;
+    background: rgb(229, 118, 6);
+    background: linear-gradient(90deg, rgba(229, 118, 6, 1) 35%, rgba(242, 182, 12, 1) 100%);
+}
+.introbutton2 {
+    cursor: pointer;
+    padding: 15px 25px;
+    border-radius: 20px;
+    margin-right: 15%;
+    display: flex;
+    align-items: center;
+    color: black;
+    font-weight: 700;
+    background: rgb(238, 169, 99);
+}
+
+/* information-body */
+
+.info-first {
+    background-color: #fce6b7;
+}
+.info-second {
+    background-color: #fbdc81;
+}
+.info-content {
+    position: relative;
+}
+.info-textbox {
+    top: 100px;
+    left: 68px;
+    width: 65%;
+    position: absolute;
+}
+.info-title {
+    font-size: 15px;
+    font-weight: 700;
+    padding-bottom: 10px;
+}
+.info-text {
+    font-size: 10px;
+    text-align: justify;
+    line-height: 13px;
+}
+
+/* tokenomics-body */
+
+.tokenomics-body {
+    background: rgb(1, 0, 102);
+    background: linear-gradient(180deg, rgba(1, 0, 102, 1) 35%, rgba(58, 130, 212, 1) 100%);
+}
+
+.tokenomics-title {
+    font-size: 30px;
+    color: #ea4e00;
+    font-weight: 700;
+}
+.tokenomics-description {
+    font-size: 20px;
+    font-weight: 700;
+    background-color: #e78505;
+}
+
+.tokenomics-content-items {
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    background: rgb(240, 153, 0);
+    background: linear-gradient(180deg, rgba(240, 153, 0, 1) 35%, rgba(232, 95, 8, 1) 100%);
+    height: 220px;
+}
+
+.tokenomics-content-items .items-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.tokenomics-content-items .items-context {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tokenomics-content-items1 {
+    color: black;
+    padding: 20px;
+    margin: 10px;
+    background: rgb(255, 255, 255);
+    height: 220px;
+}
+
+.tokenomics-content-items1 .items-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.tokenomics-content-items1 .items-context {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* roadmap-body */
+
+.roadmap-title {
+    box-shadow: 0px 5px 4px 0px rgba(0, 0, 0, 0.69);
+    padding: 10px 100px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.transform-img {
+    /* transform: rotate(180deg); */
+    margin-right: 340px;
+}
+
+.roadmap-img {
+    margin-left: 340px;
+}
+.roadmap-content-items {
+    position: relative;
+}
+
+.roadmap-text-box1 {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    z-index: 10;
+}
+.roadmap-text-box2 {
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    z-index: 10;
+}
+.roadmap-text-box3 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+.roadmap-text-box4 {
+    top: 20px;
+    left: 5px;
+    position: absolute;
+    z-index: 10;
+}
+.roadmap-hiddenimg {
+    display: none;
+}
+.text-box-title {
+    color: white;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.text-box-context {
+    color: white;
+    font-size: 8px;
+}
+
+/* landing-footer */
+
+.landing-footer {
+    color: white;
+    font-weight: 700;
+    background: rgb(240, 153, 0);
+    background: linear-gradient(180deg, rgba(240, 153, 0, 1) 35%, rgba(232, 95, 8, 1) 100%);
+}
+
+.footer-text1,
+.footer-text1 {
+    font-size: 20px;
+}
+
+.social-icons p {
+    font-size: 25px;
+}
+
+.social-icons div {
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .haeder-container {
+        padding: 0 20px;
+    }
+    .hader-items {
+        font-size: 16px;
+    }
+    .header-logo img {
+        width: 80px;
+    }
+    .introbutton {
+        font-size: 16px;
+        margin-right: 10%;
+    }
+    .intro-title {
+        font-size: 50px;
+    }
+    .intro-text {
+        font-size: 18px;
+    }
+    .info-first,
+    .info-second {
+        padding: 10px !important;
+    }
+    .tokenomics-description {
+        font-size: 16px;
+    }
+    .tokenomics-content {
+        flex-wrap: wrap;
+    }
+    .footer-text1,
+    .footer-text1 {
+        font-size: 16px;
+    }
+    .footer-bottom-text {
+        font-size: 16px;
+    }
+    .toggle-nav-btn-layout button {
+        display: inline-block;
+        border: 1px solid #ffc400 !important;
+    }
+    .tokenomics-content-items,
+    .tokenomics-content-items1 {
+        width: 50% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu-list.with-bg-color {
+        background: linear-gradient(180deg, rgb(232 95 8), #fdbb01);
+        position: absolute;
+        flex-direction: column;
+        top: 100px;
+        left: 0;
+        right: 0;
+        height: 190px;
+    }
+    .hader-items {
+        font-size: 16px;
+        padding: 5px 0;
+    }
+    .introtext-box {
+        width: 100%;
+    }
+    .introduction-body-content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .introbutton,
+    .introbutton2 {
+        margin-right: 0%;
+    }
+    .intro-buttonbox {
+        justify-content: space-between;
+    }
+    .information-body {
+        flex-direction: column;
+    }
+    .info-first,
+    .info-second {
+        width: 100%;
+        justify-content: center;
+        padding: 30px 10px !important;
+    }
+    .roadmap-img {
+        margin-left: 200px;
+    }
+    .transform-img {
+        margin-right: 220px;
+    }
+}
+@media (max-width: 425px) {
+    .roadmap-hiddenimg {
+        display: inline-block;
+    }
+    .roadmap-img {
+        display: none;
+    }
+    .tokenomics-content-items,
+    .tokenomics-content-items1 {
+        width: 90% !important;
+    }
+    .footer-text1,
+    .footer-text2 {
+        font-size: 12px;
+    }
+    .social-icons img {
+        width: 50px;
+    }
+    .social-icons p {
+        font-size: 14px;
+    }
+    .footer-bottom-text {
+        font-size: 10px;
+    }
+    .info-textbox {
+        top: 75px;
+        left: 55px;
+    }
+    .header-btn {
+        background-color: rgb(255, 196, 0);
+        padding: 8px 5px;
+        font-size: 10px;
+    }
+    .header-logo img {
+        width: 60px;
+    }
+    .nav-menu-list.with-bg-color {
+        top: 80px;
+    }
+    .intro-title {
+        font-size: 30px;
+    }
+    .intro-text {
+        font-size: 12px;
+    }
+    .introimg-box {
+        width: 70%;
+    }
+    .intro-buttonbox {
+        flex-direction: column;
+    }
+    .introbutton,
+    .introbutton2 {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        padding: 10px 25px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+}
+@media (max-width: 375px) {
+    .info-textbox {
+        top: 65px;
+        left: 50px;
+    }
+    .info-text {
+        line-height: 10px;
+    }
+}
