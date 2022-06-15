@@ -124,7 +124,7 @@ contract Ownable {
   }
 }
 
-contract VictoryCashCoinStaking is Ownable {
+contract ViccStaking is Ownable {
     using SafeMath for uint256;
 
     uint256 constant public PERCENTS_DIVIDER = 1000;

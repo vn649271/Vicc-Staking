@@ -1,4 +1,4 @@
-const ViccStaking = artifacts.require("VictoryCashCoinStaking");
+const ViccStaking = artifacts.require("ViccStaking");
 const ViccToken = artifacts.require("ViccToken");
 
 module.exports = async function (deployer) {
