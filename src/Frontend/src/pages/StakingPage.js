@@ -219,26 +219,29 @@ const StakingPage = (props) => {
     if (viccAddress !== tokenInstance._address)  {
       const symbol = await tokenInstance.methods.symbol().call();
       const decimals = await tokenInstance.methods.decimals().call();
-  
-      await window.ethereum.sendAsync({
-        method: 'wallet_watchAsset',
-        params: {
-          type: 'ERC20',
-          options: {
-            address: tokenInstance._address,
-            symbol: symbol,
-            decimals: decimals,
-            image: null,
+      try {
+        await window.ethereum.sendAsync({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: tokenInstance._address,
+              symbol: symbol,
+              decimals: decimals,
+              image: null,
+            },
           },
-        },
-      }, (err, added) => {
-        if (added) {
-            localStorage.setItem("ViccAddress", tokenInstance._address);
-            console.log('VICC token added!')
-        } else {
-            console.log('Failed to add VICC token!', err)
-        }
-      });
+        }, (err, added) => {
+          if (added) {
+              localStorage.setItem("ViccAddress", tokenInstance._address);
+              console.log('VICC token added!')
+          } else {
+              console.log('Failed to add VICC token!', err)
+          }
+        });
+      } catch (error) {
+        showToast("Failed to add VICC token:", error.message);
+      }
     }
   }
   const isReady = () => {
