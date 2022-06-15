@@ -131,6 +131,7 @@ contract ViccStaking is Ownable {
 	uint256 constant public DAILY_ROI = 15;
     uint256 constant public REFERRAL_PERCENTS = 12; // 12%
     uint256 constant public TIME_STEP = 1 days;
+    uint256 constant public MIN_STAKE_AMOUNT = 1000 * (10**18);
 	
 	ERC20Interface VictoryCoin;
 
@@ -330,7 +331,7 @@ contract ViccStaking is Ownable {
     }
 
     function minimumStakeValue() public view returns(uint256) {
-        return 0;
+        return MIN_STAKE_AMOUNT;
     }
 
     function getUserReferralBonus(address userAddress) public view returns(uint256) {

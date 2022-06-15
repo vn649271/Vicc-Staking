@@ -11,6 +11,7 @@ import { initWeb3 } from "../utils.js";
 import fromExponential from "from-exponential";
 // import { injectStyle } from "react-toastify/dist/inject-style";
 // import { ToastContainer, toast } from "react-toastify";
+import toast, { Toaster } from 'react-hot-toast';
 import NavMenuBar from "../components/common/NavMenuBar";
 
 import {
@@ -68,6 +69,31 @@ const StakingPage = (props) => {
 
   const getQueryParams = (query = null) => (query||window.location.search.replace('?','')).split('&').map(e=>e.split('=').map(decodeURIComponent)).reduce((r,[k,v])=>(r[k]=v,r),{});
   
+  // type: 
+  //    null: Normal toast
+  //    'success': Success toast
+  //    'error': Error toast
+  const showToast = (msg, type=null) => {
+    if (type) {
+      toast[type](msg, {
+        // icon: '👏',
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
+    } else {
+      toast(msg, {
+        // icon: '👏',
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
+    }
+  }
   const init = async () => {
     if (isReady()) {
       return;
@@ -87,6 +113,7 @@ const StakingPage = (props) => {
     const networkId = await web3.eth.net.getId();
     let chainId = CHAIN_INFO.ID;
     if (networkId !== chainId) {
+      showToast("Switching blockchain network ...");
       // setError("Please connect BSC network");
       switchChain(web3);
       setLoading(false);
@@ -328,14 +355,14 @@ const StakingPage = (props) => {
 
   async function registerAndStake() {
     if (amount == undefined || amount === 0 || amount === "") {
-      // toast.dark("Minimum staking value is 1000 VICC!");
+      showToast("Minimum staking value is " + parseInt(minStake/(10**18)) + " VICC!", "error");
       return;
     }
     setStakeLoading(true);
     await updateAll();
-    const actual = amount * 10 ** 18;
+    const actual = amount * (10 ** 18);
     if (actual < parseFloat(minStake)) {
-      // toast.dark("Minimum staking value is VICC!");
+      showToast("Minimum staking value is " + parseInt(minStake/(10**18)) + " VICC!", "error");
       setStakeLoading(false);
       return;
     }
@@ -367,7 +394,7 @@ const StakingPage = (props) => {
     await updateAll();
     if (parseFloat(totalAvailabelReward) / (10 ** 18) < 0.1) {
       console.error("No earnings yet!");
-      // toast.dark("No earnings yet!");
+      showToast("No earnings yet!", "error");
       setWithdrawLoading(false);
       return;
     }
@@ -388,7 +415,7 @@ const StakingPage = (props) => {
     await updateAll();
     if (parseFloat(stakingRewards) === 0) {
       console.error("No earnings yet!");
-      // toast.dark("No staking reward yet!");
+      showToast("No staking reward yet!", "error");
       setCompoundLoading(false);
       return;
     }
@@ -465,6 +492,7 @@ const StakingPage = (props) => {
 
   return (
     <div className="top-layout w-full overflow-hidden">
+      <Toaster />
       {/*<ToastContainer />*/}
       {showModal && (
         <Modal title="" onClose={() => setShowModal(false)}>
