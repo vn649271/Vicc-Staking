@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import queryString from 'query-string';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Button from "../components/common/Button";
@@ -17,7 +16,7 @@ import NavMenuBar from "../components/common/NavMenuBar";
 import {
   stakingDeployedInfo,
   viccDeployedInfo,
-  CHAIN_ID
+  CHAIN_INFO
 } from "../utils/constants";
 
 if (typeof window !== "undefined") {
@@ -47,11 +46,12 @@ const StakingPage = (props) => {
   const [minRegister, setMinRegister] = useState();
   const [totalRewards, setTotalRewards] = useState();
   const [amount, setAmount] = useState();
-  const unstakeAmount = "https://Victorycash.tech/staking?ref=";
   const [referrer, setReferrer] = useState();
   const [showModal, setShowModal] = useState(false);
   // const [searchParams, setSearchParams] = useSearchParams();
-
+  
+  const referralBaseLink = "https://Victorycash.tech/staking?ref=";
+  
   useEffect(() => {
     // let referral = searchParams.get("staking");
     // console.log("Referral: ", referral);
@@ -85,28 +85,30 @@ const StakingPage = (props) => {
 
     const accounts = await web3.eth.getAccounts();
     const networkId = await web3.eth.net.getId();
-    if (networkId !== CHAIN_ID) {
-      setError("Please connect BSC network");
+    let chainId = CHAIN_INFO.ID;
+    if (networkId !== chainId) {
+      // setError("Please connect BSC network");
+      switchChain(web3);
       setLoading(false);
       return;
     }
     const viccToken = new web3.eth.Contract(viccDeployedInfo.abi, viccDeployedInfo.address); //mainnet address for lead token
     addViccTokenToWallet(viccToken);
-    const totalSupply = await viccToken.methods.totalSupply().call();
+    const _totalSupply = await viccToken.methods.totalSupply().call();
     const balance = await viccToken.methods.balanceOf(accounts[0]).call();
 
     const viccStaking = new web3.eth.Contract(stakingDeployedInfo.abi, stakingDeployedInfo.address); //mainnet adddress for staking dapp
-    const totalStaked = await viccStaking.methods
+    const _totalStaked = await viccStaking.methods
       .getUserTotalDeposits(accounts[0])
       .call();
-    const minStake = await viccStaking.methods.minimumStakeValue().call();
-    const referralRewards = await viccStaking.methods
+    const _minStake = await viccStaking.methods.minimumStakeValue().call();
+    const _referralRewards = await viccStaking.methods
       .getUserReferralBonus(accounts[0])
       .call();
-    const referralCount = await viccStaking.methods
+    const _referralCount = await viccStaking.methods
       .getUserReferralCount(accounts[0])
       .call();
-    const dailyROI = await viccStaking.methods.DAILY_ROI().call();
+    const _dailyROI = await viccStaking.methods.DAILY_ROI().call();
 
     const totalAvailable = await viccStaking.methods
       .getUserAvailable(accounts[0])
@@ -116,14 +118,14 @@ const StakingPage = (props) => {
     setAccounts(accounts);
     setViccStaking(viccStaking);
     setViccToken(viccToken);
-    setTotalSupply(totalSupply);
+    setTotalSupply(_totalSupply);
     setBalance(balance);
-    setTotalStaked(totalStaked);
-    setMinStake(minStake);
-    setReferralRewards(referralRewards);
+    setTotalStaked(_totalStaked);
+    setMinStake(_minStake);
+    setReferralRewards(_referralRewards);
     setTotalAvalilableReward(totalAvailable);
-    setReferralCount(referralCount);
-    setDailyROI(dailyROI);
+    setReferralCount(_referralCount);
+    setDailyROI(_dailyROI);
 
     window.ethereum.on("accountsChanged", (accounts) => {
       setAccounts(accounts);
@@ -138,6 +140,52 @@ const StakingPage = (props) => {
 
     setLoading(false);
   };
+
+  const switchChain = async web3 => {
+    let chainId = CHAIN_INFO.ID;
+    if (CHAIN_INFO.ID === 5777) {
+      chainId = 1337;
+    }
+    try {
+      chainId = await web3.utils.toHex(chainId);
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: chainId }],
+      });
+    } catch (switchError) {
+      // This error code indicates that the chain has not been added to MetaMask.
+      if (switchError.code === 4902) {
+        try {
+          if (CHAIN_INFO.ID === 5777) {
+            chainId = 1337;
+          }
+          chainId = await web3.utils.toHex(chainId);
+          window.ethereum
+            .request({
+              method: "wallet_addEthereumChain",
+              params: [
+                {
+                  chainName: CHAIN_INFO.NAME,
+                  chainId: chainId,
+                  nativeCurrency: {
+                    name: CHAIN_INFO.SYMBOL,
+                    symbol: CHAIN_INFO.SYMBOL,
+                    decimals: 18,
+                  },
+                  blockExplorerUrls: CHAIN_INFO.BLOCK_EXPLORER_URLS,
+                  rpcUrls: CHAIN_INFO.RPC_URLS,
+                },
+              ],
+            })
+            .then((res) => {
+              return;
+            });
+        } catch (addError) {
+          console.error(addError);
+        }
+      }
+    }
+  }
 
   const addViccTokenToWallet = async tokenInstance => {
     let viccAddress = localStorage.getItem("ViccAddress");
@@ -201,14 +249,14 @@ const StakingPage = (props) => {
 
   async function updateReferrals() {
     if (viccToken) {
-      const referralRewards = await viccStaking.methods
+      const _referralRewards = await viccStaking.methods
         .getUserReferralBonus(accounts[0])
         .call();
-      const referralCount = await viccStaking.methods
+      setReferralRewards(_referralRewards);
+      const _referralCount = await viccStaking.methods
         .getUserReferralCount(accounts[0])
         .call();
-      setReferralRewards(referralRewards);
-      setReferralCount(referralCount);
+      setReferralCount(_referralCount);
     }
   }
 
@@ -222,19 +270,19 @@ const StakingPage = (props) => {
 
   async function updateTotalSupply() {
     if (viccToken) {
-      const totalSupply = await viccToken.methods.totalSupply().call();
-      setTotalSupply(totalSupply);
-      return totalSupply;
+      const _totalSupply = await viccToken.methods.totalSupply().call();
+      setTotalSupply(_totalSupply);
+      return _totalSupply;
     }
   }
 
   async function updateTotalStaked() {
     if (viccStaking) {
-      const totalStaked = await viccStaking.methods
+      const _totalStaked = await viccStaking.methods
         .getUserTotalDeposits(accounts[0])
         .call();
-      await setTotalStaked(totalStaked);
-      return totalStaked;
+      setTotalStaked(_totalStaked);
+      return _totalStaked;
     }
   }
 
@@ -243,7 +291,7 @@ const StakingPage = (props) => {
       const value = parseFloat(
         await viccStaking.methods.getUserAvailable(accounts[0]).call()
       );
-      await setTotalAvalilableReward(value);
+      setTotalAvalilableReward(value);
       return value;
     }
   }
@@ -254,7 +302,7 @@ const StakingPage = (props) => {
         await viccStaking.methods.minimumStakeValue().call()
       );
       const sum = parseFloat(value / (10**18));
-      await setMinRegister(sum);
+      setMinRegister(sum);
       return sum;
     }
   }
@@ -264,7 +312,7 @@ const StakingPage = (props) => {
       const rewards = parseFloat(
         await viccStaking.methods.getUserDividends(accounts[0]).call()
       );
-      await setStakeRewards(rewards);
+      setStakeRewards(rewards);
       return rewards;
     }
   }
@@ -274,7 +322,7 @@ const StakingPage = (props) => {
       await viccStaking.methods.getUserTotalWithdrawn(accounts[0]).call()
     );
 
-    await setTotalRewards(sum);
+    setTotalRewards(sum);
     return sum;
   }
 
@@ -678,9 +726,7 @@ const StakingPage = (props) => {
                           <span className="text-gray-400 text-lg">
                             Referral Reward:
                           </span>{" "}
-                          {(
-                            parseFloat(referralRewards) / (10**18)
-                          ).toFixed(2)}{" "}
+                          {(parseFloat(referralRewards) / (10**18)).toFixed(2)}{" "}
                           VICC
                         </div>
                         <div>
@@ -706,7 +752,7 @@ const StakingPage = (props) => {
                       <input
                         type="text"
                         placeholder="Your referral link"
-                        defaultValue={unstakeAmount + accounts}
+                        defaultValue={referralBaseLink + accounts}
                         className="text-white  flex-shrink text-1xl w-full bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
                       />
                     </div>
