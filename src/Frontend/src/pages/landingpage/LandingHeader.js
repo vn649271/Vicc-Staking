@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import { Link } from "react-scroll";
-
+import {
+	stakingDeployedInfo,
+	viccDeployedInfo,
+	CHAIN_ID
+  } from "../../utils/constants";
+  
 export default function LandingHeader() {
 
 	const [selectedMenuItem, setSelectedMenuItem] = useState('home');
@@ -56,9 +61,12 @@ export default function LandingHeader() {
 								</Link>
 							</li>
 							<li id="menu-item-contract" className={`hader-items ${selectedMenuItem} == 'token_contract'? 'active': ''`} onClick={onSelectMenuItem}>
-								<Link activeClass="active" smooth spy to="/">
+								<a 
+									className="active" 
+									href={`https://testnet.bscscan.com/token/${viccDeployedInfo.address}`} 
+								>
 									Token Contract
-								</Link>
+								</a>
 							</li>
 							<li id="menu-item-charts" className={`hader-items ${selectedMenuItem} == 'charts'? 'active': ''`} onClick={onSelectMenuItem}>
 								Charts
