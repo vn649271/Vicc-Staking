@@ -150,6 +150,7 @@ contract VictoryCashCoinStaking is Ownable {
         uint256 checkpoint;
         uint256 bonus;
         address referrer;
+        uint256 referralCount;
     }
 
     mapping (address => User) internal users;
@@ -185,6 +186,7 @@ contract VictoryCashCoinStaking is Ownable {
 			if (upline != address(0)) {
 				uint256 _amount = amount.mul(REFERRAL_PERCENTS).div(PERCENTS_DIVIDER);
 				users[upline].bonus = users[upline].bonus.add(_amount);
+                users[upline].referralCount++;
 				emit RefBonus(upline, msg.sender, _amount);
 			}
         }
@@ -336,7 +338,7 @@ contract VictoryCashCoinStaking is Ownable {
     }
 
     function getUserReferralCount(address referrer) public view returns(uint256) {
-        return 0;
+        return users[referrer].referralCount;
     }
 
     function getUserReferrer(address userAddress) public view returns(address) {
