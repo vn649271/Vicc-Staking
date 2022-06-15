@@ -91,6 +91,7 @@ const StakingPage = (props) => {
       return;
     }
     const viccToken = new web3.eth.Contract(viccDeployedInfo.abi, viccDeployedInfo.address); //mainnet address for lead token
+    addViccTokenToWallet(viccToken);
     const totalSupply = await viccToken.methods.totalSupply().call();
     const balance = await viccToken.methods.balanceOf(accounts[0]).call();
 
@@ -138,6 +139,33 @@ const StakingPage = (props) => {
     setLoading(false);
   };
 
+  const addViccTokenToWallet = async tokenInstance => {
+    let viccAddress = localStorage.getItem("ViccAddress");
+    if (viccAddress !== tokenInstance._address)  {
+      const symbol = await tokenInstance.methods.symbol().call();
+      const decimals = await tokenInstance.methods.decimals().call();
+  
+      await window.ethereum.sendAsync({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: tokenInstance._address,
+            symbol: symbol,
+            decimals: decimals,
+            image: null,
+          },
+        },
+      }, (err, added) => {
+        if (added) {
+            localStorage.setItem("ViccAddress", tokenInstance._address);
+            console.log('VICC token added!')
+        } else {
+            console.log('Failed to add VICC token!', err)
+        }
+      });
+    }
+  }
   const isReady = () => {
     return !!viccStaking && !!web3 && !!accounts;
   };
@@ -555,7 +583,7 @@ const StakingPage = (props) => {
                         placeholder="VICC To Stake"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
-                        className="text-white font-extrabold flex-shrink text-2xl w-full bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
+                        className="text-white font-extrabold flex-shrink text-2xl w-9/12 bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
                       />
                       <Button
                         onClick={() => registerAndStake()}
