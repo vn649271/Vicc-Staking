@@ -29,7 +29,7 @@ export default function LandingHeader() {
 		history.push("/" + selectedItem);
 	}
     const onClickBeginStaking = ev => {
-            history.push("/stake");
+            history.push("/staking");
     }
 	return (
 		<div className='landingheader-nav'>

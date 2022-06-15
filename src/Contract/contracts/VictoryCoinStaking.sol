@@ -129,7 +129,7 @@ contract VictoryCashCoinStaking is Ownable {
 
     uint256 constant public PERCENTS_DIVIDER = 1000;
 	uint256 constant public DAILY_ROI = 15;
-    uint256 constant public REFERRAL_PERCENTS = 150;
+    uint256 constant public REFERRAL_PERCENTS = 15;
     uint256 constant public TIME_STEP = 1 days;
 	
 	ERC20Interface VictoryCoin;

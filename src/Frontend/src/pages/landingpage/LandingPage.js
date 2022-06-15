@@ -174,7 +174,7 @@ const LandingPage = () => {
 							</div>
 							<div className='roadmap-content-items marketing-development'>
 								<div className='roadmap-text-box2'>
-									<p className='text-box-title'>Marketing & Inistial <br /> Community Building</p>
+									<p className='text-box-title'>Marketing & Initial <br /> Community Building</p>
 									<div className='text-box-context'>
 										<p>
 											&gt; Once the fair launch happens marketing <br /> will be necessary to build theinitial<br />  community for VICC.

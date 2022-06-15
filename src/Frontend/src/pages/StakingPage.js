@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
+import queryString from 'query-string';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Button from "../components/common/Button";
@@ -23,7 +24,8 @@ if (typeof window !== "undefined") {
   // injectStyle();
 }
 
-const HomePage = (props) => {
+const StakingPage = (props) => {
+
   const [loading, setLoading] = useState(false);
   const [stakeLoading, setStakeLoading] = useState(false);
   const [withdrawLoading, setWithdrawLoading] = useState(false);
@@ -48,7 +50,24 @@ const HomePage = (props) => {
   const unstakeAmount = "https://Victorycash.tech/staking?ref=";
   const [referrer, setReferrer] = useState();
   const [showModal, setShowModal] = useState(false);
+  // const [searchParams, setSearchParams] = useSearchParams();
 
+  useEffect(() => {
+    // let referral = searchParams.get("staking");
+    // console.log("Referral: ", referral);
+    let params = getQueryParams();
+    let ref = params ? params.ref ? params.ref : null : null;
+    if (ref) {
+      setReferrer(ref);
+    }
+    // console.log(ref);
+    // const value = queryString.parse(this.props.location.search);
+    // const ref = value.ref;
+    // console.log('ref', ref)//123    
+  });
+
+  const getQueryParams = (query = null) => (query||window.location.search.replace('?','')).split('&').map(e=>e.split('=').map(decodeURIComponent)).reduce((r,[k,v])=>(r[k]=v,r),{});
+  
   const init = async () => {
     if (isReady()) {
       return;
@@ -206,7 +225,7 @@ const HomePage = (props) => {
       const value = parseFloat(
         await viccStaking.methods.minimumStakeValue().call()
       );
-      const sum = parseFloat(value / 1000000000000000000);
+      const sum = parseFloat(value / (10**18));
       await setMinRegister(sum);
       return sum;
     }
@@ -494,7 +513,7 @@ const HomePage = (props) => {
                     <div className="text-center">
                       <span className="text-white text-5xl">
                         {(
-                          parseFloat(totalStaked).toFixed(2) / 1000000000000000000
+                          parseFloat(totalStaked).toFixed(2) / (10**18)
                         ).toFixed(2)}
                       </span>
                       <span className="text-white text-2xl ml-2">VICC</span>
@@ -525,7 +544,7 @@ const HomePage = (props) => {
                       </span>
                       <span className="text-white text-3xl">
                         {parseFloat(
-                          parseFloat(balance) / 1000000000000000000
+                          parseFloat(balance) / (10**18)
                         ).toFixed(2)}
                       </span>
                       <span className="text-white text-2xl ml-2">VICC</span>
@@ -559,8 +578,9 @@ const HomePage = (props) => {
                       <input
                         placeholder="Referrer Address"
                         value={referrer}
-                        onChange={(e) => setReferrer(e.target.value)}
+                        // onChange={(e) => setReferrer(e.target.value)}  
                         className="text-white font-extrabold flex-shrink text-2xl w-full bg-transparent focus:outline-none focus:bg-white focus:text-black px-2"
+                        readOnly={true}
                       />
                     </div>
                   </div>
@@ -570,7 +590,7 @@ const HomePage = (props) => {
                   <div className="flex flex-col pt-8 px-2">
                     <div className="text-center pb-8">
                       <span className="text-white text-5xl">
-                        {(parseFloat(totalRewards) / 1000000000000000000).toFixed(
+                        {(parseFloat(totalRewards) / (10**18)).toFixed(
                           2
                         )}
                       </span>
@@ -631,7 +651,7 @@ const HomePage = (props) => {
                             Referral Reward:
                           </span>{" "}
                           {(
-                            parseFloat(referralRewards) / 1000000000000000000
+                            parseFloat(referralRewards) / (10**18)
                           ).toFixed(2)}{" "}
                           VICC
                         </div>
@@ -675,4 +695,4 @@ const HomePage = (props) => {
   );
 };
 
-export default HomePage;
+export default StakingPage;
