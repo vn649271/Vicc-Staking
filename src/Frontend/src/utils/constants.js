@@ -1,6 +1,6 @@
 // import stakingABI from "../abis/Staking.json";
 // import VictoryCashABI from "../abis/BC.json";
-import ViccStakingDeployedInfo from "../abis/Vicctaking.json";
+import ViccStakingDeployedInfo from "../abis/ViccStaking.json";
 import ViccDeployedInfo from "../abis/ViccToken.json";
 
 export const CHAIN_ID = 97;

@@ -56,7 +56,7 @@ export default function LandingHeader() {
 								</Link>
 							</li>
 							<li id="menu-item-contract" className={`hader-items ${selectedMenuItem} == 'token_contract'? 'active': ''`} onClick={onSelectMenuItem}>
-								<Link activeClass="active" smooth spy to="token_contract">
+								<Link activeClass="active" smooth spy to="/">
 									Token Contract
 								</Link>
 							</li>
