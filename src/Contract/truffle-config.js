@@ -44,8 +44,7 @@ module.exports = {
     // options below to some value.
     //
     ganache: {
-      provider: () => new HDWalletProvider(mnemonic_ganache, `http://127.0.0.1:7545`),
-      port: 7545,            // Standard Ethereum port (default: none)
+      provider: () => new HDWalletProvider(mnemonic_ganache, `http://127.0.0.1:8545`),
       network_id: 5777,
     },
     bsctest: {

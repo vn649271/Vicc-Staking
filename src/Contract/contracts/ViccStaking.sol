@@ -127,7 +127,7 @@ contract Ownable {
 contract ViccStaking is Ownable {
     using SafeMath for uint256;
 
-    uint256 constant public PERCENTS_DIVIDER = 1000;
+    uint256 constant public PERCENTS_DIVIDER = 100;
 	uint256 constant public DAILY_ROI = 15;
     uint256 constant public REFERRAL_PERCENTS = 12; // 12%
     uint256 constant public TIME_STEP = 1 days;
@@ -186,7 +186,7 @@ contract ViccStaking is Ownable {
 			if (upline != address(0)) {
 				uint256 _amount = amount.mul(REFERRAL_PERCENTS).div(PERCENTS_DIVIDER);
 				users[upline].bonus = users[upline].bonus.add(_amount);
-                users[upline].referralCount++;
+                users[upline].referralCount.add(1);
 				emit RefBonus(upline, msg.sender, _amount);
 			}
         }
