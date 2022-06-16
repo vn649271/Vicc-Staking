@@ -81,7 +81,7 @@ module.exports = {
   ],
   api_keys: {
     bscscan: BSC_API_KEY,
-    ethscan: ETH_API_KEY
+    etherscan: ETH_API_KEY
   },
 
   // Configure your compilers
