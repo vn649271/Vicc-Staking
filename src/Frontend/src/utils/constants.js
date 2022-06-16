@@ -3,19 +3,21 @@
 import ViccStakingDeployedInfo from "../abis/ViccStaking.json";
 import ViccDeployedInfo from "../abis/ViccToken.json";
 
-const dev_mode = 1; // 0: Ganache, 1: BSC Testnet, 2: BSC
+const dev_mode = 2; // 0: Ganache, 1: BSC Testnet, 2: Ropsten, 3: BSC
 
-const chainNameList = ["Ganache", "BSC Testnet", "BSC"];
-const chainIdList = [5777, 97, 56];
+const chainNameList = ["Ganache", "BSC Testnet", "Ropsten", "BSC"];
+const chainIdList = [5777, 97, 3, 56];
 const blockExplorerUrlList = [
 	[""], 
 	["https://testnet.bscscan.com/"], 
+	["https://ropsten.etherscan.io"], 
 	["https://bscscan.com/"]
 ];
-const symbolList = ["ETH", "BNB", "BNB"];
+const symbolList = ["ETH", "BNB", "ETH", "BNB"];
 const rpcUrlList = [
 	["http://127.0.0.1:8545"], 
 	["https://data-seed-prebsc-1-s1.binance.org:8545"], 
+	["https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"], 
 	["https://bsc-dataseed1.binance.org"]
 ];
 
@@ -29,10 +31,10 @@ export const CHAIN_INFO = {
 
 export const stakingDeployedInfo = {
 	abi: ViccStakingDeployedInfo.abi,
-	address: ViccStakingDeployedInfo.networks[CHAIN_INFO.ID].address
+	address: ViccStakingDeployedInfo.networks[CHAIN_INFO.ID.toString()].address
 };
 // export const stakingContractAddress = "0x1808Ec091DB6efa4a06Fd8ADa1C6435eB2a5aEAE";
 export const viccDeployedInfo = {
 	abi: ViccDeployedInfo.abi,
-	address: ViccDeployedInfo.networks[CHAIN_INFO.ID].address
+	address: ViccDeployedInfo.networks[CHAIN_INFO.ID.toString()].address
 };
