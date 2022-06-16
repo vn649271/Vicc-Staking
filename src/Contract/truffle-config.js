@@ -47,6 +47,13 @@ module.exports = {
       provider: () => new HDWalletProvider(mnemonic_ganache, `http://127.0.0.1:8545`),
       network_id: 5777,
     },
+    ropsten: {
+      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161`),
+      network_id: 3,
+      confirmations: 10,
+      timeoutBlocks: 200,
+      skipDryRun: true
+    },    
     bsctest: {
       provider: () => new HDWalletProvider(mnemonic, `https://data-seed-prebsc-2-s1.binance.org:8545`),
       network_id: 97,

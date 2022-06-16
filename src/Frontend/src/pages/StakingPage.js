@@ -120,7 +120,7 @@ const StakingPage = (props) => {
       return;
     }
     const viccToken = new web3.eth.Contract(viccDeployedInfo.abi, viccDeployedInfo.address); //mainnet address for lead token
-    addViccTokenToWallet(viccToken);
+    await addViccTokenToWallet(viccToken);
     const _totalSupply = await viccToken.methods.totalSupply().call();
     const balance = await viccToken.methods.balanceOf(accounts[0]).call();
 
