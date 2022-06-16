@@ -104,7 +104,7 @@ const LandingPage = () => {
 									70% Token to PancakeSwap
 								</p>
 								<p className='items-context'>
-									2% of all transactions will go to paying out all stakers.
+									35,000 tokens will be added to pancakeswap for users to trade
 								</p>
 							</div>
 							<div className='lg:w-1/2 xl:w-1/4 tokenomics-content-items'>
