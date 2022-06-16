@@ -101,7 +101,7 @@ const LandingPage = () => {
 							</div>
 							<div className='lg:w-1/2 xl:w-1/4 tokenomics-content-items'>
 								<p className='items-title'>
-									70% Token to PancakeSwap
+									70% Token To PancakeSwap
 								</p>
 								<p className='items-context'>
 									35,000 tokens will be added to pancakeswap for users to trade
@@ -136,7 +136,7 @@ const LandingPage = () => {
 							</div>
 							<div className='lg:w-1/2 xl:w-1/4 tokenomics-content-items1'>
 								<p className='items-title'>
-									1% to Developers
+									1% To Developers
 								</p>
 								<p className='items-context'>
 									500 tokens will be locked away in a smart contract for two years and this will be the developers tokens for creating VictoryCashCoin.
