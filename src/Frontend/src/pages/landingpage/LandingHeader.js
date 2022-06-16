@@ -34,7 +34,7 @@ export default function LandingHeader() {
 		history.push("/" + selectedItem);
 	}
     const onClickBeginStaking = ev => {
-            history.push("/staking");
+        history.push("/staking");
     }
 	return (
 		<div className='landingheader-nav'>
@@ -83,9 +83,9 @@ export default function LandingHeader() {
 						<span className='header-btn text-white' onClick={onClickBeginStaking}>
 							Begin Staking
 						</span>
-						<span className='header-btn text-white'>
+						<a className='header-btn text-white' target="blank" href="/docs/VictoryCashCoinWhitepaper.pdf">
 							White Paper
-						</span>
+						</a>
 						<div className="toggle-nav-btn-layout lg:hidden md:flex">
 							<button onClick={toggleNav} className="btn">
 								<img className="collapsed-menu-btn-img-layout" src="/images/collapsed-menu.png" alt="" />
