@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 import {
 	stakingDeployedInfo,
 	viccDeployedInfo,
-	CHAIN_ID
+	CHAIN_INFO
   } from "../../utils/constants";
   
 export default function LandingHeader() {
@@ -63,7 +63,8 @@ export default function LandingHeader() {
 							<li id="menu-item-contract" className={`hader-items ${selectedMenuItem} == 'token_contract'? 'active': ''`} onClick={onSelectMenuItem}>
 								<a 
 									className="active" 
-									href={`https://testnet.bscscan.com/token/${viccDeployedInfo.address}`} 
+									href={`${CHAIN_INFO.BLOCK_EXPLORER_URLS[0]}token/${viccDeployedInfo.address}`} 
+									target="blank"
 								>
 									Token Contract
 								</a>

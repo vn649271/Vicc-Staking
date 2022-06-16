@@ -10,7 +10,7 @@ const chainIdList = [5777, 97, 3, 56];
 const blockExplorerUrlList = [
 	[""], 
 	["https://testnet.bscscan.com/"], 
-	["https://ropsten.etherscan.io"], 
+	["https://ropsten.etherscan.io/"], 
 	["https://bscscan.com/"]
 ];
 const symbolList = ["ETH", "BNB", "ETH", "BNB"];
