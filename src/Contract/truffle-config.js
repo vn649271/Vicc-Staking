@@ -23,7 +23,8 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 const fs = require('fs');
 const mnemonic = fs.readFileSync(".secret").toString().trim();
 const mnemonic_ganache = fs.readFileSync(".secret.ganache").toString().trim();
-const BSC_API_KEY = fs.readFileSync("apikey").toString().trim();
+const BSC_API_KEY = fs.readFileSync("bsc_api_key").toString().trim();
+const ETH_API_KEY = fs.readFileSync("eth_api_key").toString().trim();
 
 module.exports = {
   /**
@@ -79,7 +80,8 @@ module.exports = {
     'truffle-plugin-verify'
   ],
   api_keys: {
-    bscscan: BSC_API_KEY
+    bscscan: BSC_API_KEY,
+    ethscan: ETH_API_KEY
   },
 
   // Configure your compilers
