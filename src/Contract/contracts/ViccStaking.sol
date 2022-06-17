@@ -218,7 +218,7 @@ contract ViccStaking is Ownable {
     }
 
     function invest(address referrer, uint256 amount) onlyValidUser public {
-        require(amount > MIN_STAKE_AMOUNT, "Too small invested");
+        require(amount >= MIN_STAKE_AMOUNT, "Too small invested");
 		ViccToken.transferFrom(msg.sender, address(this), amount);
 
         User storage user = users[msg.sender];
