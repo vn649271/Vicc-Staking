@@ -13,6 +13,7 @@ contract ViccToken is ERC20, ViccAdmin {
     receive() external payable {}
 
     constructor() ERC20("Victory Cash Coin", "VICC") {
+        addAdmin(msg.sender);
         super._mint(msg.sender, 60100 * (10 ** uint256(_decimals)));
     }
 

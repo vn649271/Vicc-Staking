@@ -513,7 +513,7 @@ const StakingPage = (props) => {
           </div>
 
           <div className="flex flex-row justify-center">
-            <Button className="medium-size" onClick={() => setShowModal(false)}>Close</Button>
+            <Button className="medium-size text-gray-400" onClick={() => setShowModal(false)}>Close</Button>
           </div>
         </Modal>
       )}
@@ -749,7 +749,7 @@ const StakingPage = (props) => {
                           <span className="text-gray-400 text-lg">
                             Daily Return:{" "}
                           </span>
-                          {parseFloat(dailyROI) / 10} %
+                          {parseFloat(dailyROI) / (10**4)} %
                         </div>
                       </div>
                       <div>
