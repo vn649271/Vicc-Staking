@@ -10,3 +10,11 @@
 /src/Contract/package-lock.json
 /src/Contract/bsc_api_key
 /src/Contract/ether_api_key
+/src/Contract/build/contracts/ViccAdmin.json
+/src/Contract/build/contracts/Context.json
+/src/Contract/build/contracts/ERC20.json
+/src/Contract/build/contracts/ERC20Interface.json
+/src/Contract/build/contracts/IERC20.json
+/src/Contract/build/contracts/IERC20Metadata.json
+/src/Contract/build/contracts/Ownable.json
+/src/Contract/build/contracts/SafeMath.json
