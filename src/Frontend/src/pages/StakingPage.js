@@ -340,7 +340,7 @@ const StakingPage = (props) => {
   async function stakeRewards() {
     if (viccStaking) {
       const rewards = parseFloat(
-        await viccStaking.methods.getUserDividends(accounts[0]).call()
+        await viccStaking.methods.getSumOfDividends(accounts[0]).call()
       );
       setStakeRewards(rewards);
       return rewards;
