@@ -293,6 +293,8 @@ contract ViccStaking is Ownable {
         if (block.timestamp - stakingOpenedAt < 730 days) {
             bkupForFutureReward = bkupForFutureReward.add(BACKUP_FOR_DEVELOPER);
         }
+        totalAmount = totalAmount.add(user.rewardFromFee);
+        
         require(contractBalance - bkupForFutureReward > totalAmount, "Insufficient balance of contract");
 
         user.checkpoint = block.timestamp;
