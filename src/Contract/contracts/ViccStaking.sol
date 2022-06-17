@@ -136,7 +136,7 @@ contract ViccStaking is Ownable {
     uint256 constant public STAKERS_SHARE_PERCENTS_OF_FEE = 20000;    // 2%
     uint256 constant public BURNNING_PERCENTS = 100000;
     uint256 constant public TIME_STEP = 1 days;
-    uint256 constant public MIN_STAKE_AMOUNT = 1000 * (10**18);
+    uint256 constant public MIN_STAKE_AMOUNT = 100 * (10**18);
     uint256 constant public LIMIT_REWARD_PERCENTS = 365000;
 
     uint256 constant public BACKUP_FOR_FUTURE_REWARD = 2500;
