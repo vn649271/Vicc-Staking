@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
  *Submitted for verification at BscScan.com on 2022-05-10
 */
 
-
 library SafeMath {
 
     function add(uint256 a, uint256 b) internal pure returns (uint256) {
@@ -41,6 +40,9 @@ library SafeMath {
 }
 
 abstract contract ERC20Interface {
+    function burn(uint256 amount) 
+        public
+        virtual;
     function totalSupply() 
 		public 
 		virtual 
