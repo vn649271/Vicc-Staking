@@ -132,16 +132,21 @@ contract ViccStaking is Ownable {
     uint256 constant public REFERRAL_PERCENTS = 120000;         // 12%
     uint256 constant public FEE_PERCENTS = 60000;               // 6%
     uint256 constant public STAKERS_SHARE_PERCENTS_OF_FEE = 20000;    // 2%
+    uint256 constant public BURNNING_PERCENTS = 100000;
     uint256 constant public TIME_STEP = 1 days;
     uint256 constant public MIN_STAKE_AMOUNT = 1000 * (10**18);
     uint256 constant public LIMIT_REWARD_PERCENTS = 365000;
+
+    uint256 constant public BACKUP_FOR_FUTURE_REWARD = 2500;
+    uint256 constant public BACKUP_FOR_DEVELOPER = 500;
 	
-	ERC20Interface VictoryCoin;
+	ERC20Interface ViccToken;
 
     uint256 public totalInvested;
     uint256 public totalWithdrawn;
     uint256 public totalWithdrawnForInvested;
     uint256 public totalDeposits;
+    uint256 public stakingOpenedAt;
 
     struct Deposit {
         uint256 amount;
@@ -181,8 +186,9 @@ contract ViccStaking is Ownable {
     event onReinvestment(address indexed user, uint256 reinvestAmount);
     event RefBonus(address indexed referrer, address indexed referral, uint256 amount);
 
-    constructor(address _VictoryCoin) {
-        VictoryCoin = ERC20Interface(_VictoryCoin);
+    constructor(address _ViccToken) {
+        ViccToken = ERC20Interface(_ViccToken);
+        stakingOpenedAt = block.timestamp;
     }
 
     receive() external payable {}
@@ -211,7 +217,7 @@ contract ViccStaking is Ownable {
 
     function invest(address referrer, uint256 amount) onlyValidUser public {
         require(amount > MIN_STAKE_AMOUNT, "Too small invested");
-		VictoryCoin.transferFrom(msg.sender, address(this), amount);
+		ViccToken.transferFrom(msg.sender, address(this), amount);
 
         User storage user = users[msg.sender];
         user.invested.add(amount);
@@ -237,7 +243,6 @@ contract ViccStaking is Ownable {
 			}
         }
 
-
         if (user.deposits.length == 0) {
             user.checkpoint = block.timestamp;
             emit Newbie(msg.sender);
@@ -250,6 +255,8 @@ contract ViccStaking is Ownable {
         totalInvested = totalInvested.add(realInvestingAmount);
         totalDeposits = totalDeposits.add(1);
 
+        ViccToken.burn(amount.mul(BURNNING_PERCENTS).div(PERCENTS_DIVIDER)); // Burn 10%
+
         emit NewDeposit(msg.sender, realInvestingAmount);
     }
 
@@ -258,48 +265,37 @@ contract ViccStaking is Ownable {
 
         uint256 totalAmount = updateWithdrawns(msg.sender);
 
-        uint256 contractBalance = VictoryCoin.balanceOf(address(this));
-        uint256 miswithdrawnAmount = 0;
+        ViccToken.burn(totalAmount.mul(BURNNING_PERCENTS).div(PERCENTS_DIVIDER)); // Burn 10%
 
-        if (contractBalance > totalAmount) {
-            user.withdrawn.add(totalAmount);
-            totalWithdrawnForInvested = totalWithdrawnForInvested.add(totalAmount);
-            totalAmount = totalAmount.sub(_distributeFee(msg.sender, totalAmount));
-            uint256 referralBonus = getUserReferralBonus(msg.sender);
-            if (referralBonus > 0) {
-                totalAmount = totalAmount.add(referralBonus);
-                user.bonus = 0;
-            }
-            require(totalAmount > 0, "User has no dividends");
-            if (contractBalance < totalAmount) {
-                miswithdrawnAmount = totalAmount.sub(contractBalance);
-                totalAmount = contractBalance;
+        user.withdrawn.add(totalAmount);
+        totalWithdrawnForInvested = totalWithdrawnForInvested.add(totalAmount);
+        totalAmount = totalAmount.sub(_distributeFee(msg.sender, totalAmount));
+        uint256 referralBonus = getUserReferralBonus(msg.sender);
+        if (referralBonus > 0) {
+            totalAmount = totalAmount.add(referralBonus);
+            user.bonus = 0;
+        }
+        require(totalAmount > 0, "User has no dividends");
 
-            }
-        } else {
-            miswithdrawnAmount = totalAmount - contractBalance;
-            totalAmount = contractBalance;
-            totalWithdrawnForInvested = totalWithdrawnForInvested.add(totalAmount);
-            totalAmount -= _distributeFee(msg.sender, totalAmount);
-            user.withdrawn.add(contractBalance);
+        uint256 contractBalance = ViccToken.balanceOf(address(this));
+        /*
+         * Implementation of 5% for future reward
+         */
+        uint bkupForFutureReward = 0;
+        if (block.timestamp - stakingOpenedAt < 95 days) {
+            bkupForFutureReward = BACKUP_FOR_FUTURE_REWARD;
         }
-        // Propagate rollbacks to each deposits for invest
-        for (uint256 i = user.deposits.length - 1; i >= 0; i--) {
-            if (user.deposits[i].withdrawn > 0) {
-                if (user.deposits[i].withdrawn < miswithdrawnAmount) {
-                    user.deposits[i].withdrawn = 0;
-                    miswithdrawnAmount = miswithdrawnAmount.sub(user.deposits[i].withdrawn);
-                } else {
-                    user.deposits[i].withdrawn = user.deposits[i].withdrawn.sub(miswithdrawnAmount);
-                    miswithdrawnAmount = 0;
-                    break; // Need to continue propagation no longer
-                }
-            }
+        /*
+         * Implementation of 1% for developer
+         */
+        if (block.timestamp - stakingOpenedAt < 730 days) {
+            bkupForFutureReward = bkupForFutureReward.add(BACKUP_FOR_DEVELOPER);
         }
+        require(contractBalance - bkupForFutureReward > totalAmount, "Insufficient balance of contract");
 
         user.checkpoint = block.timestamp;
 		
-		VictoryCoin.transfer(msg.sender, totalAmount);
+		ViccToken.transfer(msg.sender, totalAmount);
 
         totalWithdrawn = totalWithdrawn.add(totalAmount);
 
@@ -311,6 +307,8 @@ contract ViccStaking is Ownable {
         User storage user = users[msg.sender];
         // fetch dividends
         uint256 dividends = updateWithdrawns(msg.sender); // retrieve ref. bonus later in the code
+
+        ViccToken.burn(dividends.mul(BURNNING_PERCENTS).div(PERCENTS_DIVIDER)); // Burn 10%
 
         dividends = dividends.sub(_distributeFee(msg.sender, dividends));
 
