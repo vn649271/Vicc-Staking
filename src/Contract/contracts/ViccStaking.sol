@@ -129,7 +129,7 @@ contract ViccStaking is Ownable {
 
     uint256 constant public PERCENTS_DIVIDER = 10**6;
 	uint256 constant public DAILY_ROI = 15000;                  // 1.5%
-    uint256 constant public REFERRAL_PERCENTS = 120000          // 12%
+    uint256 constant public REFERRAL_PERCENTS = 120000;         // 12%
     uint256 constant public FEE_PERCENTS = 60000;               // 6%
     uint256 constant public STAKERS_SHARE_PERCENTS_OF_FEE = 20000;    // 2%
     uint256 constant public TIME_STEP = 1 days;
@@ -213,13 +213,13 @@ contract ViccStaking is Ownable {
         require(amount > MIN_STAKE_AMOUNT, "Too small invested");
 		VictoryCoin.transferFrom(msg.sender, address(this), amount);
 
+        User storage user = users[msg.sender];
         user.invested.add(amount);
 
         uint256 fee = _distributeFee(msg.sender, amount);
 
         uint256 realInvestingAmount = amount.sub(fee);
 		
-        User storage user = users[msg.sender];
 
         if (user.referrer == address(0) && users[referrer].deposits.length > 0 && referrer != msg.sender) {
             user.referrer = referrer;
@@ -256,7 +256,7 @@ contract ViccStaking is Ownable {
     function withdraw() public {
         User storage user = users[msg.sender];
 
-        uint256 totalAmount = getSumOfDividends(msg.sender, true);
+        uint256 totalAmount = updateWithdrawns(msg.sender);
 
         uint256 contractBalance = VictoryCoin.balanceOf(address(this));
         uint256 miswithdrawnAmount = 0;
@@ -310,13 +310,13 @@ contract ViccStaking is Ownable {
     {
         User storage user = users[msg.sender];
         // fetch dividends
-        uint256 dividends = getSumOfDividends(msg.sender); // retrieve ref. bonus later in the code
+        uint256 dividends = updateWithdrawns(msg.sender); // retrieve ref. bonus later in the code
 
         dividends = dividends.sub(_distributeFee(msg.sender, dividends));
 
         user.deposits.push(Deposit(dividends, 0, block.timestamp));
 
-        getSumOfDividends(msg.sender, true);
+        // updateWithdrawns(msg.sender);
 
         user.checkpoint = block.timestamp;
 
@@ -324,11 +324,11 @@ contract ViccStaking is Ownable {
         totalDeposits = totalDeposits.add(1);
         totalWithdrawn = totalWithdrawn.add(dividends);
         // fire event
-        emit onReinvestment(msg.sender, _dividends);
+        emit onReinvestment(msg.sender, dividends);
     }
 
 
-    function getSumOfDividends(address userAddress, bool updateWithdrawn = false) public view returns (uint256) {
+    function getSumOfDividends(address userAddress) public view returns (uint256) {
         User storage user = users[userAddress];
 
         uint256 totalDividends;
@@ -341,21 +341,18 @@ contract ViccStaking is Ownable {
                 if (user.deposits[i].start > user.checkpoint) {
 
                     dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
-						.mul(block.timestamp.sub(user.deposits[i].start))
-						.div(TIME_STEP);
+                        .mul(block.timestamp.sub(user.deposits[i].start))
+                        .div(TIME_STEP);
 
                 } else {
 
                     dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
-						.mul(block.timestamp.sub(user.checkpoint))
-						.div(TIME_STEP);
+                        .mul(block.timestamp.sub(user.checkpoint))
+                        .div(TIME_STEP);
                 }
 
                 if (user.deposits[i].withdrawn.add(dividends) > user.deposits[i].amount.mul(365).div(100)) {
                     dividends = (user.deposits[i].amount.mul(365).div(100)).sub(user.deposits[i].withdrawn);
-                }
-                if (updateWithdrawn) {
-                    user.deposits[i].withdrawn = user.deposits[i].withdrawn.add(dividends); /// changing of storage data
                 }
                 totalDividends = totalDividends.add(dividends);
             }
@@ -364,7 +361,41 @@ contract ViccStaking is Ownable {
         return totalDividends;
     }
 
-    function minimumStakeValue() public view returns(uint256) {
+    function updateWithdrawns(address userAddress) public returns (uint256) {
+        User storage user = users[userAddress];
+
+        uint256 totalDividends;
+        uint256 dividends;
+
+        for (uint256 i = 0; i < user.deposits.length; i++) {
+
+            if (user.deposits[i].withdrawn < user.deposits[i].amount.mul(365).div(100)) {
+
+                if (user.deposits[i].start > user.checkpoint) {
+
+                    dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
+                        .mul(block.timestamp.sub(user.deposits[i].start))
+                        .div(TIME_STEP);
+
+                } else {
+
+                    dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
+                        .mul(block.timestamp.sub(user.checkpoint))
+                        .div(TIME_STEP);
+                }
+
+                if (user.deposits[i].withdrawn.add(dividends) > user.deposits[i].amount.mul(365).div(100)) {
+                    dividends = (user.deposits[i].amount.mul(365).div(100)).sub(user.deposits[i].withdrawn);
+                }
+                user.deposits[i].withdrawn = user.deposits[i].withdrawn.add(dividends); /// changing of storage data
+                totalDividends = totalDividends.add(dividends);
+            }
+        }
+
+        return totalDividends;
+    }
+
+    function minimumStakeValue() public pure returns(uint256) {
         return MIN_STAKE_AMOUNT;
     }
 
@@ -396,6 +427,7 @@ contract ViccStaking is Ownable {
                 return true;
             }
         }
+        return false;
     }
 
     function getUserDepositInfo(address userAddress, uint256 index) public view returns(uint256, uint256, uint256) {

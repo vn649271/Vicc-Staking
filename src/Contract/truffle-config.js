@@ -24,7 +24,7 @@ const fs = require('fs');
 const mnemonic = fs.readFileSync(".secret").toString().trim();
 const mnemonic_ganache = fs.readFileSync(".secret.ganache").toString().trim();
 const BSC_API_KEY = fs.readFileSync("bsc_api_key").toString().trim();
-const ETH_API_KEY = fs.readFileSync("eth_api_key").toString().trim();
+const ETHER_API_KEY = fs.readFileSync("ether_api_key").toString().trim();
 
 module.exports = {
   /**
@@ -81,7 +81,7 @@ module.exports = {
   ],
   api_keys: {
     bscscan: BSC_API_KEY,
-    etherscan: ETH_API_KEY
+    etherscan: ETHER_API_KEY
   },
 
   // Configure your compilers

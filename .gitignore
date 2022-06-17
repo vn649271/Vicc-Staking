@@ -8,3 +8,5 @@
 /src/Contract/apikey
 /src/Contract/node_modules
 /src/Contract/package-lock.json
+/src/Contract/bsc_api_key
+/src/Contract/ether_api_key
