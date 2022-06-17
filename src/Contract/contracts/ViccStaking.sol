@@ -127,17 +127,20 @@ contract Ownable {
 contract ViccStaking is Ownable {
     using SafeMath for uint256;
 
-    uint256 constant public PERCENTS_DIVIDER = 100;
-	uint256 constant public DAILY_ROI = 15;
-    uint256 constant public REFERRAL_PERCENTS = 12; // 12%
+    uint256 constant public PERCENTS_DIVIDER = 10**6;
+	uint256 constant public DAILY_ROI = 15000;                  // 1.5%
+    uint256 constant public REFERRAL_PERCENTS = 120000          // 12%
+    uint256 constant public FEE_PERCENTS = 60000;               // 6%
+    uint256 constant public STAKERS_SHARE_PERCENTS_OF_FEE = 20000;    // 2%
     uint256 constant public TIME_STEP = 1 days;
     uint256 constant public MIN_STAKE_AMOUNT = 1000 * (10**18);
+    uint256 constant public LIMIT_REWARD_PERCENTS = 365000;
 	
 	ERC20Interface VictoryCoin;
 
-    uint256 public totalUsers;
     uint256 public totalInvested;
     uint256 public totalWithdrawn;
+    uint256 public totalWithdrawnForInvested;
     uint256 public totalDeposits;
 
     struct Deposit {
@@ -148,16 +151,27 @@ contract ViccStaking is Ownable {
 
     struct User {
         Deposit[] deposits;
+        uint256 invested;
+        uint256 withdrawn;
         uint256 checkpoint;
         uint256 bonus;
+        uint256 rewardFromFee;
         address referrer;
         uint256 referralCount;
+        uint256 sharePercents;
     }
 
     mapping (address => User) internal users;
+    address[] availableUsers;
 
-    modifier onlyhodler() {
-        require(getUserDividends(msg.sender) > 0, "Not Holder");
+    modifier onlyValidUser() {
+        require(msg.sender != address(0), "Invalid user");
+        require(msg.sender != address(this), "Invalid user");
+        _;
+    }
+
+    modifier onlyHodler() {
+        require(users[msg.sender].invested - users[msg.sender].withdrawn > 0, "Not Holder");
         _;
     }
 
@@ -173,8 +187,37 @@ contract ViccStaking is Ownable {
 
     receive() external payable {}
 
-    function invest(address referrer, uint256 amount) public {
+    function _distributeFee(address txSender, uint256 txAmount) internal returns(uint256) {
+        uint256 totalFee = txAmount.mul(FEE_PERCENTS).div(PERCENTS_DIVIDER);
+
+        uint256 totalStakerShare = txAmount.mul(STAKERS_SHARE_PERCENTS_OF_FEE).div(PERCENTS_DIVIDER);
+        uint256 totalBalanceInvested = totalInvested.sub(totalWithdrawnForInvested);
+        if (totalBalanceInvested == 0) {
+            return totalFee;
+        }
+        for (uint256 i = 0; i < availableUsers.length; i++) {
+            if (availableUsers[i] == address(0) || availableUsers[i] == txSender) {
+                continue;
+            }
+            uint256 balanceInvested = users[availableUsers[i]].invested.sub(users[availableUsers[i]].withdrawn);
+            if (balanceInvested < MIN_STAKE_AMOUNT) {
+                continue;
+            }
+            users[availableUsers[i]].sharePercents = balanceInvested.mul(PERCENTS_DIVIDER).div(totalBalanceInvested);
+            users[availableUsers[i]].rewardFromFee.add(users[availableUsers[i]].sharePercents.mul(totalStakerShare));
+        }
+        return totalFee;
+    }
+
+    function invest(address referrer, uint256 amount) onlyValidUser public {
+        require(amount > MIN_STAKE_AMOUNT, "Too small invested");
 		VictoryCoin.transferFrom(msg.sender, address(this), amount);
+
+        user.invested.add(amount);
+
+        uint256 fee = _distributeFee(msg.sender, amount);
+
+        uint256 realInvestingAmount = amount.sub(fee);
 		
         User storage user = users[msg.sender];
 
@@ -182,68 +225,76 @@ contract ViccStaking is Ownable {
             user.referrer = referrer;
         }
 
+        // Calculate referral bonus for referrer
         if (user.referrer != address(0)) {
             address upline = user.referrer;
 			if (upline != address(0)) {
-				uint256 _amount = amount.mul(REFERRAL_PERCENTS).div(PERCENTS_DIVIDER);
-				users[upline].bonus = users[upline].bonus.add(_amount);
+				uint256 _referralBonus = realInvestingAmount.mul(REFERRAL_PERCENTS).div(PERCENTS_DIVIDER);
+                realInvestingAmount = realInvestingAmount.sub(_referralBonus);
+				users[upline].bonus = users[upline].bonus.add(_referralBonus);
                 users[upline].referralCount.add(1);
-				emit RefBonus(upline, msg.sender, _amount);
+				emit RefBonus(upline, msg.sender, _referralBonus);
 			}
         }
 
+
         if (user.deposits.length == 0) {
             user.checkpoint = block.timestamp;
-            totalUsers = totalUsers.add(1);
             emit Newbie(msg.sender);
         }
 
-        user.deposits.push(Deposit(amount, 0, block.timestamp));
+        user.deposits.push(Deposit(realInvestingAmount, 0, block.timestamp));
 
-        totalInvested = totalInvested.add(amount);
+        availableUsers.push(msg.sender);
+
+        totalInvested = totalInvested.add(realInvestingAmount);
         totalDeposits = totalDeposits.add(1);
 
-        emit NewDeposit(msg.sender, amount);
+        emit NewDeposit(msg.sender, realInvestingAmount);
     }
 
     function withdraw() public {
         User storage user = users[msg.sender];
 
-        uint256 totalAmount;
-        uint256 dividends;
-
-        for (uint256 i = 0; i < user.deposits.length; i++) {
-            if (user.deposits[i].withdrawn < user.deposits[i].amount.mul(365).div(100)) {
-                if (user.deposits[i].start > user.checkpoint) {
-                    dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
-						.mul(block.timestamp.sub(user.deposits[i].start))
-						.div(TIME_STEP);
-                } else {
-                    dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
-                        .mul(block.timestamp.sub(user.checkpoint))
-                        .div(TIME_STEP);
-                }
-
-                if (user.deposits[i].withdrawn.add(dividends) > user.deposits[i].amount.mul(365).div(100)) {
-                    dividends = (user.deposits[i].amount.mul(365).div(100)).sub(user.deposits[i].withdrawn);
-                }
-
-                user.deposits[i].withdrawn = user.deposits[i].withdrawn.add(dividends); /// changing of storage data
-                totalAmount = totalAmount.add(dividends);
-            }
-        }
-
-        uint256 referralBonus = getUserReferralBonus(msg.sender);
-        if (referralBonus > 0) {
-            totalAmount = totalAmount.add(referralBonus);
-            user.bonus = 0;
-        }
-
-        require(totalAmount > 0, "User has no dividends");
+        uint256 totalAmount = getSumOfDividends(msg.sender, true);
 
         uint256 contractBalance = VictoryCoin.balanceOf(address(this));
-        if (contractBalance < totalAmount) {
+        uint256 miswithdrawnAmount = 0;
+
+        if (contractBalance > totalAmount) {
+            user.withdrawn.add(totalAmount);
+            totalWithdrawnForInvested = totalWithdrawnForInvested.add(totalAmount);
+            totalAmount = totalAmount.sub(_distributeFee(msg.sender, totalAmount));
+            uint256 referralBonus = getUserReferralBonus(msg.sender);
+            if (referralBonus > 0) {
+                totalAmount = totalAmount.add(referralBonus);
+                user.bonus = 0;
+            }
+            require(totalAmount > 0, "User has no dividends");
+            if (contractBalance < totalAmount) {
+                miswithdrawnAmount = totalAmount.sub(contractBalance);
+                totalAmount = contractBalance;
+
+            }
+        } else {
+            miswithdrawnAmount = totalAmount - contractBalance;
             totalAmount = contractBalance;
+            totalWithdrawnForInvested = totalWithdrawnForInvested.add(totalAmount);
+            totalAmount -= _distributeFee(msg.sender, totalAmount);
+            user.withdrawn.add(contractBalance);
+        }
+        // Propagate rollbacks to each deposits for invest
+        for (uint256 i = user.deposits.length - 1; i >= 0; i--) {
+            if (user.deposits[i].withdrawn > 0) {
+                if (user.deposits[i].withdrawn < miswithdrawnAmount) {
+                    user.deposits[i].withdrawn = 0;
+                    miswithdrawnAmount = miswithdrawnAmount.sub(user.deposits[i].withdrawn);
+                } else {
+                    user.deposits[i].withdrawn = user.deposits[i].withdrawn.sub(miswithdrawnAmount);
+                    miswithdrawnAmount = 0;
+                    break; // Need to continue propagation no longer
+                }
+            }
         }
 
         user.checkpoint = block.timestamp;
@@ -255,48 +306,29 @@ contract ViccStaking is Ownable {
         emit Withdrawn(msg.sender, totalAmount);
     }
 
-    function reinvest() onlyhodler() public
+    function reinvest() onlyHodler public
     {
         User storage user = users[msg.sender];
         // fetch dividends
-        uint256 _dividends = getUserDividends(msg.sender); // retrieve ref. bonus later in the code
-        uint256 totalAmount;
-        uint256 dividends;
+        uint256 dividends = getSumOfDividends(msg.sender); // retrieve ref. bonus later in the code
 
-        user.deposits.push(Deposit(_dividends, 0, block.timestamp));
+        dividends = dividends.sub(_distributeFee(msg.sender, dividends));
 
-        for (uint256 i = 0; i < user.deposits.length; i++) {
-            if (user.deposits[i].withdrawn < user.deposits[i].amount.mul(365).div(100)) {
-                if (user.deposits[i].start > user.checkpoint) {
-                    dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
-						.mul(block.timestamp.sub(user.deposits[i].start))
-						.div(TIME_STEP);
-                } else {
-                    dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
-                        .mul(block.timestamp.sub(user.checkpoint))
-                        .div(TIME_STEP);
-                }
+        user.deposits.push(Deposit(dividends, 0, block.timestamp));
 
-                if (user.deposits[i].withdrawn.add(dividends) > user.deposits[i].amount.mul(365).div(100)) {
-                    dividends = (user.deposits[i].amount.mul(365).div(100)).sub(user.deposits[i].withdrawn);
-                }
-
-                user.deposits[i].withdrawn = user.deposits[i].withdrawn.add(dividends); /// changing of storage data
-                totalAmount = totalAmount.add(dividends);
-            }
-        }
+        getSumOfDividends(msg.sender, true);
 
         user.checkpoint = block.timestamp;
 
-        totalInvested = totalInvested.add(_dividends);
+        totalInvested = totalInvested.add(dividends);
         totalDeposits = totalDeposits.add(1);
-        totalWithdrawn = totalWithdrawn.add(totalAmount);
+        totalWithdrawn = totalWithdrawn.add(dividends);
         // fire event
         emit onReinvestment(msg.sender, _dividends);
     }
 
 
-    function getUserDividends(address userAddress) public view returns (uint256) {
+    function getSumOfDividends(address userAddress, bool updateWithdrawn = false) public view returns (uint256) {
         User storage user = users[userAddress];
 
         uint256 totalDividends;
@@ -322,7 +354,9 @@ contract ViccStaking is Ownable {
                 if (user.deposits[i].withdrawn.add(dividends) > user.deposits[i].amount.mul(365).div(100)) {
                     dividends = (user.deposits[i].amount.mul(365).div(100)).sub(user.deposits[i].withdrawn);
                 }
-
+                if (updateWithdrawn) {
+                    user.deposits[i].withdrawn = user.deposits[i].withdrawn.add(dividends); /// changing of storage data
+                }
                 totalDividends = totalDividends.add(dividends);
             }
         }
@@ -351,7 +385,7 @@ contract ViccStaking is Ownable {
     }
 
     function getUserAvailable(address userAddress) public view returns(uint256) {
-        return getUserReferralBonus(userAddress).add(getUserDividends(userAddress));
+        return getUserReferralBonus(userAddress).add(getSumOfDividends(userAddress));
     }
 
     function isActive(address userAddress) public view returns (bool) {
