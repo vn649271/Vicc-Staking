@@ -3,6 +3,7 @@ pragma solidity ^0.8.0;
 /**
  *Submitted for verification at BscScan.com on 2022-05-10
 */
+import "./ViccAdmin.sol";
 
 library SafeMath {
 
@@ -74,59 +75,8 @@ abstract contract ERC20Interface {
     event Approval(address indexed tokenOwner, address indexed spender, uint256 tokens);
 }
 
-contract Ownable {
 
-  // Owner of the contract
-  address payable public owner;
-  address payable internal _newOwner;
-
-    constructor() {
-        owner = payable(address(msg.sender));
-    }
-
-  /**
-  * @dev Event to show ownership has been transferred
-  * @param previousOwner representing the address of the previous owner
-  * @param newOwner representing the address of the new owner
-  */
-  event OwnershipTransferred(address previousOwner, address newOwner);
-
-
-  /**
-   * @dev Sets a new owner address
-   */
-  function setOwner(address payable newOwner) internal {
-    _newOwner = newOwner;
-  }
-
-  /**
-  * @dev Throws if called by any account other than the owner.
-  */
-  modifier onlyOwner() {
-    require(msg.sender == owner, "Not Owner");
-    _;
-  }
-
-  /**
-   * @dev Allows the current owner to transfer control of the contract to a newOwner.
-   * @param newOwner The address to transfer ownership to.
-   */
-  function transferOwnership(address payable newOwner) public onlyOwner {
-    require(newOwner != address(0), "Invalid Address");
-    setOwner(newOwner);
-  }
-
-  //this flow is to prevent transferring ownership to wrong wallet by mistake
-  function acceptOwnership() public returns (address){
-      require(msg.sender == _newOwner,"Invalid new owner");
-      emit OwnershipTransferred(owner, _newOwner);
-      owner = _newOwner;
-      _newOwner = payable(address(0));
-      return owner;
-  }
-}
-
-contract ViccStaking is Ownable {
+contract ViccStaking is ViccAdmin {
     using SafeMath for uint256;
 
     uint256 constant public PERCENTS_DIVIDER = 10**6;
@@ -134,10 +84,10 @@ contract ViccStaking is Ownable {
     uint256 constant public REFERRAL_PERCENTS = 120000;         // 12%
     uint256 constant public FEE_PERCENTS = 60000;               // 6%
     uint256 constant public STAKERS_SHARE_PERCENTS_OF_FEE = 20000;    // 2%
-    uint256 constant public BURNNING_PERCENTS = 100000;
-    uint256 constant public TIME_STEP = 1 days;
+    uint256 constant public burnningPercents = 100000;
+    uint256 private timeStep = 1 days;
     uint256 constant public MIN_STAKE_AMOUNT = 100 * (10**18);
-    uint256 constant public LIMIT_REWARD_PERCENTS = 365000;
+    uint256 constant public rewardLimitPercents = 365000;
 
     uint256 constant public BACKUP_FOR_FUTURE_REWARD = 2500;
     uint256 constant public BACKUP_FOR_DEVELOPER = 500;
@@ -195,6 +145,14 @@ contract ViccStaking is Ownable {
 
     receive() external payable {}
 
+    function setTimeStep(uint256 _timeStep) public onlyAdmin {
+        timeStep = _timeStep;
+    }
+
+    function getTimeStep() public view returns(uint256) {
+        return timeStep;
+    }
+
     function _distributeFee(address txSender, uint256 txAmount) internal returns(uint256) {
         uint256 totalFee = txAmount.mul(FEE_PERCENTS).div(PERCENTS_DIVIDER);
 
@@ -211,8 +169,12 @@ contract ViccStaking is Ownable {
             if (balanceInvested < MIN_STAKE_AMOUNT) {
                 continue;
             }
-            users[availableUsers[i]].sharePercents = balanceInvested.mul(PERCENTS_DIVIDER).div(totalBalanceInvested);
-            users[availableUsers[i]].rewardFromFee.add(users[availableUsers[i]].sharePercents.mul(totalStakerShare));
+            users[availableUsers[i]].sharePercents = balanceInvested.mul(PERCENTS_DIVIDER).div(totalBalanceInvested); // 10**6 
+            users[availableUsers[i]].rewardFromFee = users[availableUsers[i]].rewardFromFee.add(
+                                                        totalStakerShare.mul(
+                                                            users[availableUsers[i]].sharePercents
+                                                        ).div(PERCENTS_DIVIDER)
+                                                    );
         }
         return totalFee;
     }
@@ -222,12 +184,11 @@ contract ViccStaking is Ownable {
 		ViccToken.transferFrom(msg.sender, address(this), amount);
 
         User storage user = users[msg.sender];
-        user.invested.add(amount);
+        user.invested = user.invested.add(amount);
 
         uint256 fee = _distributeFee(msg.sender, amount);
 
         uint256 realInvestingAmount = amount.sub(fee);
-		
 
         if (user.referrer == address(0) && users[referrer].deposits.length > 0 && referrer != msg.sender) {
             user.referrer = referrer;
@@ -252,12 +213,21 @@ contract ViccStaking is Ownable {
 
         user.deposits.push(Deposit(realInvestingAmount, 0, block.timestamp));
 
-        availableUsers.push(msg.sender);
+        bool pushedAlready = false;
+        for (uint256 i = 0; i < availableUsers.length; i++) {
+            if (msg.sender == availableUsers[i]) {
+                pushedAlready = true;
+                break;
+            }
+        }
+        if (!pushedAlready) {
+            availableUsers.push(msg.sender);
+        }
 
         totalInvested = totalInvested.add(realInvestingAmount);
         totalDeposits = totalDeposits.add(1);
 
-        ViccToken.burn(amount.mul(BURNNING_PERCENTS).div(PERCENTS_DIVIDER)); // Burn 10%
+        ViccToken.burn(amount.mul(burnningPercents).div(PERCENTS_DIVIDER)); // Burn 10%
 
         emit NewDeposit(msg.sender, realInvestingAmount);
     }
@@ -267,10 +237,12 @@ contract ViccStaking is Ownable {
 
         uint256 totalAmount = updateWithdrawns(msg.sender);
 
-        ViccToken.burn(totalAmount.mul(BURNNING_PERCENTS).div(PERCENTS_DIVIDER)); // Burn 10%
+        ViccToken.burn(totalAmount.mul(burnningPercents).div(PERCENTS_DIVIDER)); // Burn 10%
 
-        user.withdrawn.add(totalAmount);
+        user.withdrawn = user.withdrawn.add(totalAmount);
+
         totalWithdrawnForInvested = totalWithdrawnForInvested.add(totalAmount);
+
         totalAmount = totalAmount.sub(_distributeFee(msg.sender, totalAmount));
         uint256 referralBonus = getUserReferralBonus(msg.sender);
         if (referralBonus > 0) {
@@ -294,7 +266,7 @@ contract ViccStaking is Ownable {
             bkupForFutureReward = bkupForFutureReward.add(BACKUP_FOR_DEVELOPER);
         }
         totalAmount = totalAmount.add(user.rewardFromFee);
-        
+
         require(contractBalance - bkupForFutureReward > totalAmount, "Insufficient balance of contract");
 
         user.checkpoint = block.timestamp;
@@ -312,7 +284,7 @@ contract ViccStaking is Ownable {
         // fetch dividends
         uint256 dividends = updateWithdrawns(msg.sender); // retrieve ref. bonus later in the code
 
-        ViccToken.burn(dividends.mul(BURNNING_PERCENTS).div(PERCENTS_DIVIDER)); // Burn 10%
+        ViccToken.burn(dividends.mul(burnningPercents).div(PERCENTS_DIVIDER)); // Burn 10%
 
         dividends = dividends.sub(_distributeFee(msg.sender, dividends));
 
@@ -344,13 +316,13 @@ contract ViccStaking is Ownable {
 
                     dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
                         .mul(block.timestamp.sub(user.deposits[i].start))
-                        .div(TIME_STEP);
+                        .div(timeStep);
 
                 } else {
 
                     dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
                         .mul(block.timestamp.sub(user.checkpoint))
-                        .div(TIME_STEP);
+                        .div(timeStep);
                 }
 
                 if (user.deposits[i].withdrawn.add(dividends) > user.deposits[i].amount.mul(365).div(100)) {
@@ -377,13 +349,13 @@ contract ViccStaking is Ownable {
 
                     dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
                         .mul(block.timestamp.sub(user.deposits[i].start))
-                        .div(TIME_STEP);
+                        .div(timeStep);
 
                 } else {
 
                     dividends = (user.deposits[i].amount.mul(DAILY_ROI).div(PERCENTS_DIVIDER))
                         .mul(block.timestamp.sub(user.checkpoint))
-                        .div(TIME_STEP);
+                        .div(timeStep);
                 }
 
                 if (user.deposits[i].withdrawn.add(dividends) > user.deposits[i].amount.mul(365).div(100)) {
@@ -399,6 +371,10 @@ contract ViccStaking is Ownable {
 
     function minimumStakeValue() public pure returns(uint256) {
         return MIN_STAKE_AMOUNT;
+    }
+
+    function getUserRewardFromFee(address userAddress) public view returns(uint256) {
+        return users[userAddress].rewardFromFee;
     }
 
     function getUserReferralBonus(address userAddress) public view returns(uint256) {
@@ -418,7 +394,11 @@ contract ViccStaking is Ownable {
     }
 
     function getUserAvailable(address userAddress) public view returns(uint256) {
-        return getUserReferralBonus(userAddress).add(getSumOfDividends(userAddress));
+        return getUserReferralBonus(userAddress).add(
+            getUserRewardFromFee(userAddress).add(
+                getSumOfDividends(userAddress)
+            )
+        );
     }
 
     function isActive(address userAddress) public view returns (bool) {
