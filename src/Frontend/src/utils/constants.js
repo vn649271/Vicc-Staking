@@ -3,7 +3,7 @@
 import ViccStakingDeployedInfo from "../abis/ViccStaking.json";
 import ViccDeployedInfo from "../abis/ViccToken.json";
 
-const dev_mode = 0; // 0: Ganache, 1: BSC Testnet, 2: Ropsten, 3: BSC
+const dev_mode = 2; // 0: Ganache, 1: BSC Testnet, 2: Ropsten, 3: BSC
 
 const chainNameList = ["Ganache", "BSC Testnet", "Ropsten", "BSC"];
 const chainIdList = [5777, 97, 3, 56];
